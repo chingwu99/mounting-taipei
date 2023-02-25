@@ -1,0 +1,14 @@
+.miscanthus {
+  max-width: 500px;
+}
+
+.blockhover {
+  background-color: black;
+  border-radius: 50px;
+
+  &:hover {
+    background-color: orange;
+    color: black;
+    cursor: pointer;
+  }
+}
