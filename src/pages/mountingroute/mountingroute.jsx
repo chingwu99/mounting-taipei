@@ -3,28 +3,29 @@ import axios from "axios";
 import ListCard from "./components/ListCard";
 import ButtonGroup from "./components/ButtonGroup";
 
-const url = "http://localhost:3000/result";
+// const url = "http://localhost:3000/result";
 
-async function fetchData(setMountingData, setAllData) {
-  try {
-    const response = await axios.get(`${url}`);
-    console.log(response.data);
-    setMountingData(response.data.results);
-    setAllData(response.data.results.slice(0, 8));
-  } catch (error) {
-    console.error(error);
-  }
-}
+// async function fetchData(setMountingData, setAllData) {
+//   try {
+//     const response = await axios.get(`${url}`);
+//     console.log(response.data);
+//     setMountingData(response.data.results);
+//     setAllData(response.data.results.slice(0, 8));
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
 const Mountingroute = () => {
   const [mountingData, setMountingData] = useState([]);
   const [allData, setAllData] = useState([]);
   const [renderData, setRenderData] = useState([]);
   const [buttonfilterData, setButtonfilterData] = useState([]);
+  const [loadMore, setLoadMore] = useState(true);
 
-  useEffect(() => {
-    fetchData(setMountingData, setAllData);
-  }, []);
+  // useEffect(() => {
+  //   fetchData(setMountingData, setAllData);
+  // }, []);
 
   useEffect(() => {
     setRenderData(buttonfilterData);
@@ -75,6 +76,14 @@ const Mountingroute = () => {
     }
   };
 
+  useEffect(() => {
+    setLoadMore(false);
+  }, [buttonfilterData]);
+
+  useEffect(() => {
+    setLoadMore(true);
+  }, [allData]);
+
   return (
     <div className="container">
       <div className="container  mb-5 d-flex justify-content-center align-items-center flex-column">
@@ -83,9 +92,11 @@ const Mountingroute = () => {
         <ButtonGroup filterHandler={filterHandler} />
         <ListCard renderData={renderData} />
 
-        <button onClick={handleLoadMore} className="btn btn-primary my-3 ">
-          加載更多
-        </button>
+        {loadMore === true && (
+          <button onClick={handleLoadMore} className="btn btn-primary my-3 ">
+            加載更多
+          </button>
+        )}
       </div>
     </div>
   );

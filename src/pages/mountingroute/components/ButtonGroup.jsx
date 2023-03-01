@@ -15,7 +15,7 @@ const ButtonGroup = ({ filterHandler }) => {
       {filterButtonArray.map((i) => {
         return (
           <button
-            className="btn btn-primary my-3 mx-3"
+            className="btn btn-warning my-3 mx-3"
             key={i.buttonName}
             onClick={filterHandler}
             value={i.buttonName}
