@@ -2,15 +2,24 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import ProductModal from "../../components/ProductModal";
 import { Modal } from "bootstrap";
+import DeleteModal from "../../components/DeleteModal";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
   const [pagination, setPagination] = useState({});
+  //type決定modal用途
+  const [type, setType] = useState("create"); //edit
+  const [tempProduct, setTempProduct] = useState({});
 
   const productModal = useRef(null);
+  const deleteModal = useRef(null);
 
   useEffect(() => {
     productModal.current = new Modal("#productModal", {
+      backdrop: "static",
+    });
+
+    deleteModal.current = new Modal("#deleteModal", {
       backdrop: "static",
     });
 
@@ -29,7 +38,10 @@ const AdminProducts = () => {
     })();
   };
 
-  const openProductModal = () => {
+  const openProductModal = (type, tempProduct) => {
+    setType(type);
+    setTempProduct(tempProduct);
+
     productModal.current.show();
   };
 
@@ -37,11 +49,44 @@ const AdminProducts = () => {
     productModal.current.hide();
   };
 
+  const openDeleteModal = (tempProduct) => {
+    setTempProduct(tempProduct);
+    deleteModal.current.show();
+  };
+
+  const closeDeleteModal = () => {
+    deleteModal.current.hide();
+  };
+
+  const deleteProduct = async (id) => {
+    try {
+      const res = await axios.delete(
+        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/product/${id}`
+      );
+      console.log(res);
+
+      if (res.data.success) {
+        getProducts();
+        deleteModal.current.hide();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="p-3">
       <ProductModal
         closeProductModal={closeProductModal}
         getProducts={getProducts}
+        tempProduct={tempProduct}
+        type={type}
+      />
+      <DeleteModal
+        close={closeDeleteModal}
+        text={tempProduct.title}
+        handleDelete={deleteProduct}
+        id={tempProduct.id}
       />
       <h3>產品列表</h3>
       <hr />
@@ -49,7 +94,7 @@ const AdminProducts = () => {
         <button
           type="button"
           className="btn btn-primary btn-sm"
-          onClick={openProductModal}
+          onClick={() => openProductModal("create", {})}
         >
           建立新商品
         </button>
@@ -73,12 +118,17 @@ const AdminProducts = () => {
                 <td>{product.price}</td>
                 <td>{product.is_enabled ? "啟用" : "未啟用"}</td>
                 <td>
-                  <button type="button" className="btn btn-primary btn-sm">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={() => openProductModal("edit", product)}
+                  >
                     編輯
                   </button>
                   <button
                     type="button"
                     className="btn btn-outline-danger btn-sm ms-2"
+                    onClick={() => openDeleteModal(product)}
                   >
                     刪除
                   </button>

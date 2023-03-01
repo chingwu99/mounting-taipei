@@ -1,7 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const ProductModal = ({ closeProductModal, getProducts }) => {
+const ProductModal = ({
+  closeProductModal,
+  getProducts,
+  tempProduct,
+  type,
+}) => {
   const [tempData, setTempData] = useState({
     title: "",
     category: "",
@@ -13,6 +18,24 @@ const ProductModal = ({ closeProductModal, getProducts }) => {
     is_enabled: 1,
     imageUrl: "",
   });
+
+  useEffect(() => {
+    if (type === "create") {
+      setTempData({
+        title: "",
+        category: "",
+        origin_price: 100,
+        price: 300,
+        unit: "",
+        description: "",
+        content: "",
+        is_enabled: 1,
+        imageUrl: "",
+      });
+    } else if (type === "edit") {
+      setTempData(tempProduct);
+    }
+  }, [type, tempProduct]);
 
   const handleChange = (e) => {
     console.log(e);
@@ -28,10 +51,14 @@ const ProductModal = ({ closeProductModal, getProducts }) => {
 
   const submit = async () => {
     try {
-      const res = await axios.post(
-        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/product`,
-        { data: tempData }
-      );
+      let api = `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/product`;
+      let method = "post";
+
+      if (type === "edit") {
+        api = `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/product/${tempProduct.id}`;
+        method = "put";
+      }
+      const res = await axios[method](api, { data: tempData });
       console.log(res);
     } catch (error) {
       console.log(error);
@@ -53,7 +80,7 @@ const ProductModal = ({ closeProductModal, getProducts }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              '建立新商品'
+              {type === "create" ? "建立新商品" : `編輯${tempData.title}`}
             </h1>
             <button
               type="button"
@@ -207,7 +234,7 @@ const ProductModal = ({ closeProductModal, getProducts }) => {
                         placeholder="請輸入產品說明內容"
                         className="form-check-input"
                         onChange={handleChange}
-                        value={tempData.is_enabled}
+                        checked={Boolean(tempData.is_enabled)}
                       />
                     </label>
                   </div>
