@@ -8,6 +8,7 @@ import axios from "axios";
 import Login from "./pages/login/Login";
 import Dashboard from "./pages/admin/Dashboard";
 import AdminProducts from "./pages/admin/AdminProducts";
+import AdminCoupons from "./pages/admin/AdminCoupons";
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
           <Route path="login" element={<Login />}></Route>
           <Route path="admin" element={<Dashboard />}>
             <Route path="products" element={<AdminProducts />}></Route>
+            <Route path="coupons" element={<AdminCoupons />}></Route>
           </Route>
         </Route>
       </Routes>
