@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { MountingrouteContext } from "../../../contexts/mountingrouteContext";
 import Beitouimg from "../../../image/dataimage/Beitouimg.jpg";
 import Nangangimg from "../../../image/dataimage/Nangangimg.jpg";
 import Neihuimg from "../../../image/dataimage/Neihuimg.jpg";
@@ -6,7 +8,8 @@ import Wenshanimg from "../../../image/dataimage/Wenshanimg.jpg";
 import Xinyiimg from "../../../image/dataimage/Xinyiimg.jpg";
 import Zhongshan from "../../../image/dataimage/Zhongshanimg.jpg";
 
-const ListCard = ({ renderData }) => {
+const ListCard = () => {
+  const { renderData } = useContext(MountingrouteContext);
   return (
     <div className="row row-cols-4">
       {renderData.map((i) => {

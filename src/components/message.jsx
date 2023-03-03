@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { MessageContext } from "../contexts/MessageContext";
+import { MessageContext } from "../contexts/messageContext";
 
 const Message = () => {
   //   const [message, setMessage] = useState({});

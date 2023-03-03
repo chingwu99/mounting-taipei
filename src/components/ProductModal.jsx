@@ -4,7 +4,7 @@ import {
   MessageContext,
   handleSuccessMessage,
   handleErrorMessage,
-} from "../contexts/MessageContext";
+} from "../contexts/messageContext";
 
 const ProductModal = ({
   closeProductModal,
