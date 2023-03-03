@@ -1,5 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import {
+  MessageContext,
+  handleSuccessMessage,
+  handleErrorMessage,
+} from "../contexts/MessageContext";
 
 const ProductModal = ({
   closeProductModal,
@@ -18,6 +23,8 @@ const ProductModal = ({
     is_enabled: 1,
     imageUrl: "",
   });
+
+  const [message, dispatch] = useContext(MessageContext);
 
   useEffect(() => {
     if (type === "create") {
@@ -60,12 +67,14 @@ const ProductModal = ({
       }
       const res = await axios[method](api, { data: tempData });
       console.log(res);
+
+      handleSuccessMessage(dispatch, res);
+      closeProductModal();
+      getProducts();
     } catch (error) {
+      handleErrorMessage(dispatch, error);
       console.log(error);
     }
-
-    closeProductModal();
-    getProducts();
   };
 
   return (
@@ -98,9 +107,11 @@ const ProductModal = ({
                     <input
                       type="text"
                       name="imageUrl"
-                      id="image"
+                      id="imageUrl"
                       placeholder="請輸入圖片連結"
                       className="form-control"
+                      onChange={handleChange}
+                      value={tempData.imageUrl}
                     />
                   </label>
                 </div>

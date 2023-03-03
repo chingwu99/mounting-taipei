@@ -1,6 +1,4 @@
-REACT_APP_SHOPAPI_URL=https://ec-course-api.hexschool.io/
-REACT_APP_SHOPAPI_PATH=json-frontend
-REACT_APP_MOUNTINGROUTE_API={
+{
   "result": {
     "limit": 154,
     "offset": 0,
@@ -4630,5 +4628,3 @@ REACT_APP_MOUNTINGROUTE_API={
     ]
   }
 }
-
-

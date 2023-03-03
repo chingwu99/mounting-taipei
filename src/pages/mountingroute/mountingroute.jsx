@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ListCard from "./components/ListCard";
 import ButtonGroup from "./components/ButtonGroup";
+import mountingRoutesData from "../../data/mountingRoutesData.json";
 
 // const url = "http://localhost:3000/result";
 
@@ -16,6 +17,8 @@ import ButtonGroup from "./components/ButtonGroup";
 //   }
 // }
 
+// console.log("QQQQQ", mountingRoutesData.result.results);
+
 const Mountingroute = () => {
   const [mountingData, setMountingData] = useState([]);
   const [allData, setAllData] = useState([]);
@@ -23,9 +26,11 @@ const Mountingroute = () => {
   const [buttonfilterData, setButtonfilterData] = useState([]);
   const [loadMore, setLoadMore] = useState(true);
 
-  // useEffect(() => {
-  //   fetchData(setMountingData, setAllData);
-  // }, []);
+  useEffect(() => {
+    // fetchData(setMountingData, setAllData);
+    setMountingData(mountingRoutesData.result.results);
+    setAllData(mountingRoutesData.result.results.slice(0, 8));
+  }, []);
 
   useEffect(() => {
     setRenderData(buttonfilterData);

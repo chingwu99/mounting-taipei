@@ -1,9 +1,16 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useReducer } from "react";
+import Message from "../../components/Message";
+import {
+  MessageContext,
+  MessageReducer,
+  initState,
+} from "../../contexts/MessageContext";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const reducer = useReducer(MessageReducer, initState);
 
   const logout = () => {
     document.cookie = "mountingTaipeiToken=;";
@@ -34,7 +41,8 @@ const Dashboard = () => {
   }, [navigate, token]);
 
   return (
-    <>
+    <MessageContext.Provider value={reducer}>
+      <Message />
       <nav className="navbar navbar-expand-lg bg-dark">
         <div className="container-fluid">
           <p className="text-white mb-0">HEX EATS 後台管理系統</p>
@@ -99,7 +107,7 @@ const Dashboard = () => {
           {/* Products end */}
         </div>
       </div>
-    </>
+    </MessageContext.Provider>
   );
 };
 
