@@ -26,6 +26,23 @@ export const MountingrouteProvider = ({ children }) => {
     setAllData(mountingRoutesData.result.results.slice(0, 8));
   }, []);
 
+  useEffect(() => {
+    setRenderData(buttonfilterData);
+    console.log("lllll", buttonfilterData);
+  }, [buttonfilterData]);
+
+  useEffect(() => {
+    setRenderData(allData);
+  }, [allData]);
+
+  useEffect(() => {
+    setLoadMore(false);
+  }, [buttonfilterData]);
+
+  useEffect(() => {
+    setLoadMore(true);
+  }, [allData]);
+
   const value = {
     mountingData,
     setMountingData,

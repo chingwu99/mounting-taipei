@@ -4,38 +4,14 @@ import ButtonGroup from "./components/ButtonGroup";
 import { MountingrouteContext } from "../../contexts/mountingrouteContext";
 
 const Mountingroute = () => {
-  const {
-    mountingData,
-    allData,
-    setAllData,
-    setRenderData,
-    buttonfilterData,
-    loadMore,
-    setLoadMore,
-  } = useContext(MountingrouteContext);
-
-  useEffect(() => {
-    setRenderData(buttonfilterData);
-    console.log("lllll", buttonfilterData);
-  }, [buttonfilterData]);
-
-  useEffect(() => {
-    setRenderData(allData);
-  }, [allData]);
+  const { mountingData, allData, setAllData, loadMore } =
+    useContext(MountingrouteContext);
 
   const handleLoadMore = () => {
     const currentLength = allData.length;
     const nextData = mountingData.slice(currentLength, currentLength + 8);
     setAllData([...allData, ...nextData]);
   };
-
-  useEffect(() => {
-    setLoadMore(false);
-  }, [buttonfilterData]);
-
-  useEffect(() => {
-    setLoadMore(true);
-  }, [allData]);
 
   return (
     <div className="container">
