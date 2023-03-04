@@ -107,12 +107,12 @@ align-items-center my-5"
     justify-content-center
     align-items-center"
             >
-              <div className="text-warning display-1 ">
+              <div className="text-warning  ">
                 <div className="row row-cols-3    rounded-top-5 border border-warning">
                   <div
                     className="col blockhover d-flex   
     justify-content-center
-    align-items-center flex-column  py-5 px-5 display-5 "
+    align-items-center flex-column  py-5 px-5 fs-1  "
                     onClick={filterHandler}
                   >
                     內湖Neihu
@@ -120,7 +120,7 @@ align-items-center my-5"
                   <div
                     className="col blockhover d-flex   
     justify-content-center
-    align-items-center flex-column border border-warning border-top-0 border-bottom-0 py-5 px-5 display-5  "
+    align-items-center flex-column border border-warning border-top-0 border-bottom-0 py-5 px-5 fs-1   "
                     onClick={filterHandler}
                   >
                     士林Shilin
@@ -128,7 +128,7 @@ align-items-center my-5"
                   <div
                     className="col blockhover d-flex   
     justify-content-center
-    align-items-center flex-column  py-5 px-5 display-5  "
+    align-items-center flex-column  py-5 px-5 fs-1   "
                     onClick={filterHandler}
                   >
                     北投Beitou
@@ -138,7 +138,7 @@ align-items-center my-5"
                   <div
                     className="col blockhover d-flex   
     justify-content-center
-    align-items-center flex-column py-5 px-5 display-5 "
+    align-items-center flex-column py-5 px-5 fs-1  "
                     onClick={filterHandler}
                   >
                     信義Xinyi
@@ -146,15 +146,15 @@ align-items-center my-5"
                   <div
                     className="col blockhover d-flex   
     justify-content-center
-    align-items-center flex-column border border-warning border-top-0 border-bottom-0  py-5 px-5 display-5  "
+    align-items-center flex-column border border-warning border-top-0 border-bottom-0  py-5 px-5 fs-1   "
                     onClick={filterHandler}
                   >
                     南港Nangang
                   </div>
                   <div
                     className="col blockhover d-flex   
-    justify-content-center
-    align-items-center flex-column  py-5 px-5 display-5  "
+    justify-content-center 
+    align-items-center flex-column  py-5 px-5 fs-1   "
                     onClick={filterHandler}
                   >
                     文山Wenshan
