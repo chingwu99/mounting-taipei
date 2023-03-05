@@ -2,8 +2,15 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Homeimg1 from "../../../../image/homeimg/homeimg1.jpg";
 import Homeimg2 from "../../../../image/homeimg/homeimg2.jpg";
 import Homeimg3 from "../../../../image/homeimg/homeimg3.jpg";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Carousel = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <div className="container my-2">
       <div
@@ -39,7 +46,11 @@ const Carousel = () => {
               className="d-block w-100  carousel-img-height"
               alt="..."
             />
-            <div className="carousel-caption d-none d-md-block">
+            <div
+              className="carousel-caption d-none d-md-block"
+              data-aos="fade-down"
+              data-aos-duration="3000"
+            >
               <h2 className="mb-5 pb-2 display-4">
                 爬爬台北 <br />
                 Mounting Taipei

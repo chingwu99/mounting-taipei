@@ -1,17 +1,24 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MountingrouteContext } from "../../contexts/mountingrouteContext";
 import Carousel from "./components/carousel/Carousel";
 import homeimg4 from "../../image/homeimg/homeimg4.jpg";
 import homeimg5 from "../../image/homeimg/homeimg5.jpg";
 import homeimg6 from "../../image/homeimg/homeimg6.jpg";
 import homeimg7 from "../../image/homeimg/homeimg7.jpg";
+import homeimg8 from "../../image/homeimg/homeimg8.jpg";
 import { Link, useNavigate } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Home = () => {
   const { mountingData, setButtonfilterData } =
     useContext(MountingrouteContext);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   const filterHandler = (e) => {
     let buttonValue = e.target.innerText;
@@ -53,16 +60,18 @@ const Home = () => {
 align-items-center my-5"
       >
         <div className="row ">
-          <div className="col   h-100">
+          <div className="col   h-100 ">
             <div
               className="h-100 w-100 d-flex   
     justify-content-center
     align-items-center"
+              data-aos="fade-right"
+              data-aos-duration="3000"
             >
               <img className=" w-100 rounded-5" src={homeimg4} />
             </div>
           </div>
-          <div className="col ">
+          <div className="col " data-aos="fade-left" data-aos-duration="3000">
             <div
               className="h-100 text-white d-flex   
     justify-content-center
@@ -85,13 +94,13 @@ align-items-center my-5"
 align-items-center my-5"
       >
         <div className="row ">
-          <div className="col ">
+          <div className="col " data-aos="fade-right" data-aos-duration="3000">
             <div
               className="h-100  d-flex   
     justify-content-center
     flex-column text-white"
             >
-              <h3 className="mb-4">六大行政區，發現都市自然之美!</h3>
+              <h3 className="mb-4">六大區城市步道，發現都市自然之美!</h3>
               <p>
                 台北屬於盆地，因次都市周圍擁有許多丘陵環繞，北部則有大屯山群以及陽明山國家公園。步道主要分布於六大行政區，包含內湖、士林、北投、信義、南港、文山，難度由簡單到困難皆有選擇，相當適合與親朋好友一起體驗。點選右方您感興趣的分區，查看有哪些步道可以選擇。
               </p>
@@ -106,6 +115,8 @@ align-items-center my-5"
               className="h-100 d-flex   
     justify-content-center
     align-items-center"
+              data-aos="fade-left"
+              data-aos-duration="3000"
             >
               <div className="text-warning  ">
                 <div className="row row-cols-3    rounded-top-5 border border-warning">
@@ -161,6 +172,41 @@ align-items-center my-5"
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="container d-flex justify-content-center
+align-items-center my-5"
+      >
+        <div className="row ">
+          <div className="col   h-100 ">
+            <div
+              className="h-100 w-100 d-flex   
+    justify-content-center
+    align-items-center"
+              data-aos="fade-right"
+              data-aos-duration="3000"
+            >
+              <img className=" w-100 rounded-5" src={homeimg8} />
+            </div>
+          </div>
+          <div className="col " data-aos="fade-left" data-aos-duration="3000">
+            <div
+              className="h-100 text-white d-flex   
+    justify-content-center
+    flex-column"
+            >
+              <h3 className="mb-4">在爬爬台北，找到最適合你的登山裝備！</h3>
+              <p>
+                在這個快節奏的都市中，偶爾離開塵囂，到大自然中去感受山水的壯美，是一種心靈上的享受。為了讓你在山中感受到更多的美好，我們致力於提供最好的登山用品，包括帳篷、登山鞋、遮陽用品等等。
+                我們的產品不僅價格實惠，而且質量優良，我們深信，這些用品會成為你在山中不可或缺的夥伴。讓我們一起走過每一段陡峭的山路，一起感受每一分汗水和勝利的喜悅。
+              </p>
+              <Link to="/productspage" className="btn btn-primary w-25">
+                馬上選購
+              </Link>
             </div>
           </div>
         </div>
