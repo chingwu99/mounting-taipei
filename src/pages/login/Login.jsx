@@ -31,49 +31,67 @@ const Login = () => {
     }
   };
 
-  return (
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <h2>登入帳號</h2>
+  const handleBackToHome = () => {
+    navigate("/");
+  };
 
-          <div
-            className={`alert alert-danger ${
-              loginState.message ? `d-block` : `d-none`
-            }`}
-            role="alert"
-          >
-            錯誤訊息
+  return (
+    <div className=" py-5 d-flex justify-content-center align-items-center  vh-100">
+      <div className="login-form-background ">
+        <div className="login-form d-flex  align-items-center ">
+          <div className="col-md-6 w-100">
+            <h2 className="text-center "> 爬爬台北</h2>
+            <h6 className="text-center "> 管理者登入</h6>
+
+            <div
+              className={`alert alert-danger ${
+                loginState.message ? `d-block` : `d-none`
+              }`}
+              role="alert"
+            >
+              錯誤訊息
+            </div>
+            <div className=" login-input-container ">
+              <label htmlFor="email" className="form-label ">
+                Email
+                <input
+                  id="email"
+                  className="form-control  rounded-0"
+                  name="username"
+                  type="email"
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+            <div className=" login-input-container">
+              <label htmlFor="password" className="form-label ">
+                密碼
+                <input
+                  type="password"
+                  className="form-control  rounded-0"
+                  name="password"
+                  id="password"
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+            <div className="container w-100  d-flex   justify-content-between">
+              <button
+                type="button"
+                className="w-50 py-1 back-button"
+                onClick={handleBackToHome}
+              >
+                回到首頁
+              </button>
+              <button
+                type="button"
+                className="w-50 py-1 login-button "
+                onClick={submit}
+              >
+                登入
+              </button>
+            </div>
           </div>
-          <div className="mb-2">
-            <label htmlFor="email" className="form-label w-100">
-              Email
-              <input
-                id="email"
-                className="form-control"
-                name="username"
-                type="email"
-                placeholder="Email Address"
-                onChange={handleChange}
-              />
-            </label>
-          </div>
-          <div className="mb-2">
-            <label htmlFor="password" className="form-label w-100">
-              密碼
-              <input
-                type="password"
-                className="form-control"
-                name="password"
-                id="password"
-                placeholder="name@example.com"
-                onChange={handleChange}
-              />
-            </label>
-          </div>
-          <button type="button" className="btn btn-primary" onClick={submit}>
-            登入
-          </button>
         </div>
       </div>
     </div>
