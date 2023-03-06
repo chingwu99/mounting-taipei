@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Pagination from "../../components/Pagination";
+import { BsInfoCircle, BsFillCartFill } from "react-icons/bs";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -25,31 +26,75 @@ const ProductsPage = () => {
 
   return (
     <>
-      <div className="container mt-md-5 mt-3 mb-7">
-        <div className="row">
-          {products.map((product) => {
-            return (
-              <div className="col-md-3" key={product.id}>
-                <div className="card border-0 mb-4 position-relative position-relative">
-                  <img
-                    src={product.imageUrl}
-                    className="card-img-top rounded-0"
-                    alt="..."
-                  />
+      <div className="container">
+        <div className="container  mb-5 d-flex justify-content-center align-items-center flex-column">
+          <h2 className="text-warning my-5">所有商品</h2>
 
-                  <div className="card-body p-0">
-                    <h4 className="mb-0 mt-3">
-                      <Link to={`/product/${product.id}`}>{product.title}</Link>
-                    </h4>
-                    <p className="card-text text-muted mb-0">
-                      Lorem ipsum dolor sit amet
-                    </p>
-                    <p className="text-muted mt-3">{product.price}</p>
+          <div className="row row-cols-4   ">
+            {products.map((product) => {
+              return (
+                <div className="col gy-4 " key={product.id}>
+                  <div className="card border-0 w-100">
+                    <div className="img-container">
+                      <img
+                        src={product.imageUrl}
+                        className="card-img-top productpage-object-fit"
+                        alt="..."
+                      />
+                    </div>
+
+                    <div
+                      className="card-body d-flex flex-column d-flex 
+                          justify-content-center
+                          align-items-center"
+                    >
+                      <div
+                        className="  d-flex flex-column
+  justify-content-center
+  align-items-center h-25 w-100"
+                      >
+                        <h4 className="my-1">{product.title}</h4>
+                        <div className="d-flex ">
+                          <p className="text-danger fs-3 ">${product.price}</p>
+                          <p className="text-muted text-decoration-line-through ">
+                            {product.origin_price}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="container w-100  d-flex   justify-content-between ">
+                        <Link
+                          to={`/product/${product.id}`}
+                          type="button"
+                          className="w-50 py-1 info-button  d-flex 
+                          justify-content-center
+                          align-items-center
+                          text-decoration-none
+                          text-black
+                          d-flex 
+                          justify-content-center
+                          align-items-center
+                          "
+                        >
+                          <BsInfoCircle className="mx-1" />
+                          更多資訊
+                        </Link>
+                        <button
+                          type="button"
+                          className="w-50 py-1 productpage-add-cart-button d-flex 
+                          justify-content-center
+                          align-items-center"
+                        >
+                          <BsFillCartFill />
+                          加入商品
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
         <nav className="d-flex justify-content-center">
           <Pagination pagination={pagination} changePage={getProducts} />

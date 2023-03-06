@@ -53,6 +53,16 @@ const Nav = ({ cartData }) => {
                   產品列表
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/admin"
+                  className="nav-link d-flex
+    justify-content-center   align-items-center "
+                >
+                  <GiConverseShoe className="mx-1 fs-4" />
+                  後台
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>
