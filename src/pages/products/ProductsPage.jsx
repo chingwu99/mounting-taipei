@@ -35,7 +35,7 @@ const ProductsPage = () => {
               return (
                 <div className="col gy-4 " key={product.id}>
                   <div className="card border-0 w-100">
-                    <div className="img-container">
+                    <div className="productpage-img-container">
                       <img
                         src={product.imageUrl}
                         className="card-img-top productpage-object-fit"

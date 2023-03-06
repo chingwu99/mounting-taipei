@@ -76,7 +76,7 @@ const AdminProducts = () => {
   };
 
   return (
-    <div className="p-3 ">
+    <div className="p-3 bg-white">
       <ProductModal
         closeProductModal={closeProductModal}
         getProducts={getProducts}
@@ -89,7 +89,7 @@ const AdminProducts = () => {
         handleDelete={deleteProduct}
         id={tempProduct.id}
       />
-      <h3 className="text-white">產品列表</h3>
+      <h3>產品列表</h3>
       <hr />
       <div className="text-end">
         <button
@@ -100,7 +100,7 @@ const AdminProducts = () => {
           建立新商品
         </button>
       </div>
-      <table className="table text-white">
+      <table className="table ">
         <thead>
           <tr>
             <th scope="col">分類</th>

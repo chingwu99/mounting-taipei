@@ -11844,7 +11844,7 @@ code {
      object-fit: cover;
 }
 
-.img-container {
+.productpage-img-container {
   height: 300px;
   overflow: hidden;
 }
@@ -11876,4 +11876,21 @@ code {
 .productpage-add-cart-button:hover {
   background-color: skyblue;
   color: black;
+}
+
+.productDetail-img-container {
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.productDetail-object-fit {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.productDetail-spirit {
+  background-color: rgb(171, 162, 147);
 }/*# sourceMappingURL=index.css.map */

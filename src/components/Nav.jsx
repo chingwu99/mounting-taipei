@@ -6,7 +6,7 @@ import { GiConverseShoe } from "react-icons/gi";
 
 const Nav = ({ cartData }) => {
   return (
-    <nav className="navbar navbar-expand-lg sticky-top z-3 bg-warning shadow opacity-75">
+    <nav className="navbar navbar-expand-lg position-sticky top-0 z-3 bg-warning shadow ">
       <div className="container-fluid row row-cols-3 mx-auto">
         <div className="row  ">
           <button
