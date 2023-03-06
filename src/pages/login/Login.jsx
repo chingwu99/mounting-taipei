@@ -1,11 +1,17 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Login = () => {
   const [data, setData] = useState({ username: "", password: "" });
   const navigate = useNavigate();
   const [loginState, setLoginState] = useState({});
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +43,11 @@ const Login = () => {
 
   return (
     <div className=" py-5 d-flex justify-content-center align-items-center  vh-100">
-      <div className="login-form-background ">
+      <div
+        className="login-form-background "
+        data-aos="fade-down"
+        data-aos-duration="3000"
+      >
         <div className="login-form d-flex  align-items-center ">
           <div className="col-md-6 w-100">
             <h2 className="text-center "> 爬爬台北</h2>
