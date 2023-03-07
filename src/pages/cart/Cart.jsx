@@ -5,43 +5,8 @@ import Progressbar from "../../components/Progressbar";
 import { CartContext } from "../../contexts/cartContext";
 
 const Cart = () => {
-  const { cartData, getCart } = useContext(CartContext);
-  const [loadingItems, setLoadingItems] = useState([]);
-
-  const removeCartItem = async (id) => {
-    try {
-      const res = await axios.delete(
-        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart/${id}`
-      );
-      console.log(res);
-      getCart();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const updateCartItem = async (item, quantity) => {
-    const data = {
-      data: {
-        product_id: item.product_id,
-        qty: quantity,
-      },
-    };
-    setLoadingItems([...loadingItems, item.id]);
-    try {
-      const res = await axios.put(
-        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart/${item.id}`,
-        data
-      );
-      console.log(res);
-      setLoadingItems(
-        loadingItems.filter((loadingObject) => loadingObject !== item.id)
-      );
-      getCart();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { cartData, loadingItems, removeCartItem, updateCartItem } =
+    useContext(CartContext);
 
   return (
     <div className="bg-white d-flex justify-content-center align-items-center flex-column">

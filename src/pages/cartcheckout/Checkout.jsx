@@ -2,9 +2,12 @@ import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/FormElement";
 import axios from "axios";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cartContext";
 
 const Checkout = () => {
-  const { cartData } = useOutletContext();
+  const { cartData } = useContext(CartContext);
+
   const {
     register,
     handleSubmit,
