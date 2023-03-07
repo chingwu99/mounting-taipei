@@ -3,8 +3,11 @@ import { AiFillHome } from "react-icons/ai";
 import { GiMountainRoad } from "react-icons/gi";
 import { FaShoePrints } from "react-icons/fa";
 import { GiConverseShoe } from "react-icons/gi";
+import { CartContext } from "../contexts/cartContext";
+import { useContext } from "react";
 
-const Nav = ({ cartData }) => {
+const Nav = () => {
+  const { cartData } = useContext(CartContext);
   return (
     <nav className="navbar navbar-expand-lg position-sticky top-0 z-3 bg-warning shadow ">
       <div className="container-fluid row row-cols-3 mx-auto">

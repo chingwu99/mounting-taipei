@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useOutletContext, useParams, Link } from "react-router-dom";
+import { CartContext } from "../../contexts/cartContext";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
@@ -9,7 +10,9 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
 
-  const { getCart } = useOutletContext();
+  // const { getCart } = useOutletContext();
+
+  const { getCart } = useContext(CartContext);
 
   console.log(id);
 
