@@ -29,7 +29,7 @@ const Checkout = () => {
         <div className="row justify-content-center flex-md-row flex-column-reverse">
           <div className="col-md-4">
             <div className="border p-4 mb-4">
-              <h4 className="mb-4">選購餐點</h4>
+              <h4 className="mb-4">您的清單</h4>
               {cartData?.carts?.map((item) => {
                 return (
                   <div className="d-flex" key={item.id}>

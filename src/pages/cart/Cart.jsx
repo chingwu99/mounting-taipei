@@ -46,43 +46,45 @@ const Cart = () => {
     <div className="bg-white d-flex justify-content-center align-items-center flex-column">
       <Progressbar />
 
-      <div className="container">
-        <div className="row row-cols-12 w-100 bg-danger">
-          <div className="col-8 bg-primary">
+      <div className="container mt-5 mb-3">
+        <div className="row row-cols-12 w-100">
+          <div className="col-8  ">
             <div className="container">
               <div>
-                <div>
-                  <h2>您的餐點</h2>
+                <div className="mb-3">
+                  <h2>待購清單</h2>
                 </div>
-
+                <div className=" border-bottom border-3 border-dark my-2">
+                  <div className="row row-cols-12 fs-5 mb-2">
+                    <div className="col-6 ">商品內容</div>
+                    <div className="col-2 text-center">單價</div>
+                    <div className="col-2 text-center">數量</div>
+                    <div className="col-2 text-center">金額</div>
+                  </div>
+                </div>
                 {cartData?.carts?.map((item) => {
                   return (
-                    <div className="d-flex mt-4 bg-light" key={item.id}>
-                      <img
-                        src={item.product.imageUrl}
-                        alt=""
-                        style={{
-                          width: "120px",
-                        }}
-                      />
-                      <div className="w-100 p-3 position-relative">
-                        <button
-                          type="button"
-                          className="position-absolute btn"
-                          style={{ top: "16px", right: "16px" }}
-                          onClick={() => removeCartItem(item.id)}
-                        >
-                          <i className="bi bi-x-lg"></i>
-                        </button>
-                        <p className="mb-0 fw-bold">{item.product.title}</p>
-                        <p
-                          className="mb-1 text-muted"
-                          style={{ fontSize: "14px" }}
-                        >
-                          {item.product.content}
-                        </p>
-                        <div className="d-flex justify-content-between align-items-center w-100">
-                          <div className="input-group w-50 align-items-center">
+                    <div
+                      className="d-flex justify-content-center align-items-center  border-bottom border-3 border-secondary-subtle"
+                      key={item.id}
+                    >
+                      <div className="row row-cols-12  w-100 my-1">
+                        <div className="col-6 d-flex align-items-center ">
+                          <div className="cartpage-img-container">
+                            <img
+                              src={item.product.imageUrl}
+                              alt=""
+                              className="cartpage-object-fit"
+                            />
+                          </div>
+
+                          <p className=" fw-bold mx-4">{item.product.title}</p>
+                        </div>
+                        <div className="col-2 d-flex justify-content-center align-items-center ">
+                          <p>${item.product.price}</p>
+                        </div>
+                        <div className="col-2 d-flex justify-content-center align-items-center flex-column">
+                          <div className="input-group  align-items-center">
                             <select
                               name=""
                               className="form-select"
@@ -102,108 +104,122 @@ const Cart = () => {
                               })}
                             </select>
                           </div>
-                          <p className="mb-0 ms-auto">NT${item.final_total}</p>
+                          <button
+                            type="button"
+                            className="btn btn-primary w-100"
+                            onClick={() => removeCartItem(item.id)}
+                          >
+                            刪除
+                          </button>
+                        </div>
+                        <div className="col-2 d-flex justify-content-center align-items-center ">
+                          <p>NT${item.final_total}</p>
                         </div>
                       </div>
                     </div>
                   );
                 })}
-                <div className="d-flex ">
-                  <p>總金額 {cartData.final_total}</p>
-                  <p>NT$</p>
+
+                <div className="d-flex justify-content-between my-3">
+                  <div className="d-flex justify-content-center align-items-center">
+                    <input
+                      type="text"
+                      className="rounded-0 border-1"
+                      placeholder="請輸入優惠序號"
+                    />
+                    <button type="button" className="btn btn-primary">
+                      使用優惠券
+                    </button>
+                  </div>
+                  <div className=" fs-4">
+                    <p>總金額 ${cartData.final_total}</p>
+                  </div>
                 </div>
-                <Link
-                  to="/checkout"
-                  className="btn btn-dark w-100 mt-4 rounded-0 py-3"
-                >
-                  確認餐點正確
-                </Link>
               </div>
             </div>
           </div>
 
-          <div className="col bg-success ">
-            {" "}
-            <form className="col-md-6" onSubmit={handleSubmit(onSubmit)}>
-              <div className="bg-white p-4">
-                <h4 className="fw-bold">外送資料</h4>
-                <div className="mb-2">
-                  <Input
-                    id="email"
-                    labelText="Email"
-                    type="email"
-                    errors={errors}
-                    register={register}
-                    rules={{
-                      required: "Email 為必填",
-                      pattern: {
-                        value: /^\S+@\S+$/i,
-                        message: "Email 格式不正確",
-                      },
-                    }}
-                  ></Input>
+          <div className="col p-1">
+            <div className="col form-color p-4">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="">
+                  <h4 className="fw-bold">填寫收件人資料</h4>
+
+                  <div className="mb-2">
+                    <Input
+                      id="name"
+                      type="text"
+                      errors={errors}
+                      labelText="姓名"
+                      register={register}
+                      rules={{
+                        required: "姓名為必填",
+                        maxLength: {
+                          value: 10,
+                          message: "姓名長度不超過 10",
+                        },
+                      }}
+                    ></Input>
+                  </div>
+                  <div className="mb-2">
+                    <Input
+                      id="tel"
+                      labelText="電話"
+                      type="tel"
+                      errors={errors}
+                      register={register}
+                      rules={{
+                        required: "電話為必填",
+                        minLength: {
+                          value: 6,
+                          message: "電話不少於 6 碼",
+                        },
+                        maxLength: {
+                          value: 12,
+                          message: "電話不超過 12 碼",
+                        },
+                      }}
+                    ></Input>
+                  </div>
+                  <div className="mb-2">
+                    <Input
+                      id="email"
+                      labelText="Email"
+                      type="email"
+                      errors={errors}
+                      register={register}
+                      rules={{
+                        required: "Email 為必填",
+                        pattern: {
+                          value: /^\S+@\S+$/i,
+                          message: "Email 格式不正確",
+                        },
+                      }}
+                    ></Input>
+                  </div>
+                  <div className="mb-2">
+                    <Input
+                      id="address"
+                      labelText="收件地址"
+                      type="address"
+                      errors={errors}
+                      register={register}
+                      rules={{
+                        required: "收件地址為必填",
+                      }}
+                    ></Input>
+                  </div>
                 </div>
-                <div className="mb-2">
-                  <Input
-                    id="name"
-                    type="text"
-                    errors={errors}
-                    labelText="使用者名稱"
-                    register={register}
-                    rules={{
-                      required: "使用者名稱為必填",
-                      maxLength: {
-                        value: 10,
-                        message: "使用者名稱長度不超過 10",
-                      },
-                    }}
-                  ></Input>
+                <div className="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100">
+                  <button
+                    type="submit"
+                    className="btn cartpage-submit-button-color py-2 px-7 rounded-0 w-100"
+                  >
+                    送出訂單
+                  </button>
                 </div>
-                <div className="mb-2">
-                  <Input
-                    id="tel"
-                    labelText="電話"
-                    type="tel"
-                    errors={errors}
-                    register={register}
-                    rules={{
-                      required: "電話為必填",
-                      minLength: {
-                        value: 6,
-                        message: "電話不少於 6 碼",
-                      },
-                      maxLength: {
-                        value: 12,
-                        message: "電話不超過 12 碼",
-                      },
-                    }}
-                  ></Input>
-                </div>
-                <div className="mb-2">
-                  <Input
-                    id="address"
-                    labelText="地址"
-                    type="address"
-                    errors={errors}
-                    register={register}
-                    rules={{
-                      required: "地址為必填",
-                    }}
-                  ></Input>
-                </div>
-              </div>
-              <div className="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100">
-                <Link className="text-dark mt-md-0 mt-3" to="/cart">
-                  <i className="bi bi-chevron-left me-2"></i> 繼續點餐
-                </Link>
-                <button
-                  type="submit"
-                  className="btn btn-dark py-3 px-7 rounded-0"
-                >
-                  送出表單
-                </button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
