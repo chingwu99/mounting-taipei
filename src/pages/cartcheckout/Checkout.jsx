@@ -1,129 +1,32 @@
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { Input } from "../../components/FormElement";
+import { Link, useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cartContext";
 
 const Checkout = () => {
-  const { cartData } = useContext(CartContext);
+  const { cartData, submitData, setSubmitData } = useContext(CartContext);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    mode: "onTouched",
-  });
+  console.log("哈哈哈哈ㄏㄚ", submitData);
 
   const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
-    const { name, email, tel, address } = data;
-    const form = {
-      data: {
-        user: {
-          name,
-          email,
-          tel,
-          address,
-        },
-      },
-    };
-
+  const onSubmit = async (submitData) => {
     const res = await axios.post(
       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order`,
-      form
+      submitData
     );
-    console.log(res);
+    console.log("有成功購買嗎？", res);
 
     navigate(`/success/${res.data.orderId}`);
+
+    setSubmitData({});
   };
 
   return (
     <div className="bg-light pt-5 pb-7 full-height">
       <div className="container">
         <div className="row justify-content-center flex-md-row flex-column-reverse">
-          <form className="col-md-6" onSubmit={handleSubmit(onSubmit)}>
-            <div className="bg-white p-4">
-              <h4 className="fw-bold">外送資料</h4>
-              <div className="mb-2">
-                <Input
-                  id="email"
-                  labelText="Email"
-                  type="email"
-                  errors={errors}
-                  register={register}
-                  rules={{
-                    required: "Email 為必填",
-                    pattern: {
-                      value: /^\S+@\S+$/i,
-                      message: "Email 格式不正確",
-                    },
-                  }}
-                ></Input>
-              </div>
-              <div className="mb-2">
-                <Input
-                  id="name"
-                  type="text"
-                  errors={errors}
-                  labelText="使用者名稱"
-                  register={register}
-                  rules={{
-                    required: "使用者名稱為必填",
-                    maxLength: {
-                      value: 10,
-                      message: "使用者名稱長度不超過 10",
-                    },
-                  }}
-                ></Input>
-              </div>
-              <div className="mb-2">
-                <Input
-                  id="tel"
-                  labelText="電話"
-                  type="tel"
-                  errors={errors}
-                  register={register}
-                  rules={{
-                    required: "電話為必填",
-                    minLength: {
-                      value: 6,
-                      message: "電話不少於 6 碼",
-                    },
-                    maxLength: {
-                      value: 12,
-                      message: "電話不超過 12 碼",
-                    },
-                  }}
-                ></Input>
-              </div>
-              <div className="mb-2">
-                <Input
-                  id="address"
-                  labelText="地址"
-                  type="address"
-                  errors={errors}
-                  register={register}
-                  rules={{
-                    required: "地址為必填",
-                  }}
-                ></Input>
-              </div>
-            </div>
-            <div className="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100">
-              <Link className="text-dark mt-md-0 mt-3" to="/cart">
-                <i className="bi bi-chevron-left me-2"></i> 繼續點餐
-              </Link>
-              <button
-                type="submit"
-                className="btn btn-dark py-3 px-7 rounded-0"
-              >
-                送出表單
-              </button>
-            </div>
-          </form>
           <div className="col-md-4">
             <div className="border p-4 mb-4">
               <h4 className="mb-4">選購餐點</h4>
@@ -162,6 +65,13 @@ const Checkout = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div
+        type="button"
+        className="btn btn-dark py-3 px-7 rounded-0"
+        onClick={() => onSubmit(submitData)}
+      >
+        送出表單
       </div>
     </div>
   );

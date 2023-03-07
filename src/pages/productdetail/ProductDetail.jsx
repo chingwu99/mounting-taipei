@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { useOutletContext, useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { CartContext } from "../../contexts/cartContext";
 
 const ProductDetail = () => {
@@ -9,8 +9,6 @@ const ProductDetail = () => {
 
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-
-  // const { getCart } = useOutletContext();
 
   const { getCart } = useContext(CartContext);
 

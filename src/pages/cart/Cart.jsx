@@ -1,12 +1,46 @@
-import axios from "axios";
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Progressbar from "../../components/Progressbar";
 import { CartContext } from "../../contexts/cartContext";
+import { useForm } from "react-hook-form";
+import { Input } from "../../components/FormElement";
 
 const Cart = () => {
-  const { cartData, loadingItems, removeCartItem, updateCartItem } =
-    useContext(CartContext);
+  const {
+    cartData,
+    loadingItems,
+    removeCartItem,
+    updateCartItem,
+    setSubmitData,
+  } = useContext(CartContext);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "onTouched",
+  });
+
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    const { name, email, tel, address } = data;
+    const form = {
+      data: {
+        user: {
+          name,
+          email,
+          tel,
+          address,
+        },
+      },
+    };
+
+    console.log("測試測試", form);
+    setSubmitData(form);
+    navigate(`/checkout`);
+  };
 
   return (
     <div className="bg-white d-flex justify-content-center align-items-center flex-column">
@@ -88,7 +122,89 @@ const Cart = () => {
             </div>
           </div>
 
-          <div className="col bg-success ">222</div>
+          <div className="col bg-success ">
+            {" "}
+            <form className="col-md-6" onSubmit={handleSubmit(onSubmit)}>
+              <div className="bg-white p-4">
+                <h4 className="fw-bold">外送資料</h4>
+                <div className="mb-2">
+                  <Input
+                    id="email"
+                    labelText="Email"
+                    type="email"
+                    errors={errors}
+                    register={register}
+                    rules={{
+                      required: "Email 為必填",
+                      pattern: {
+                        value: /^\S+@\S+$/i,
+                        message: "Email 格式不正確",
+                      },
+                    }}
+                  ></Input>
+                </div>
+                <div className="mb-2">
+                  <Input
+                    id="name"
+                    type="text"
+                    errors={errors}
+                    labelText="使用者名稱"
+                    register={register}
+                    rules={{
+                      required: "使用者名稱為必填",
+                      maxLength: {
+                        value: 10,
+                        message: "使用者名稱長度不超過 10",
+                      },
+                    }}
+                  ></Input>
+                </div>
+                <div className="mb-2">
+                  <Input
+                    id="tel"
+                    labelText="電話"
+                    type="tel"
+                    errors={errors}
+                    register={register}
+                    rules={{
+                      required: "電話為必填",
+                      minLength: {
+                        value: 6,
+                        message: "電話不少於 6 碼",
+                      },
+                      maxLength: {
+                        value: 12,
+                        message: "電話不超過 12 碼",
+                      },
+                    }}
+                  ></Input>
+                </div>
+                <div className="mb-2">
+                  <Input
+                    id="address"
+                    labelText="地址"
+                    type="address"
+                    errors={errors}
+                    register={register}
+                    rules={{
+                      required: "地址為必填",
+                    }}
+                  ></Input>
+                </div>
+              </div>
+              <div className="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100">
+                <Link className="text-dark mt-md-0 mt-3" to="/cart">
+                  <i className="bi bi-chevron-left me-2"></i> 繼續點餐
+                </Link>
+                <button
+                  type="submit"
+                  className="btn btn-dark py-3 px-7 rounded-0"
+                >
+                  送出表單
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
