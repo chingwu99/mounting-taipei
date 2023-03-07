@@ -1,18 +1,13 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Progressbar from "../../components/Progressbar";
 import { CartContext } from "../../contexts/cartContext";
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/FormElement";
 
 const Cart = () => {
-  const {
-    cartData,
-    loadingItems,
-    removeCartItem,
-    updateCartItem,
-    setSubmitData,
-  } = useContext(CartContext);
+  const { cartData, loadingItems, removeCartItem, updateCartItem } =
+    useContext(CartContext);
 
   const {
     register,
@@ -24,7 +19,7 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     const { name, email, tel, address } = data;
     const form = {
       data: {
@@ -38,7 +33,9 @@ const Cart = () => {
     };
 
     console.log("測試測試", form);
-    setSubmitData(form);
+
+    localStorage.setItem("formData", JSON.stringify(form));
+
     navigate(`/checkout`);
   };
 

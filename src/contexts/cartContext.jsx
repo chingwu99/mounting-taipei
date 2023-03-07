@@ -6,8 +6,7 @@ export const CartContext = createContext({
   setCartData: () => null,
   loadingItems: [],
   setLoadingItems: () => null,
-  submitData: {},
-  setSubmitData: () => null,
+
   getCart: async () => {},
   removeCartItem: async () => {},
   updateCartItem: async () => {},
@@ -16,7 +15,6 @@ export const CartContext = createContext({
 export const CartProvider = ({ children }) => {
   const [cartData, setCartData] = useState({});
   const [loadingItems, setLoadingItems] = useState([]);
-  const [submitData, setSubmitData] = useState({});
 
   const getCart = async () => {
     try {
@@ -77,8 +75,6 @@ export const CartProvider = ({ children }) => {
     setLoadingItems,
     removeCartItem,
     updateCartItem,
-    submitData,
-    setSubmitData,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
