@@ -1,4 +1,4 @@
-const SuccessInfoContainer = ({ title, data, classData }) => {
+const PaymentInfo = ({ title, data, classData }) => {
   return (
     <div className="row row-cols-12 my-3 ">
       <div className="col-4">{title}:</div>
@@ -7,4 +7,4 @@ const SuccessInfoContainer = ({ title, data, classData }) => {
   );
 };
 
-export default SuccessInfoContainer;
+export default PaymentInfo;

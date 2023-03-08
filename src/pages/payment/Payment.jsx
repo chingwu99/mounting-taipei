@@ -1,34 +1,40 @@
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cartContext";
+import { useEffect, useState } from "react";
+import PaymentInfo from "./components/PaymentInfo";
 import Progressbar from "../../components/Progressbar";
-import CheckoutInfoContainer from "./components/CheckoutInfoContainer";
 
-const Checkout = () => {
-  const { cartData } = useContext(CartContext);
+const Payment = () => {
+  const { orderId } = useParams();
+  const [orderData, setOrderData] = useState({});
+  const [orderUser, setOrderUser] = useState({
+    name: "",
+    tel: "",
+    email: "",
+    address: "",
+    is_paid: "",
+  });
 
-  console.log("車車", cartData);
-
-  const localStorageBackdata = JSON.parse(
-    localStorage.getItem("formData") || "{}"
-  );
-
-  const { address, tel, email, name } = localStorageBackdata.data.user;
-
-  const navigate = useNavigate();
-
-  const onSubmit = async (localStorageBackdata) => {
-    const res = await axios.post(
-      `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order`,
-      localStorageBackdata
+  const getCart = async (orderId) => {
+    const res = await axios.get(
+      `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order/${orderId}`
     );
-    console.log("有成功購買嗎？", res);
-
-    navigate(`/success/${res.data.orderId}`);
-
-    localStorage.setItem("formData", JSON.stringify({}));
+    console.log("回來拉", res);
+    setOrderData(res.data.order);
+    setOrderUser({
+      name: res.data.order.user.name,
+      tel: res.data.order.user.tel,
+      email: res.data.order.user.email,
+      address: res.data.order.user.address,
+      is_paid: res.data.order.is_paid,
+    });
   };
+
+  console.log("orderName", orderUser);
+
+  useEffect(() => {
+    getCart(orderId);
+  }, [orderId]);
 
   return (
     <div className="bg-white d-flex justify-content-center align-items-center flex-column">
@@ -50,7 +56,7 @@ const Checkout = () => {
                     <div className="col-2 text-center">金額</div>
                   </div>
                 </div>
-                {cartData?.carts?.map((item) => {
+                {Object.values(orderData?.products || {}).map((item) => {
                   return (
                     <div
                       className="d-flex justify-content-center align-items-center  border-bottom border-3 border-secondary-subtle"
@@ -86,7 +92,7 @@ const Checkout = () => {
 
                 <div className="d-flex justify-content-end my-3">
                   <div className=" fs-4">
-                    <p>總金額 ${cartData.final_total}</p>
+                    <p>總金額 ${orderData.total}</p>
                   </div>
                 </div>
               </div>
@@ -97,29 +103,23 @@ const Checkout = () => {
             <div className="col form-color p-4">
               <div>
                 <p className="fs-4 fw-bolder">請確認訂購人資訊</p>
-                {/* <div>
-                  <CheckoutInfoContainer title="訂購時間" data="訂購時間" />
-                  <CheckoutInfoContainer
-                    title="付款金額"
-                    data={cartData.final_total}
-                  />
-                </div> */}
+
                 <div>
-                  <CheckoutInfoContainer title="姓名" data={name} />
-                  <CheckoutInfoContainer title="Email" data={email} />
-                  <CheckoutInfoContainer title="電話" data={tel} />
-                  <CheckoutInfoContainer title="收件地址" data={address} />
-                  <CheckoutInfoContainer
+                  <PaymentInfo title="訂單編號" data={orderId} />
+                  <PaymentInfo title="姓名" data={orderUser.name} />
+                  <PaymentInfo title="Email" data={orderUser.email} />
+                  <PaymentInfo title="電話" data={orderUser.tel} />
+                  <PaymentInfo title="收件地址" data={orderUser.address} />
+                  <PaymentInfo
                     title="付款狀態"
-                    data={`尚需付款$${cartData.final_total}`}
-                    classData="fs-4 text-danger fw-bolder"
+                    data={orderUser.is_paid ? "付款完成" : "未付款"}
+                    classData="fs-4 text-success fw-bolder"
                   />
                 </div>
                 <div className="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100">
                   <button
                     type="submit"
                     className="btn cartpage-submit-button-color py-2 px-7 rounded-0 w-100"
-                    onClick={() => onSubmit(localStorageBackdata)}
                   >
                     確認付款
                   </button>
@@ -133,4 +133,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default Payment;

@@ -4,6 +4,7 @@ import Progressbar from "../../components/Progressbar";
 import { CartContext } from "../../contexts/cartContext";
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/FormElement";
+import axios from "axios";
 
 const Cart = () => {
   const { cartData, loadingItems, removeCartItem, updateCartItem } =
@@ -19,7 +20,7 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const { name, email, tel, address } = data;
     const form = {
       data: {
@@ -32,11 +33,13 @@ const Cart = () => {
       },
     };
 
-    console.log("測試測試", form);
+    const res = await axios.post(
+      `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order`,
+      form
+    );
+    console.log(res);
 
-    localStorage.setItem("formData", JSON.stringify(form));
-
-    navigate(`/checkout`);
+    navigate(`/payment/${res.data.orderId}`);
   };
 
   return (

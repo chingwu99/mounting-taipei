@@ -11,8 +11,7 @@ import Layout from "./Layout";
 import ProductsPage from "./pages/products/ProductsPage";
 import ProductDetail from "./pages/productdetail/ProductDetail";
 import Cart from "./pages/cart/Cart";
-import Checkout from "./pages/cartcheckout/Checkout";
-import Success from "./pages/success/Success";
+import Payment from "./pages/payment/Payment";
 
 function App() {
   useEffect(() => {
@@ -36,8 +35,7 @@ function App() {
           <Route path="productspage" element={<ProductsPage />}></Route>
           <Route path="product/:id" element={<ProductDetail />}></Route>
           <Route path="cart" element={<Cart />}></Route>
-          <Route path="checkout" element={<Checkout />}></Route>
-          <Route path="success/:orderId" element={<Success />}></Route>
+          <Route path="payment/:orderId" element={<Payment />}></Route>
           <Route path="admin" element={<Dashboard />}>
             <Route path="products" element={<AdminProducts />}></Route>
             <Route path="coupons" element={<AdminCoupons />}></Route>
