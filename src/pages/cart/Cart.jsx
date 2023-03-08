@@ -212,7 +212,7 @@ const Cart = () => {
                     type="submit"
                     className="btn cartpage-submit-button-color py-2 px-7 rounded-0 w-100"
                   >
-                    送出訂單
+                    確認訂單
                   </button>
                 </div>
               </form>

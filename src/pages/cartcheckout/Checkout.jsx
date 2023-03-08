@@ -96,31 +96,38 @@ const Checkout = () => {
           <div className="col p-1">
             <div className="col form-color p-4">
               <div>
-                <p>訂單資訊</p>
-                <div>
+                <p className="fs-4 fw-bolder">請確認訂購人資訊</p>
+                {/* <div>
                   <CheckoutInfoContainer title="訂購時間" data="訂購時間" />
                   <CheckoutInfoContainer
                     title="付款金額"
                     data={cartData.final_total}
                   />
-                </div>
+                </div> */}
                 <div>
                   <CheckoutInfoContainer title="姓名" data={name} />
                   <CheckoutInfoContainer title="Email" data={email} />
                   <CheckoutInfoContainer title="電話" data={tel} />
                   <CheckoutInfoContainer title="收件地址" data={address} />
+                  <CheckoutInfoContainer
+                    title="付款狀態"
+                    data={`尚需付款$${cartData.final_total}`}
+                    classData="fs-4 text-danger fw-bolder"
+                  />
+                </div>
+                <div className="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100">
+                  <button
+                    type="submit"
+                    className="btn cartpage-submit-button-color py-2 px-7 rounded-0 w-100"
+                    onClick={() => onSubmit(localStorageBackdata)}
+                  >
+                    送出訂單
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        type="button"
-        className="btn btn-dark py-3 px-7 rounded-0"
-        onClick={() => onSubmit(localStorageBackdata)}
-      >
-        送出表單
       </div>
     </div>
   );
