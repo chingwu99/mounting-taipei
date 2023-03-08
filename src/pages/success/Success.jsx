@@ -1,88 +1,130 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import SuccessInfoContainer from "./components/SuccessInfoContainer";
+import Progressbar from "../../components/Progressbar";
 
 const Success = () => {
   const { orderId } = useParams();
   const [orderData, setOrderData] = useState({});
+  const [orderUser, setOrderUser] = useState({
+    name: "",
+    tel: "",
+    email: "",
+    address: "",
+  });
 
   const getCart = async (orderId) => {
     const res = await axios.get(
       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order/${orderId}`
     );
-    console.log(res);
+    console.log("回來拉", res);
     setOrderData(res.data.order);
+    setOrderUser({
+      name: res.data.order.user.name,
+      tel: res.data.order.user.tel,
+      email: res.data.order.user.email,
+      address: res.data.order.user.address,
+    });
   };
+
+  console.log("orderName", orderUser);
 
   useEffect(() => {
     getCart(orderId);
   }, [orderId]);
 
   return (
-    <div className="container full-height">
-      <div
-        style={{
-          minHeight: "400px",
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1480399129128-2066acb5009e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)",
-          backgroundPosition: "center center",
-        }}
-      ></div>
-      <div className="mt-5 mb-7">
-        <div className="row">
-          <div className="col-md-6">
-            <h2>餐點選購成功</h2>
-            <p className="text-muted">
-              親愛的顧客，感謝您在本平台訂餐。我們非常感激您對我們的信任和支持，讓我們有機會為您提供美味的餐點和優質的服務。
-            </p>
-            <p className="text-muted">
-              感謝您選擇本平台，祝您用餐愉快，生活愉快！
-            </p>
-            <Link to="/" className="btn btn-outline-dark me-2 rounded-0 mb-4">
-              回到首頁
-            </Link>
-          </div>
-          <div className="col-md-6">
-            <div className="card rounded-0 py-4">
-              <div className="card-header border-bottom-0 bg-white px-4 py-0">
-                <h2>選購餐點細節</h2>
-              </div>
-              <div className="card-body px-4 py-0">
-                <ul className="list-group list-group-flush">
-                  {Object.values(orderData?.products || {}).map((item) => {
-                    return (
-                      <li className="list-group-item px-0" key={item.id}>
-                        <div className="d-flex mt-2">
-                          <img
-                            src={item.product.imageUrl}
-                            alt=""
-                            className="me-2"
-                            style={{ width: "60px", height: "60px" }}
-                          />
-                          <div className="w-100 d-flex flex-column">
-                            <div className="d-flex justify-content-between fw-bold">
-                              <h5>{item.product.title}</h5>
-                              <p className="mb-0">x{item.qty}</p>
-                            </div>
-                            <div className="d-flex justify-content-between mt-auto">
-                              <p className="text-muted mb-0">
-                                <small>NT${item.product.price}</small>
-                              </p>
-                              <p className="mb-0">NT${item.final_total}</p>
-                            </div>
+    <div className="bg-white d-flex justify-content-center align-items-center flex-column">
+      <Progressbar />
+
+      <div className="container mt-5 mb-3">
+        <div className="row row-cols-12 w-100">
+          <div className="col-8  ">
+            <div className="container">
+              <div>
+                <div className="mb-3">
+                  <h2>待購清單</h2>
+                </div>
+                <div className=" border-bottom border-3 border-dark my-2">
+                  <div className="row row-cols-12 fs-5 mb-2">
+                    <div className="col-6 ">商品內容</div>
+                    <div className="col-2 text-center">單價</div>
+                    <div className="col-2 text-center">數量</div>
+                    <div className="col-2 text-center">金額</div>
+                  </div>
+                </div>
+                {Object.values(orderData?.products || {}).map((item) => {
+                  return (
+                    <div
+                      className="d-flex justify-content-center align-items-center  border-bottom border-3 border-secondary-subtle"
+                      key={item.id}
+                    >
+                      <div className="row row-cols-12  w-100 my-1">
+                        <div className="col-6 d-flex align-items-center ">
+                          <div className="cartpage-img-container">
+                            <img
+                              src={item.product.imageUrl}
+                              alt=""
+                              className="cartpage-object-fit"
+                            />
+                          </div>
+
+                          <p className=" fw-bold mx-4">{item.product.title}</p>
+                        </div>
+                        <div className="col-2 d-flex justify-content-center align-items-center ">
+                          <p>${item.product.price}</p>
+                        </div>
+                        <div className="col-2 d-flex justify-content-center align-items-center flex-column">
+                          <div className="input-group  align-items-center">
+                            {item.qty}
                           </div>
                         </div>
-                      </li>
-                    );
-                  })}
-                  <li className="list-group-item px-0 pb-0">
-                    <div className="d-flex justify-content-between mt-2">
-                      <p className="mb-0 h4 fw-bold">總計</p>
-                      <p className="mb-0 h4 fw-bold">NT${orderData.total}</p>
+                        <div className="col-2 d-flex justify-content-center align-items-center ">
+                          <p>NT${item.final_total}</p>
+                        </div>
+                      </div>
                     </div>
-                  </li>
-                </ul>
+                  );
+                })}
+
+                <div className="d-flex justify-content-end my-3">
+                  <div className=" fs-4">
+                    <p>總金額 ${orderData.total}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col p-1">
+            <div className="col form-color p-4">
+              <div>
+                <p className="fs-4 fw-bolder">請確認訂購人資訊</p>
+
+                <div>
+                  <SuccessInfoContainer title="訂單編號" data={orderId} />
+                  <SuccessInfoContainer title="姓名" data={orderUser.name} />
+                  <SuccessInfoContainer title="Email" data={orderUser.email} />
+                  <SuccessInfoContainer title="電話" data={orderUser.tel} />
+                  <SuccessInfoContainer
+                    title="收件地址"
+                    data={orderUser.address}
+                  />
+                  <SuccessInfoContainer
+                    title="付款狀態"
+                    data={`已付款$${orderData.total}`}
+                    classData="fs-4 text-success fw-bolder"
+                  />
+                </div>
+                <div className="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100">
+                  <button
+                    type="submit"
+                    className="btn cartpage-submit-button-color py-2 px-7 rounded-0 w-100"
+                  >
+                    確認付款
+                  </button>
+                </div>
               </div>
             </div>
           </div>

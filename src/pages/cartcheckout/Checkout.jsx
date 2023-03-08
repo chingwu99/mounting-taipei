@@ -121,7 +121,7 @@ const Checkout = () => {
                     className="btn cartpage-submit-button-color py-2 px-7 rounded-0 w-100"
                     onClick={() => onSubmit(localStorageBackdata)}
                   >
-                    送出訂單
+                    確認付款
                   </button>
                 </div>
               </div>
