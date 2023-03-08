@@ -68,7 +68,7 @@ align-items-center my-5"
               data-aos="fade-right"
               data-aos-duration="3000"
             >
-              <img className=" w-100 rounded-5" src={homeimg4} />
+              <img className=" w-100 rounded-5" src={homeimg4} alt="..." />
             </div>
           </div>
           <div className="col " data-aos="fade-left" data-aos-duration="3000">
@@ -190,7 +190,7 @@ align-items-center my-5"
               data-aos="fade-right"
               data-aos-duration="3000"
             >
-              <img className=" w-100 rounded-5" src={homeimg8} />
+              <img className=" w-100 rounded-5" src={homeimg8} alt="..." />
             </div>
           </div>
           <div className="col " data-aos="fade-left" data-aos-duration="3000">
@@ -227,9 +227,9 @@ align-items-center flex-column"
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
-                <a href="#" className="btn btn-primary">
+                <Link to="/mountingroute" className="btn btn-primary">
                   Go somewhere
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -242,9 +242,9 @@ align-items-center flex-column"
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
-                <a href="#" className="btn btn-primary">
+                <Link to="/mountingroute" className="btn btn-primary">
                   Go somewhere
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -257,9 +257,9 @@ align-items-center flex-column"
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
-                <a href="#" className="btn btn-primary">
+                <Link to="/mountingroute" className="btn btn-primary">
                   Go somewhere
-                </a>
+                </Link>
               </div>
             </div>
           </div>

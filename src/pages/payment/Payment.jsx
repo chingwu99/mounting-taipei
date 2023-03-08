@@ -1,8 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PaymentInfo from "./components/PaymentInfo";
 import Progressbar from "../../components/Progressbar";
+import { CartContext } from "../../contexts/cartContext";
 
 const Payment = () => {
   const { orderId } = useParams();
@@ -15,7 +16,9 @@ const Payment = () => {
     is_paid: "",
   });
 
-  const getCart = async (orderId) => {
+  const { getCart } = useContext(CartContext);
+
+  const getPaymentCart = async (orderId) => {
     const res = await axios.get(
       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order/${orderId}`
     );
@@ -28,12 +31,14 @@ const Payment = () => {
       address: res.data.order.user.address,
       is_paid: res.data.order.is_paid,
     });
+
+    getCart();
   };
 
   console.log("orderName", orderUser);
 
   useEffect(() => {
-    getCart(orderId);
+    getPaymentCart(orderId);
   }, [orderId]);
 
   const paySubmit = async () => {
@@ -42,7 +47,7 @@ const Payment = () => {
     );
     console.log("付款完成了嗎", res);
 
-    getCart(orderId);
+    getPaymentCart(orderId);
   };
 
   return (

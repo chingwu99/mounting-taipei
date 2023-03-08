@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Pagination from "../../components/Pagination";
+import { CartContext } from "../../contexts/cartContext";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -22,6 +23,33 @@ const ProductsPage = () => {
   useEffect(() => {
     getProducts(1);
   }, []);
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { getCart } = useContext(CartContext);
+
+  const addToCart = async (e) => {
+    const data = {
+      data: {
+        product_id: e.target.value,
+        qty: 1,
+      },
+    };
+
+    setIsLoading(true);
+    try {
+      const res = await axios.post(
+        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`,
+        data
+      );
+      console.log(res);
+      setIsLoading(false);
+      getCart();
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <>
@@ -66,16 +94,19 @@ const ProductsPage = () => {
                           to={`/product/${product.id}`}
                           type="button"
                           className="btn submit-button-color-reverse py-2 px-7 rounded-0 w-100  mx-1"
+                          disabled={isLoading}
                         >
                           更多資訊
                         </Link>
-                        <Link
-                          to="/"
+                        <button
+                          onClick={addToCart}
+                          value={product.id}
                           type="button"
                           className="btn btn-primary py-2 px-7 rounded-0 w-100 mx-1"
+                          disabled={isLoading}
                         >
                           加入商品
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   </div>
