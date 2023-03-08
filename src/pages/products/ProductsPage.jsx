@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Pagination from "../../components/Pagination";
-import { BsInfoCircle, BsFillCartFill } from "react-icons/bs";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -62,32 +61,21 @@ const ProductsPage = () => {
                         </div>
                       </div>
 
-                      <div className="container w-100  d-flex   justify-content-between ">
+                      <div className="d-flex w-100 justify-content-between">
                         <Link
                           to={`/product/${product.id}`}
                           type="button"
-                          className="w-50 py-1 info-button  d-flex 
-                          justify-content-center
-                          align-items-center
-                          text-decoration-none
-                          text-black
-                          d-flex 
-                          justify-content-center
-                          align-items-center
-                          "
+                          className="btn submit-button-color-reverse py-2 px-7 rounded-0 w-100  mx-1"
                         >
-                          <BsInfoCircle className="mx-1" />
                           更多資訊
                         </Link>
-                        <button
+                        <Link
+                          to="/"
                           type="button"
-                          className="w-50 py-1 productpage-add-cart-button d-flex 
-                          justify-content-center
-                          align-items-center"
+                          className="btn btn-primary py-2 px-7 rounded-0 w-100 mx-1"
                         >
-                          <BsFillCartFill />
                           加入商品
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>

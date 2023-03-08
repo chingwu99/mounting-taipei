@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import PaymentInfo from "./components/PaymentInfo";
@@ -36,9 +36,23 @@ const Payment = () => {
     getCart(orderId);
   }, [orderId]);
 
+  const paySubmit = async () => {
+    const res = await axios.post(
+      `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/pay/${orderId} `
+    );
+    console.log("付款完成了嗎", res);
+
+    getCart(orderId);
+  };
+
   return (
     <div className="bg-white d-flex justify-content-center align-items-center flex-column">
-      <Progressbar />
+      <Progressbar
+        progresslength={orderUser.is_paid ? "100%" : "50%"}
+        stationOne="btn-primary "
+        stationTwo="btn-primary "
+        stationThree={orderUser.is_paid ? "btn-primary " : "btn-warning"}
+      />
 
       <div className="container mt-5 mb-3">
         <div className="row row-cols-12 w-100">
@@ -48,7 +62,7 @@ const Payment = () => {
                 <div className="mb-3">
                   <h2>待購清單</h2>
                 </div>
-                <div className=" border-bottom border-3 border-dark my-2">
+                <div className=" border-bottom border-3 border-primary my-2">
                   <div className="row row-cols-12 fs-5 mb-2">
                     <div className="col-6 ">商品內容</div>
                     <div className="col-2 text-center">單價</div>
@@ -102,27 +116,57 @@ const Payment = () => {
           <div className="col p-1">
             <div className="col form-color p-4">
               <div>
-                <p className="fs-4 fw-bolder">請確認訂購人資訊</p>
-
+                <p className="fs-4 fw-bolder">訂單資訊</p>
                 <div>
                   <PaymentInfo title="訂單編號" data={orderId} />
-                  <PaymentInfo title="姓名" data={orderUser.name} />
-                  <PaymentInfo title="Email" data={orderUser.email} />
-                  <PaymentInfo title="電話" data={orderUser.tel} />
-                  <PaymentInfo title="收件地址" data={orderUser.address} />
                   <PaymentInfo
                     title="付款狀態"
-                    data={orderUser.is_paid ? "付款完成" : "未付款"}
-                    classData="fs-4 text-success fw-bolder"
+                    data={
+                      orderUser.is_paid
+                        ? `已完成付款${orderData.total}`
+                        : `尚未付款${orderData.total}`
+                    }
+                    classData={
+                      orderUser.is_paid
+                        ? `fs-4 text-success fw-bolder`
+                        : `fs-4 text-danger fw-bolder`
+                    }
                   />
                 </div>
+                <p className="fs-4 fw-bolder">訂購人資訊</p>
+                <div>
+                  <PaymentInfo title="姓名" data={orderUser.name} />
+                  <PaymentInfo title="電話" data={orderUser.tel} />
+                  <PaymentInfo title="Email" data={orderUser.email} />
+                  <PaymentInfo title="收件地址" data={orderUser.address} />
+                </div>
                 <div className="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100">
-                  <button
-                    type="submit"
-                    className="btn cartpage-submit-button-color py-2 px-7 rounded-0 w-100"
-                  >
-                    確認付款
-                  </button>
+                  {orderUser.is_paid ? (
+                    <div className="d-flex w-100">
+                      <Link
+                        to="/mountingroute"
+                        type="button"
+                        className="btn submit-button-color-reverse py-2 px-7 rounded-0 w-100  mx-1"
+                      >
+                        查看路線
+                      </Link>
+                      <Link
+                        to="/productspage"
+                        type="button"
+                        className="btn btn-primary py-2 px-7 rounded-0 w-100 mx-1"
+                      >
+                        繼續選購
+                      </Link>
+                    </div>
+                  ) : (
+                    <button
+                      type="submit"
+                      className="btn btn-primary py-2 px-7 rounded-0 w-100"
+                      onClick={() => paySubmit()}
+                    >
+                      確認付款
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

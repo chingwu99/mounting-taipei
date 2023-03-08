@@ -5,7 +5,6 @@ import axios from "axios";
 import "./styles/index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "bootstrap-icons/font/bootstrap-icons.css";
 import { MountingrouteProvider } from "./contexts/mountingrouteContext";
 import { CartProvider } from "./contexts/cartContext";
 

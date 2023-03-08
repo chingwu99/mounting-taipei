@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { CartContext } from "../../contexts/cartContext";
+import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
@@ -98,14 +99,14 @@ const ProductDetail = () => {
                 <div className="input-group  border  ">
                   <div className="input-group-prepend">
                     <button
-                      className="btn btn-outline-dark rounded-0 border-0 py-3"
+                      className="btn btn-outline-primary rounded-0 border-0 py-3"
                       type="button"
                       id="button-addon1"
                       onClick={() =>
                         setCartQuantity((pre) => (pre === 1 ? pre : pre - 1))
                       }
                     >
-                      <i className="bi bi-dash-circle"></i>
+                      <AiOutlineMinusCircle />
                     </button>
                   </div>
                   <input
@@ -119,19 +120,19 @@ const ProductDetail = () => {
                   />
                   <div className="input-group-append">
                     <button
-                      className="btn btn-outline-dark rounded-0 border-0 py-3"
+                      className="btn btn-outline-primary rounded-0 border-0 py-3"
                       type="button"
                       id="button-addon2"
                       onClick={() => setCartQuantity((pre) => pre + 1)}
                     >
-                      <i className="bi bi-plus-circle"></i>
+                      <AiOutlinePlusCircle />
                     </button>
                   </div>
                 </div>
 
                 <button
                   type="button"
-                  className="btn btn-dark w-100 rounded-0 py-3"
+                  className="btn btn-primary w-100 rounded-0 py-3"
                   onClick={() => addToCart()}
                   disabled={isLoading}
                 >

@@ -8,34 +8,3 @@
   height: 300px;
   overflow: hidden;
 }
-
-.info-button {
-  width: 120px;
-  height: 40px;
-  margin: 10px;
-  background-color: #cce1a1;
-  border: 1px black solid;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1.1rem;
-
-  &:hover {
-    background-color: skyblue;
-  }
-}
-
-.productpage-add-cart-button {
-  width: 120px;
-  height: 40px;
-  margin: 10px;
-  background-color: wheat;
-  border: 1px black solid;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1.1rem;
-
-  &:hover {
-    background-color: skyblue;
-    color: black;
-  }
-}

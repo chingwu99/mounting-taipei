@@ -5,6 +5,7 @@ import { FaShoePrints } from "react-icons/fa";
 import { GiConverseShoe } from "react-icons/gi";
 import { CartContext } from "../contexts/cartContext";
 import { useContext } from "react";
+import { BsFillCartFill } from "react-icons/bs";
 
 const Nav = () => {
   const { cartData } = useContext(CartContext);
@@ -84,7 +85,7 @@ const Nav = () => {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0  d-flex justify-content-end  flex-row">
             <li className="nav-item">
               <NavLink to="/cart" className="nav-link position-relative">
-                <i className="bi bi-cart-fill fs-4"></i>
+                <BsFillCartFill className="fs-4" />
                 <span className="position-absolute top-20 start-80 translate-middle badge rounded-pill bg-danger">
                   {cartData?.carts?.length}
                 </span>

@@ -38,35 +38,3 @@
     }
   }
 }
-
-.login-button {
-  width: 120px;
-  height: 40px;
-  margin: 10px;
-  background-color: #cce1a1;
-  border: 1px black solid;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1.1rem;
-
-  &:hover {
-    background-color: skyblue;
-  }
-}
-
-.back-button {
-  width: 120px;
-  height: 40px;
-  margin: 10px;
-  background-color: black;
-  color: white;
-  border: 1px black solid;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1.1rem;
-
-  &:hover {
-    background-color: skyblue;
-    color: black;
-  }
-}

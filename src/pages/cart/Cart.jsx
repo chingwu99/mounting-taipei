@@ -44,7 +44,12 @@ const Cart = () => {
 
   return (
     <div className="bg-white d-flex justify-content-center align-items-center flex-column">
-      <Progressbar />
+      <Progressbar
+        progresslength="0%"
+        stationOne="btn-primary "
+        stationTwo="btn-warning"
+        stationThree="btn-warning"
+      />
 
       <div className="container mt-5 mb-3">
         <div className="row row-cols-12 w-100">
@@ -213,7 +218,7 @@ const Cart = () => {
                 <div className="d-flex flex-column-reverse flex-md-row mt-4 justify-content-between align-items-md-center align-items-end w-100">
                   <button
                     type="submit"
-                    className="btn cartpage-submit-button-color py-2 px-7 rounded-0 w-100"
+                    className="btn btn-primary py-2 px-7 rounded-0 w-100"
                   >
                     確認訂單
                   </button>

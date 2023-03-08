@@ -85,17 +85,18 @@ const Login = () => {
                 />
               </label>
             </div>
-            <div className="container w-100  d-flex   justify-content-between">
+
+            <div className="container d-flex w-100 justify-content-between">
               <button
                 type="button"
-                className="w-50 py-1 back-button"
+                className="btn submit-button-color-reverse py-2 px-7 rounded-0 w-100  mx-1"
                 onClick={handleBackToHome}
               >
                 回到首頁
               </button>
               <button
                 type="button"
-                className="w-50 py-1 login-button "
+                className="btn btn-primary py-2 px-7 rounded-0 w-100 mx-1"
                 onClick={submit}
               >
                 登入

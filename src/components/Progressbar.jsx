@@ -1,9 +1,14 @@
-const Progressbar = () => {
+const Progressbar = ({
+  progresslength,
+  stationOne,
+  stationTwo,
+  stationThree,
+}) => {
   return (
     <div className="container d-flex justify-content-center align-items-center  py-5 ">
       <div className="position-relative mt-1 mb-3 w-25 bg-danger ">
         <div
-          className="progress bg-secondary "
+          className="progress bg-warning "
           role="progressbar"
           aria-label="Progress"
           aria-valuenow="50"
@@ -12,13 +17,13 @@ const Progressbar = () => {
           style={{ height: "3px" }}
         >
           <div
-            className="progress-bar bg-warning"
-            style={{ width: "0%" }}
+            className="progress-bar bg-primary"
+            style={{ width: progresslength }}
           ></div>
         </div>
         <button
           type="button"
-          className="position-absolute top-0 start-0 translate-middle btn btn-sm btn-warning rounded-pill border border-secondary border-2 "
+          className={`position-absolute top-0 start-0 translate-middle btn btn-sm  rounded-pill  ${stationOne}`}
           style={{ width: "2rem", height: "2rem" }}
         >
           1
@@ -34,7 +39,7 @@ const Progressbar = () => {
         </p>
         <button
           type="button"
-          className="position-absolute top-0 start-50 translate-middle btn btn-sm btn-secondary rounded-pill border border-secondary border-2 "
+          className={`position-absolute top-0 start-50 translate-middle btn btn-sm  rounded-pill  ${stationTwo}`}
           style={{ width: "2rem", height: "2rem" }}
         >
           2
@@ -50,7 +55,7 @@ const Progressbar = () => {
         </p>
         <button
           type="button"
-          className="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill border border-secondary border-2 "
+          className={`position-absolute top-0 start-100 translate-middle btn btn-sm  rounded-pill   ${stationThree}`}
           style={{ width: "2rem", height: "2rem" }}
         >
           3

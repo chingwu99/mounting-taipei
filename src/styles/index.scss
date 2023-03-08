@@ -64,6 +64,16 @@ code {
   font-family: "Noto Serif TC", serif;
 }
 
+.submit-button-color-reverse {
+  color: rgb(95, 90, 83);
+  border: solid 1px rgb(95, 90, 83);
+
+  &:hover {
+    background-color: rgb(95, 90, 83);
+    color: white;
+  }
+}
+
 @import "../pages/home/components/carousel/carousel.style";
 @import "../pages/home/home.style";
 @import "../pages/mountingroute/mountingroute";
