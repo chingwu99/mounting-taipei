@@ -53,9 +53,9 @@ const ProductDetail = () => {
 
   return (
     <div className=" bg-white">
-      <div className="container d-flex justify-content-center ">
-        <div className="row row-cols-12  w-75 my-5">
-          <div className="col-5 d-flex justify-content-center align-items-center">
+      <div className=" d-flex justify-content-center ">
+        <div className="row  w-75  my-5 ">
+          <div className="col-sm-12 col-md-5 d-flex justify-content-center align-items-center">
             <div className="productDetail-img-container ">
               <img
                 src={product.imageUrl}
@@ -65,7 +65,7 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          <div className="col-7  ">
+          <div className="col-sm-12 col-md-7 ">
             <div>
               <div className="d-flex">
                 <div>
@@ -78,7 +78,7 @@ const ProductDetail = () => {
                 <span>{" > "}</span>
                 <div>{product.title}</div>
               </div>
-              <h2 className="my-4">{product.title}</h2>
+              <h2 className="my-4 ">{product.title}</h2>
               <div>
                 <p className="my-4">{product.description}</p>
                 <p className="my-4">{product.content}</p>
@@ -95,7 +95,7 @@ const ProductDetail = () => {
                 </p>
               </div>
 
-              <div className="d-flex">
+              <div className="d-md-flex">
                 <div className="input-group  border  ">
                   <div className="input-group-prepend">
                     <button
