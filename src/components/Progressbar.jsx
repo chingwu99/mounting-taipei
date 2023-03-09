@@ -6,7 +6,7 @@ const Progressbar = ({
 }) => {
   return (
     <div className="container d-flex justify-content-center align-items-center  py-5 ">
-      <div className="position-relative mt-1 mb-3 w-25 bg-danger ">
+      <div className="position-relative mt-1 mb-3 w-50 bg-danger ">
         <div
           className="progress bg-warning "
           role="progressbar"
