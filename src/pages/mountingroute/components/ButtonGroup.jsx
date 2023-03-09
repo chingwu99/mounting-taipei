@@ -2,109 +2,65 @@ import { useContext } from "react";
 import { MountingrouteContext } from "../../../contexts/mountingrouteContext";
 
 const ButtonGroup = () => {
-  const { mountingData, setAllData, setButtonfilterData } =
-    useContext(MountingrouteContext);
-
-  const filterHandler = (e) => {
-    let buttonValue = e.target.innerText;
-
-    console.log(buttonValue);
-    switch (buttonValue) {
-      case "所有步道":
-        setAllData(mountingData.slice(0, 8));
-        break;
-      case "北投":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "北投區"));
-        break;
-      case "南港":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "南港區"));
-        break;
-      case "內湖":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "內湖區"));
-        break;
-      case "士林":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "士林區"));
-        break;
-      case "文山":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "文山區"));
-        break;
-      case "信義":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "信義區"));
-        break;
-      case "中山":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "中山區"));
-        break;
-
-      default:
-        console.log("error");
-        break;
-    }
-  };
+  const { filterHandler } = useContext(MountingrouteContext);
 
   return (
-    <div className="container my-3 d-flex justify-content-center align-items-center ">
+    <div className="container my-3 d-flex justify-content-center align-items-center d-none d-lg-block">
       <div
         className="h-100 d-flex   
     justify-content-center
     align-items-center"
       >
         <div className="text-warning  ">
-          <div className="row row-cols-7    rounded-5 border border-warning">
+          <div className="row row-cols-7  rounded-5 border border-warning">
             <div
-              className="container col blockhover d-flex   
-    justify-content-center
-    align-items-center flex-column  py-4 px-4 fs-4 "
+              className="container col blockhover text-center  py-4 px-4 fs-4 text-center"
               onClick={filterHandler}
+              style={{ width: "150px" }}
             >
-              內湖
+              內湖Neihu
             </div>
             <div
-              className="container col blockhover d-flex   
-    justify-content-center
-    align-items-center flex-column border border-warning border-top-0 border-bottom-0 py-4 px-4 fs-4  "
+              className="container col blockhover text-center border border-warning border-top-0 border-bottom-0 py-4 px-4 fs-4  "
               onClick={filterHandler}
+              style={{ width: "150px" }}
             >
-              士林
+              士林Shilin
             </div>
             <div
-              className="container col blockhover d-flex   
-    justify-content-center
-    align-items-center flex-column  py-4 px-4 fs-4  "
+              className="container col blockhover text-center  py-4 px-4 fs-4  "
               onClick={filterHandler}
+              style={{ width: "150px" }}
             >
-              北投
+              北投Beitou
             </div>
             <div
-              className="container col blockhover d-flex   
-    justify-content-center
-    align-items-center flex-column border border-warning border-top-0 border-bottom-0  py-4 px-4 fs-4  "
+              className="container col blockhover text-center border border-warning border-top-0 border-bottom-0  py-4 px-4 fs-4  "
               onClick={filterHandler}
+              style={{ width: "150px" }}
             >
-              所有步道
+              全步道All
             </div>
             <div
-              className="container col blockhover d-flex   
-    justify-content-center
-    align-items-center flex-column py-4 px-4 fs-4 "
+              className="container col blockhover text-center py-4 px-4 fs-4 "
               onClick={filterHandler}
+              style={{ width: "150px" }}
             >
-              信義
+              信義Xinyi
             </div>
             <div
-              className="container col blockhover d-flex   
-    justify-content-center
-    align-items-center flex-column border border-warning border-top-0 border-bottom-0  py-4 px-4 fs-4  "
+              className="container col blockhover text-center border border-warning border-top-0 border-bottom-0  py-4 px-4 fs-4  "
               onClick={filterHandler}
+              style={{ width: "150px" }}
             >
-              南港
+              南港Nangang
             </div>
             <div
-              className="container col blockhover d-flex   
-    justify-content-center
-    align-items-center flex-column  py-4 px-4 fs-4  "
+              className="container col blockhover text-center  py-4 px-4 fs-4  "
               onClick={filterHandler}
+              style={{ width: "100px" }}
             >
-              文山
+              文山Wenshan
             </div>
           </div>
         </div>

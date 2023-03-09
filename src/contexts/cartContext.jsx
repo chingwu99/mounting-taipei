@@ -6,7 +6,6 @@ export const CartContext = createContext({
   setCartData: () => null,
   loadingItems: [],
   setLoadingItems: () => null,
-
   getCart: async () => {},
   removeCartItem: async () => {},
   updateCartItem: async () => {},

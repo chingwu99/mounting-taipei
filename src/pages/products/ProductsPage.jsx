@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Pagination from "../../components/Pagination";
 import { CartContext } from "../../contexts/cartContext";
+import Pagination from "../../components/Pagination";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);

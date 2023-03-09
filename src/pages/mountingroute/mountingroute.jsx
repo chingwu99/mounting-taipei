@@ -2,6 +2,7 @@ import { useContext } from "react";
 import ListCard from "./components/ListCard";
 import ButtonGroup from "./components/ButtonGroup";
 import { MountingrouteContext } from "../../contexts/mountingrouteContext";
+import RoutesChoiceMobile from "../../components/RoutesChoiceMobile";
 
 const Mountingroute = () => {
   const { mountingData, allData, setAllData, loadMore } =
@@ -19,6 +20,7 @@ const Mountingroute = () => {
         <h2 className="text-warning my-5">所有步道</h2>
 
         <ButtonGroup />
+        <RoutesChoiceMobile />
         <ListCard />
 
         {loadMore === true && (

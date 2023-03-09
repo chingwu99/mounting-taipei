@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import mountingRoutesData from "../data/mountingRoutesData.json";
 
 export const MountingrouteContext = createContext({
@@ -12,6 +13,7 @@ export const MountingrouteContext = createContext({
   setButtonfilterData: () => null,
   loadMore: true,
   setLoadMore: () => null,
+  filterHandler: () => null,
 });
 
 export const MountingrouteProvider = ({ children }) => {
@@ -20,6 +22,8 @@ export const MountingrouteProvider = ({ children }) => {
   const [renderData, setRenderData] = useState([]);
   const [buttonfilterData, setButtonfilterData] = useState([]);
   const [loadMore, setLoadMore] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setMountingData(mountingRoutesData.result.results);
@@ -43,6 +47,40 @@ export const MountingrouteProvider = ({ children }) => {
     setLoadMore(true);
   }, [allData]);
 
+  const filterHandler = (e) => {
+    let buttonValue = e.target.innerText;
+    console.log(buttonValue);
+
+    switch (buttonValue) {
+      case "全步道All":
+        setAllData(mountingData.slice(0, 8));
+        break;
+      case "北投Beitou":
+        setButtonfilterData(mountingData.filter((i) => i.行政區 === "北投區"));
+        break;
+      case "南港Nangang":
+        setButtonfilterData(mountingData.filter((i) => i.行政區 === "南港區"));
+        break;
+      case "內湖Neihu":
+        setButtonfilterData(mountingData.filter((i) => i.行政區 === "內湖區"));
+        break;
+      case "士林Shilin":
+        setButtonfilterData(mountingData.filter((i) => i.行政區 === "士林區"));
+        break;
+      case "文山Wenshan":
+        setButtonfilterData(mountingData.filter((i) => i.行政區 === "文山區"));
+        break;
+      case "信義Xinyi":
+        setButtonfilterData(mountingData.filter((i) => i.行政區 === "信義區"));
+        break;
+
+      default:
+        console.log("error");
+        break;
+    }
+    navigate("/mountingroute");
+  };
+
   const value = {
     mountingData,
     setMountingData,
@@ -54,6 +92,7 @@ export const MountingrouteProvider = ({ children }) => {
     setButtonfilterData,
     loadMore,
     setLoadMore,
+    filterHandler,
   };
 
   return (

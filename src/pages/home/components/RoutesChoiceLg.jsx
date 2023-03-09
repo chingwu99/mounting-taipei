@@ -1,4 +1,9 @@
-const RoutesChoiceLg = ({ filterHandler }) => {
+import { useContext } from "react";
+import { MountingrouteContext } from "../../../contexts/mountingrouteContext";
+
+const RoutesChoiceLg = () => {
+  const { filterHandler } = useContext(MountingrouteContext);
+
   return (
     <div className="col-sm-12 col-md-6 mb-3 d-none d-lg-block">
       <div

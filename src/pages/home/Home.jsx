@@ -1,59 +1,21 @@
-import { useContext, useEffect } from "react";
-import { MountingrouteContext } from "../../contexts/mountingrouteContext";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Carousel from "./components/carousel/Carousel";
 import homeimg4 from "../../image/homeimg/homeimg4.jpg";
 import homeimg5 from "../../image/homeimg/homeimg5.jpg";
 import homeimg6 from "../../image/homeimg/homeimg6.jpg";
 import homeimg7 from "../../image/homeimg/homeimg7.jpg";
 import homeimg8 from "../../image/homeimg/homeimg8.jpg";
-import { Link, useNavigate } from "react-router-dom";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 import RoutesChoiceLg from "./components/RoutesChoiceLg";
-import RoutesChoiceMobile from "./components/RoutesChoiceMobile";
+import RoutesChoiceMobile from "../../components/RoutesChoiceMobile";
 
 const Home = () => {
-  const { mountingData, setButtonfilterData } =
-    useContext(MountingrouteContext);
-
-  const navigate = useNavigate();
-
   useEffect(() => {
     AOS.init();
   }, []);
-
-  const filterHandler = (e) => {
-    let buttonValue = e.target.innerText;
-    console.log(buttonValue);
-
-    switch (buttonValue) {
-      case "北投Beitou":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "北投區"));
-        break;
-      case "南港Nangang":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "南港區"));
-        break;
-      case "內湖Neihu":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "內湖區"));
-        break;
-      case "士林Shilin":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "士林區"));
-        break;
-      case "文山Wenshan":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "文山區"));
-        break;
-      case "信義Xinyi":
-        setButtonfilterData(mountingData.filter((i) => i.行政區 === "信義區"));
-        break;
-
-      default:
-        console.log("error");
-        break;
-    }
-
-    navigate("/mountingroute");
-  };
 
   return (
     <>
@@ -119,9 +81,9 @@ align-items-center my-5"
       >
         <div className="row d-flex flex-row-reverse ">
           {/* 行動版*/}
-          <RoutesChoiceMobile filterHandler={filterHandler} />
+          <RoutesChoiceMobile />
           {/*  桌面版 */}
-          <RoutesChoiceLg filterHandler={filterHandler} />
+          <RoutesChoiceLg />
           <div
             className=" col-sm-12 col-md-6 mb-3"
             data-aos="fade-right"
