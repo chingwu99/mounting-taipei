@@ -1,8 +1,15 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MountingrouteContext } from "../contexts/mountingrouteContext";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const RoutesChoiceMobile = () => {
   const { filterHandler } = useContext(MountingrouteContext);
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <div className="col-sm-12 col-md-6 mb-3  d-lg-none">
       <div

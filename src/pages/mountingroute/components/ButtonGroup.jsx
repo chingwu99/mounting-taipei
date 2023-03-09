@@ -12,7 +12,7 @@ const ButtonGroup = () => {
     align-items-center"
       >
         <div className="text-warning  ">
-          <div className="row row-cols-7  rounded-5 border border-warning">
+          <div className="row row-cols-7  rounded-5 border border-warning px-3 py-1">
             <div
               className="container col blockhover text-center  py-4 px-4 fs-4 text-center"
               onClick={filterHandler}

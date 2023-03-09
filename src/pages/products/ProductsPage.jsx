@@ -57,10 +57,13 @@ const ProductsPage = () => {
         <div className="container  mb-5 d-flex justify-content-center align-items-center flex-column">
           <h2 className="text-warning my-5">所有商品</h2>
 
-          <div className="row row-cols-4   ">
+          <div className="row    ">
             {products.map((product) => {
               return (
-                <div className="col gy-4 " key={product.id}>
+                <div
+                  className="col-sm-12 col-md-6 col-lg-3 gy-4 "
+                  key={product.id}
+                >
                   <div className="card border-0 w-100">
                     <div className="productpage-img-container">
                       <img
