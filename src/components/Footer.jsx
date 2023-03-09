@@ -10,10 +10,10 @@ const Footer = () => {
     justify-content-start
     flex-column"
     >
-      <div className="container my-5">
-        <div className="row row-cols-3">
+      <div className="container my-5 ">
+        <div className="row  ">
           <div
-            className="col  d-flex   flex-column
+            className="col-sm-12 col-md-4  d-flex   flex-column
     justify-content-center   align-items-center"
           >
             <div>
@@ -42,17 +42,19 @@ const Footer = () => {
             </div>
           </div>
           <div
-            className="col  d-flex   
-    justify-content-center   align-items-center"
+            className="col-sm-12 col-md-4  d-flex   
+    justify-content-center   align-items-center my-4"
           >
-            <div>
-              Copyright © 2023 <GiMountainRoad className="mx-1 fs-1" />
-              爬爬台北 Mounting Taipei
+            <div className="d-lg-flex">
+              <div>
+                Copyright © 2023 <GiMountainRoad className="mx-1 fs-1" />
+              </div>
+              <div> 爬爬台北 Mounting Taipei</div>
             </div>
           </div>
           <div
-            className="col  d-flex   
-    justify-content-center   align-items-center"
+            className="col-sm-12 col-md-4  d-flex   
+    justify-content-center   align-items-center "
           >
             <div className="fs-3">
               <BsInstagram className="mx-2 " />
