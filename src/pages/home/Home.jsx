@@ -2,14 +2,12 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
 import Carousel from "./components/carousel/Carousel";
 import homeimg4 from "../../image/homeimg/homeimg4.jpg";
 import homeimg5 from "../../image/homeimg/homeimg5.jpg";
 import homeimg6 from "../../image/homeimg/homeimg6.jpg";
 import homeimg7 from "../../image/homeimg/homeimg7.jpg";
 import homeimg8 from "../../image/homeimg/homeimg8.jpg";
-
 import RoutesChoiceLg from "./components/RoutesChoiceLg";
 import RoutesChoiceMobile from "../../components/RoutesChoiceMobile";
 

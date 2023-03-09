@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import PaymentInfo from "./components/PaymentInfo";
 import Progressbar from "../../components/Progressbar";
 import { CartContext } from "../../contexts/cartContext";
+import PaymentListLg from "./components/PaymentListLg";
+import PaymentListMobile from "./components/PaymentListMobile";
 
 const Payment = () => {
   const { orderId } = useParams();
@@ -59,66 +61,14 @@ const Payment = () => {
         stationThree={orderUser.is_paid ? "btn-primary " : "btn-warning"}
       />
 
-      <div className="container mt-5 mb-3">
-        <div className="row row-cols-12 w-100">
-          <div className="col-8  ">
-            <div className="container">
-              <div>
-                <div className="mb-3">
-                  <h2>待購清單</h2>
-                </div>
-                <div className=" border-bottom border-3 border-primary my-2">
-                  <div className="row row-cols-12 fs-5 mb-2">
-                    <div className="col-6 ">商品內容</div>
-                    <div className="col-2 text-center">單價</div>
-                    <div className="col-2 text-center">數量</div>
-                    <div className="col-2 text-center">金額</div>
-                  </div>
-                </div>
-                {Object.values(orderData?.products || {}).map((item) => {
-                  return (
-                    <div
-                      className="d-flex justify-content-center align-items-center  border-bottom border-3 border-secondary-subtle"
-                      key={item.id}
-                    >
-                      <div className="row row-cols-12  w-100 my-1">
-                        <div className="col-6 d-flex align-items-center ">
-                          <div className="cartpage-img-container">
-                            <img
-                              src={item.product.imageUrl}
-                              alt=""
-                              className="cartpage-object-fit"
-                            />
-                          </div>
-
-                          <p className=" fw-bold mx-4">{item.product.title}</p>
-                        </div>
-                        <div className="col-2 d-flex justify-content-center align-items-center ">
-                          <p>${item.product.price}</p>
-                        </div>
-                        <div className="col-2 d-flex justify-content-center align-items-center flex-column">
-                          <div className="input-group  align-items-center">
-                            {item.qty}
-                          </div>
-                        </div>
-                        <div className="col-2 d-flex justify-content-center align-items-center ">
-                          <p>NT${item.final_total}</p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-
-                <div className="d-flex justify-content-end my-3">
-                  <div className=" fs-4">
-                    <p>總金額 ${orderData.total}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div className="container mt-5 mb-3  d-flex justify-content-center align-items-center">
+        <div className="row w-100">
+          <div className="col-sm-12 col-lg-8 ">
+            <PaymentListLg orderData={orderData} />
+            <PaymentListMobile orderData={orderData} />
           </div>
 
-          <div className="col p-1">
+          <div className="col-sm-12 col-lg-4 p-1">
             <div className="col form-color p-4">
               <div>
                 <p className="fs-4 fw-bolder">訂單資訊</p>

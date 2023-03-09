@@ -62,7 +62,7 @@ const CartListLg = () => {
                   </div>
                   <button
                     type="button"
-                    className="btn btn-primary w-100"
+                    className="btn btn-primary w-100 "
                     onClick={() => removeCartItem(item.id)}
                   >
                     刪除
@@ -80,10 +80,10 @@ const CartListLg = () => {
           <div className="d-flex justify-content-center align-items-center">
             <input
               type="text"
-              className="rounded-0 border-1"
+              className="rounded-0 border-1 h-75 mx-1 border-primary"
               placeholder="請輸入優惠序號"
             />
-            <button type="button" className="btn btn-primary">
+            <button type="button" className="btn btn-primary h-75">
               使用優惠券
             </button>
           </div>

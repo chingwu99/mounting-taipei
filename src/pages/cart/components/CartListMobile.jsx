@@ -35,6 +35,7 @@ const CartListMobile = () => {
                   <p>{item.product.title}</p>
                   <p>${item.product.price}</p>
                   <div className="input-group  align-items-center">
+                    數量：
                     <select
                       name=""
                       className="form-select"
@@ -56,7 +57,7 @@ const CartListMobile = () => {
                   </div>
                   <button
                     type="button"
-                    className="btn btn-primary w-100 my-1"
+                    className="btn btn-primary w-100  my-1"
                     onClick={() => removeCartItem(item.id)}
                   >
                     刪除
@@ -70,8 +71,8 @@ const CartListMobile = () => {
           <p className="text-end">總金額 ${cartData.final_total}</p>
         </div>
 
-        <div className="d-flex  my-3">
-          <div className="row  ">
+        <div className="my-3 d-flex justify-content-center align-items-center">
+          <div className="row   d-flex justify-content-center ">
             <div className="col-7 ">
               <input
                 type="text"
