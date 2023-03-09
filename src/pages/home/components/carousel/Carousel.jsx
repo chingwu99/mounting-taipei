@@ -12,7 +12,7 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="container my-2">
+    <div className="container my-2 d-none d-md-block">
       <div
         id="carouselExampleCaptions"
         className="carousel slide carousel-height "

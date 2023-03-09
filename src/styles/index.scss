@@ -74,6 +74,10 @@ code {
   }
 }
 
+.layout {
+  overflow: hidden;
+}
+
 @import "../pages/home/components/carousel/carousel.style";
 @import "../pages/home/home.style";
 @import "../pages/mountingroute/mountingroute";

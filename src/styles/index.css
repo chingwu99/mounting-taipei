@@ -11744,6 +11744,10 @@ code {
   color: white;
 }
 
+.layout {
+  overflow: hidden;
+}
+
 .carousel-height {
   height: 500px;
 }
