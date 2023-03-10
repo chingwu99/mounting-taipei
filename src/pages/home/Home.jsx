@@ -10,6 +10,7 @@ import homeimg7 from "../../image/homeimg/homeimg7.jpg";
 import homeimg8 from "../../image/homeimg/homeimg8.jpg";
 import RoutesChoiceLg from "./components/RoutesChoiceLg";
 import RoutesChoiceMobile from "../../components/RoutesChoiceMobile";
+import HomeCard from "./components/HomeCard";
 
 const Home = () => {
   useEffect(() => {
@@ -181,51 +182,30 @@ align-items-center flex-column"
       >
         <h2 className="text-warning my-3">推薦步道</h2>
         <div className="row">
-          <div className="col-sm-12 col-md-4 mt-3">
-            <div className="card border-0">
-              <img src={homeimg5} className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">象山</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <Link to="/mountingroute" className="btn btn-primary  w-100 ">
-                  Go somewhere
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-4 mt-3">
-            <div className="card border-0">
-              <img src={homeimg6} className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">大屯山</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <Link to="/mountingroute" className="btn btn-primary  w-100">
-                  Go somewhere
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-4 mt-3 ">
-            <div className="card border-0">
-              <img src={homeimg7} className="card-img-top h-100 " alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">七星山</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <Link to="/mountingroute" className="btn btn-primary  w-100 ">
-                  Go somewhere
-                </Link>
-              </div>
-            </div>
-          </div>
+          <HomeCard
+            img={homeimg5}
+            title="象山步道"
+            p="位於台灣台北市信義區，全長約2.5公里，
+            需攀爬約500多個階梯，全程耗時約1-2小時，
+            步道頂端可欣賞到台北市區的美麗風景，包括著名的台北101大樓、摩天大樓和繁華的城市夜景，
+            建議攜帶充足的水和小吃，注意腳步安全。"
+          />
+          <HomeCard
+            img={homeimg6}
+            title="大屯山"
+            p="位於台灣新北市和台北市的交界處，全長約8公里，
+            攀登全程約需4-5小時，難度屬於中等。
+            步道沿途經過森林和草原，可以欣賞到不同季節的自然風光，
+            步道頂端海拔高達1,120公尺，可以俯瞰整個台北盆地和附近的山脈。"
+          />
+          <HomeCard
+            img={homeimg7}
+            title="七星山"
+            p="位於台灣台北市北投區，全長約3.5公里，
+            攀登全程約需2-3小時，難度屬於中等偏難。
+            步道沿途景觀優美，包括林蔭小徑、樹林和瀑布等，可以讓人盡情享受大自然的美景，
+            步道頂端海拔高達1,120公尺，可以俯瞰台北市的美麗風景。"
+          />
         </div>
       </div>
     </>
