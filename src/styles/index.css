@@ -11805,6 +11805,11 @@ code {
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.4);
 }
 
+@media screen and (max-width: 576px) {
+  .login-form {
+    width: 300px;
+  }
+}
 .login-input-container {
   display: flex;
   flex-direction: column;

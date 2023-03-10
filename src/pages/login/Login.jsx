@@ -42,7 +42,7 @@ const Login = () => {
   };
 
   return (
-    <div className=" py-5 d-flex justify-content-center align-items-center  vh-100">
+    <div className=" py-5 d-flex justify-content-center align-items-center  mx-auto my-auto vh-100 ">
       <div
         className="login-form-background "
         data-aos="fade-down"
