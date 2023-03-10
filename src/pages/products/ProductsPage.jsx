@@ -99,7 +99,7 @@ const ProductsPage = () => {
                           className="btn submit-button-color-reverse py-2 px-7 rounded-0 w-100  mx-1"
                           disabled={isLoading}
                         >
-                          更多資訊
+                          更多介紹
                         </Link>
                         <button
                           onClick={addToCart}
@@ -108,7 +108,7 @@ const ProductsPage = () => {
                           className="btn btn-primary py-2 px-7 rounded-0 w-100 mx-1"
                           disabled={isLoading}
                         >
-                          加入商品
+                          加入購物車
                         </button>
                       </div>
                     </div>

@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
 import { GoMail } from "react-icons/go";
 import { GiMountainRoad } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
+import { LoginContext } from "../contexts/loginContext";
 
 const Footer = () => {
+  const { LoginState } = useContext(LoginContext);
   return (
     <div
       className=" bg-warning shadow  d-flex   
@@ -37,6 +40,22 @@ const Footer = () => {
                   >
                     <li className="my-2">產品列表</li>
                   </NavLink>
+
+                  {LoginState !== null ? (
+                    <NavLink
+                      to="/admin"
+                      className=" text-black text-decoration-none"
+                    >
+                      <li className="my-2">後台管理</li>
+                    </NavLink>
+                  ) : (
+                    <NavLink
+                      to="/login"
+                      className=" text-black text-decoration-none"
+                    >
+                      <li className="my-2"> 登入後台</li>
+                    </NavLink>
+                  )}
                 </ul>
               </div>
             </div>

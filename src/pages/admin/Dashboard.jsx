@@ -1,19 +1,23 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import Message from "../../components/Message";
 import {
   MessageContext,
   MessageReducer,
   initState,
 } from "../../contexts/messageContext";
+import { LoginContext } from "../../contexts/loginContext";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const reducer = useReducer(MessageReducer, initState);
 
+  const { setLoginState } = useContext(LoginContext);
+
   const logout = () => {
     document.cookie = "mountingTaipeiToken=;";
+    setLoginState(null);
     navigate("/");
   };
 
@@ -25,8 +29,11 @@ const Dashboard = () => {
   console.log(token);
   axios.defaults.headers.common["Authorization"] = token;
 
+  setLoginState(token);
+
   useEffect(() => {
     if (!token) {
+      setLoginState(null);
       return navigate("/");
     }
     (async () => {
@@ -34,6 +41,7 @@ const Dashboard = () => {
         await axios.post("/v2/api/user/check");
       } catch (error) {
         if (!error.response.data.success) {
+          setLoginState(null);
           navigate("/");
         }
       }

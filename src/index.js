@@ -3,6 +3,7 @@ import { HashRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import axios from "axios";
 import "./styles/index.css";
+import { LoginProvider } from "./contexts/loginContext";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { MountingrouteProvider } from "./contexts/mountingrouteContext";
@@ -16,11 +17,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <CartProvider>
-        <MountingrouteProvider>
-          <App />
-        </MountingrouteProvider>
-      </CartProvider>
+      <LoginProvider>
+        <CartProvider>
+          <MountingrouteProvider>
+            <App />
+          </MountingrouteProvider>
+        </CartProvider>
+      </LoginProvider>
     </HashRouter>
   </React.StrictMode>
 );

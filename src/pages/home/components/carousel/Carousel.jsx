@@ -1,4 +1,3 @@
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Homeimg1 from "../../../../image/homeimg/homeimg1.jpg";
 import Homeimg2 from "../../../../image/homeimg/homeimg2.jpg";
 import Homeimg3 from "../../../../image/homeimg/homeimg3.jpg";
