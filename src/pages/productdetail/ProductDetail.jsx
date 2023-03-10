@@ -3,25 +3,30 @@ import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { CartContext } from "../../contexts/cartContext";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
+import { LoadingContext } from "../../contexts/loadingContext";
+import Loading from "../../components/Loading";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
   const [cartQuantity, setCartQuantity] = useState(1);
 
   const { id } = useParams();
-  const [isLoading, setIsLoading] = useState(false);
 
   const { getCart } = useContext(CartContext);
+
+  const { loadingState, setLoadingState } = useContext(LoadingContext);
 
   console.log(id);
 
   const getProduct = async (id) => {
+    setLoadingState(true);
     const productRes = await axios.get(
       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/product/${id}`
     );
     console.log("ppppp", productRes);
 
     setProduct(productRes.data.product);
+    setLoadingState(false);
   };
 
   const addToCart = async () => {
@@ -32,18 +37,18 @@ const ProductDetail = () => {
       },
     };
 
-    setIsLoading(true);
+    setLoadingState(true);
     try {
       const res = await axios.post(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`,
         data
       );
       console.log(res);
-      setIsLoading(false);
+      setLoadingState(false);
       getCart();
     } catch (error) {
       console.log(error);
-      setIsLoading(false);
+      setLoadingState(false);
     }
   };
 
@@ -53,6 +58,7 @@ const ProductDetail = () => {
 
   return (
     <div className=" bg-white">
+      <Loading />
       <div className=" d-flex justify-content-center ">
         <div className="row  w-75  my-5 ">
           <div className="col-sm-12 col-md-5 d-flex justify-content-center align-items-center">
@@ -134,7 +140,7 @@ const ProductDetail = () => {
                   type="button"
                   className="btn btn-primary w-100 rounded-0 py-3"
                   onClick={() => addToCart()}
-                  disabled={isLoading}
+                  disabled={loadingState}
                 >
                   加入購物車
                 </button>

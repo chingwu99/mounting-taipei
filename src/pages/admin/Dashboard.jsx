@@ -53,27 +53,14 @@ const Dashboard = () => {
       <Message />
       <nav className="navbar navbar-expand-lg bg-dark">
         <div className="container-fluid ">
-          <p className="text-white mb-0">HEX EATS 後台管理系統</p>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div
-            className="collapse navbar-collapse justify-content-end"
-            id="navbarNav"
-          >
+          <p className="text-white mb-0">爬爬台北 後台管理系統</p>
+
+          <div className=" justify-content-end">
             <ul className="navbar-nav">
               <li className="nav-item">
                 <button
                   type="button"
-                  className="btn btn-sm btn-light"
+                  className="btn  btn-light"
                   onClick={logout}
                 >
                   登出
@@ -99,13 +86,6 @@ const Dashboard = () => {
             >
               <i className="bi bi-ticket-perforated-fill me-2" />
               優惠卷列表
-            </Link>
-            <Link
-              className="list-group-item list-group-item-action py-3"
-              to="/admin/orders"
-            >
-              <i className="bi bi-receipt me-2" />
-              訂單列表
             </Link>
           </ul>
         </div>

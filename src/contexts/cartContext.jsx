@@ -1,5 +1,6 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { LoadingContext } from "./loadingContext";
 
 export const CartContext = createContext({
   cartData: {},
@@ -15,15 +16,20 @@ export const CartProvider = ({ children }) => {
   const [cartData, setCartData] = useState({});
   const [loadingItems, setLoadingItems] = useState([]);
 
+  const { setLoadingState } = useContext(LoadingContext);
+
   const getCart = async () => {
+    setLoadingState(true);
     try {
       const res = await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`
       );
       console.log("首次得到購物車數量", res);
       setCartData(res.data.data);
+      setLoadingState(false);
     } catch (error) {
       console.log(error);
+      setLoadingState(false);
     }
   };
 
@@ -32,14 +38,17 @@ export const CartProvider = ({ children }) => {
   }, []);
 
   const removeCartItem = async (id) => {
+    setLoadingState(true);
     try {
       const res = await axios.delete(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart/${id}`
       );
       console.log(res);
       getCart();
+      setLoadingState(false);
     } catch (error) {
       console.log(error);
+      setLoadingState(false);
     }
   };
 
@@ -51,6 +60,7 @@ export const CartProvider = ({ children }) => {
       },
     };
     setLoadingItems([...loadingItems, item.id]);
+    setLoadingState(true);
     try {
       const res = await axios.put(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart/${item.id}`,
@@ -61,8 +71,10 @@ export const CartProvider = ({ children }) => {
         loadingItems.filter((loadingObject) => loadingObject !== item.id)
       );
       getCart();
+      setLoadingState(false);
     } catch (error) {
       console.log(error);
+      setLoadingState(false);
     }
   };
 

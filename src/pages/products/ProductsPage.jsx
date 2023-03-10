@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { CartContext } from "../../contexts/cartContext";
 import Pagination from "../../components/Pagination";
+import Loading from "../../components/Loading";
+import { LoadingContext } from "../../contexts/loadingContext";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [pagination, setPagination] = useState({});
 
+  const { loadingState, setLoadingState } = useContext(LoadingContext);
+
   const getProducts = async (page = 1) => {
     (async () => {
+      setLoadingState(true);
       const productRes = await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/products?page=${page}`
       );
@@ -17,14 +22,13 @@ const ProductsPage = () => {
 
       setProducts(productRes.data.products);
       setPagination(productRes.data.pagination);
+      setLoadingState(false);
     })();
   };
 
   useEffect(() => {
     getProducts(1);
   }, []);
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const { getCart } = useContext(CartContext);
 
@@ -36,23 +40,24 @@ const ProductsPage = () => {
       },
     };
 
-    setIsLoading(true);
+    setLoadingState(true);
     try {
       const res = await axios.post(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`,
         data
       );
       console.log(res);
-      setIsLoading(false);
+      setLoadingState(false);
       getCart();
     } catch (error) {
       console.log(error);
-      setIsLoading(false);
+      setLoadingState(false);
     }
   };
 
   return (
     <>
+      <Loading />
       <div className="container">
         <div className="container  mb-5 d-flex justify-content-center align-items-center flex-column">
           <h2 className="text-warning my-5">所有商品</h2>
@@ -97,7 +102,7 @@ const ProductsPage = () => {
                           to={`/product/${product.id}`}
                           type="button"
                           className="btn submit-button-color-reverse py-2 px-7 rounded-0 w-100  mx-1"
-                          disabled={isLoading}
+                          disabled={loadingState}
                         >
                           更多介紹
                         </Link>
@@ -106,7 +111,7 @@ const ProductsPage = () => {
                           value={product.id}
                           type="button"
                           className="btn btn-primary py-2 px-7 rounded-0 w-100 mx-1"
-                          disabled={isLoading}
+                          disabled={loadingState}
                         >
                           加入購物車
                         </button>

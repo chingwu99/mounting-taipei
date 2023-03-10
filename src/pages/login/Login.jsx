@@ -1,13 +1,16 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { LoadingContext } from "../../contexts/loadingContext";
+import Loading from "../../components/Loading";
 
 const Login = () => {
   const [data, setData] = useState({ username: "", password: "" });
   const navigate = useNavigate();
   const [loginState, setLoginState] = useState({});
+  const { setLoadingState } = useContext(LoadingContext);
 
   useEffect(() => {
     AOS.init();
@@ -19,6 +22,7 @@ const Login = () => {
   };
 
   const submit = async (e) => {
+    setLoadingState(true);
     try {
       const res = await axios.post(`/v2/admin/signin`, data);
       console.log(res);
@@ -31,9 +35,11 @@ const Login = () => {
       if (res.data.success) {
         navigate("/admin/products");
       }
+      setLoadingState(false);
     } catch (error) {
       console.log(error);
       setLoginState(error.response.data);
+      setLoadingState(false);
     }
   };
 
@@ -43,6 +49,7 @@ const Login = () => {
 
   return (
     <div className=" py-5 d-flex justify-content-center align-items-center  mx-auto my-auto vh-100 ">
+      <Loading />
       <div
         className="login-form-background "
         data-aos="fade-down"
@@ -59,7 +66,7 @@ const Login = () => {
               }`}
               role="alert"
             >
-              錯誤訊息
+              帳號密碼錯誤
             </div>
             <div className=" login-input-container ">
               <label htmlFor="email" className="form-label ">

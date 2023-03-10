@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/cartContext";
+import Loading from "../../../components/Loading";
 const CartListMobile = () => {
   const { cartData, loadingItems, removeCartItem, updateCartItem } =
     useContext(CartContext);
 
   return (
     <div className="container  d-md-none">
+      <Loading />
       <div>
         <div className="mb-3">
           <h2>待購清單</h2>

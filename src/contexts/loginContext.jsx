@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 export const LoginContext = createContext({
   LoginState: null,
@@ -7,8 +7,6 @@ export const LoginContext = createContext({
 
 export const LoginProvider = ({ children }) => {
   const [LoginState, setLoginState] = useState(null);
-
-  console.log("吸ㄏㄧ ", LoginState);
 
   const value = { LoginState, setLoginState };
 

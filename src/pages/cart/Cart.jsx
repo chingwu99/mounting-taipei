@@ -5,8 +5,12 @@ import { Input } from "../../components/FormElement";
 import axios from "axios";
 import CartListLg from "./components/CartListLg";
 import CartListMobile from "./components/CartListMobile";
+import { useContext } from "react";
+import { LoadingContext } from "../../contexts/loadingContext";
 
 const Cart = () => {
+  const { setLoadingState } = useContext(LoadingContext);
+
   const {
     register,
     handleSubmit,
@@ -18,6 +22,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
+    setLoadingState(true);
     const { name, email, tel, address } = data;
     const form = {
       data: {
@@ -37,6 +42,7 @@ const Cart = () => {
     console.log(res);
 
     navigate(`/payment/${res.data.orderId}`);
+    setLoadingState(false);
   };
 
   return (

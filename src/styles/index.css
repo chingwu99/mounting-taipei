@@ -28,7 +28,7 @@
   --bs-secondary: #6c757d;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
-  --bs-warning: wheat;
+  --bs-warning: #f5deb3;
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
@@ -3035,8 +3035,8 @@ textarea.form-control-lg {
 
 .btn-warning {
   --bs-btn-color: #000;
-  --bs-btn-bg: wheat;
-  --bs-btn-border-color: wheat;
+  --bs-btn-bg: #f5deb3;
+  --bs-btn-border-color: #f5deb3;
   --bs-btn-hover-color: #000;
   --bs-btn-hover-bg: #f7e3be;
   --bs-btn-hover-border-color: #f6e1bb;
@@ -3046,8 +3046,8 @@ textarea.form-control-lg {
   --bs-btn-active-border-color: #f6e1bb;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #000;
-  --bs-btn-disabled-bg: wheat;
-  --bs-btn-disabled-border-color: wheat;
+  --bs-btn-disabled-bg: #f5deb3;
+  --bs-btn-disabled-border-color: #f5deb3;
 }
 
 .btn-danger {
@@ -3170,19 +3170,19 @@ textarea.form-control-lg {
 }
 
 .btn-outline-warning {
-  --bs-btn-color: wheat;
-  --bs-btn-border-color: wheat;
+  --bs-btn-color: #f5deb3;
+  --bs-btn-border-color: #f5deb3;
   --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: wheat;
-  --bs-btn-hover-border-color: wheat;
+  --bs-btn-hover-bg: #f5deb3;
+  --bs-btn-hover-border-color: #f5deb3;
   --bs-btn-focus-shadow-rgb: 245, 222, 179;
   --bs-btn-active-color: #000;
-  --bs-btn-active-bg: wheat;
-  --bs-btn-active-border-color: wheat;
+  --bs-btn-active-bg: #f5deb3;
+  --bs-btn-active-border-color: #f5deb3;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: wheat;
+  --bs-btn-disabled-color: #f5deb3;
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: wheat;
+  --bs-btn-disabled-border-color: #f5deb3;
   --bs-gradient: none;
 }
 
@@ -6887,7 +6887,7 @@ textarea.form-control-lg {
 }
 
 .link-warning {
-  color: wheat !important;
+  color: #f5deb3 !important;
 }
 .link-warning:hover, .link-warning:focus {
   color: #f7e5c2 !important;
@@ -11869,4 +11869,17 @@ code {
   width: 150px;
   height: 150px;
   overflow: hidden;
+}
+
+.reactLoading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }/*# sourceMappingURL=index.css.map */

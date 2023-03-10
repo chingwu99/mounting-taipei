@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Loading from "../../../components/Loading";
 import { CartContext } from "../../../contexts/cartContext";
 const CartListLg = () => {
   const { cartData, loadingItems, removeCartItem, updateCartItem } =
@@ -6,6 +7,7 @@ const CartListLg = () => {
 
   return (
     <div className="container d-none d-md-block">
+      <Loading />
       <div>
         <div className="mb-3">
           <h2>待購清單</h2>
