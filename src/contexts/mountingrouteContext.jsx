@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import mountingRoutesData from "../data/mountingRoutesData.json";
+import mountingRoutesData from "../data/mountingRoutesData";
 
 export const MountingrouteContext = createContext({
   mountingData: [],

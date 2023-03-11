@@ -24,7 +24,7 @@ const ProductModal = ({
     imageUrl: "",
   });
 
-  const [message, dispatch] = useContext(MessageContext);
+  const [dispatch] = useContext(MessageContext);
 
   useEffect(() => {
     if (type === "create") {
