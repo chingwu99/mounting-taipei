@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { CartContext } from "../../contexts/cartContext";
@@ -7,30 +7,51 @@ import Loading from "../../components/Loading";
 import { LoadingContext } from "../../contexts/loadingContext";
 
 const ProductsPage = () => {
+  // const [products, setProducts] = useState([]);
+  // const [pagination, setPagination] = useState({});
+
+  // const { loadingState, setLoadingState } = useContext(LoadingContext);
+
+  // const getProducts = async (page = 1) => {
+  //   (async () => {
+  //     setLoadingState(true);
+  //     const productRes = await axios.get(
+  //       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/products?page=${page}`
+  //     );
+  //     // console.log("AAAA", productRes);
+
+  //     setProducts(productRes.data.products);
+  //     setPagination(productRes.data.pagination);
+  //     setLoadingState(false);
+  //   })();
+  // };
+
+  // useEffect(() => {
+  //   getProducts(1);
+  // }, []);
+
   const [products, setProducts] = useState([]);
   const [pagination, setPagination] = useState({});
-
   const { loadingState, setLoadingState } = useContext(LoadingContext);
 
-  const getProducts = async (page = 1) => {
-    (async () => {
+  const getProducts = useCallback(
+    async (page = 1) => {
       setLoadingState(true);
       const productRes = await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/products?page=${page}`
       );
-      // console.log("AAAA", productRes);
-
       setProducts(productRes.data.products);
       setPagination(productRes.data.pagination);
       setLoadingState(false);
-    })();
-  };
+    },
+    [setLoadingState]
+  );
 
   useEffect(() => {
     getProducts(1);
-  }, []);
+  }, [getProducts]);
 
-  const { getCart } = useContext(CartContext);
+  const { fetchGetCart } = useContext(CartContext);
 
   const addToCart = async (e) => {
     const data = {
@@ -49,7 +70,7 @@ const ProductsPage = () => {
       );
       // console.log(res);
       setLoadingState(false);
-      getCart();
+      fetchGetCart();
     } catch (error) {
       // console.log(error);
       setLoadingState(false);

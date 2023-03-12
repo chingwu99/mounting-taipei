@@ -1,6 +1,7 @@
+import { useContext, useEffect, useState, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+
 import PaymentInfo from "./components/PaymentInfo";
 import Progressbar from "../../components/Progressbar";
 import { CartContext } from "../../contexts/cartContext";
@@ -20,33 +21,59 @@ const Payment = () => {
     is_paid: "",
   });
 
-  const { getCart } = useContext(CartContext);
+  const { fetchGetCart } = useContext(CartContext);
   const { setLoadingState } = useContext(LoadingContext);
 
-  const getPaymentCart = async (orderId) => {
-    setLoadingState(true);
-    const res = await axios.get(
-      `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order/${orderId}`
-    );
-    // console.log("回來拉", res);
-    setOrderData(res.data.order);
-    setOrderUser({
-      name: res.data.order.user.name,
-      tel: res.data.order.user.tel,
-      email: res.data.order.user.email,
-      address: res.data.order.user.address,
-      is_paid: res.data.order.is_paid,
-    });
+  // const getPaymentCart = async (orderId) => {
+  //   setLoadingState(true);
+  //   const res = await axios.get(
+  //     `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order/${orderId}`
+  //   );
+  //   // console.log("回來拉", res);
+  //   setOrderData(res.data.order);
+  //   setOrderUser({
+  //     name: res.data.order.user.name,
+  //     tel: res.data.order.user.tel,
+  //     email: res.data.order.user.email,
+  //     address: res.data.order.user.address,
+  //     is_paid: res.data.order.is_paid,
+  //   });
 
-    getCart();
-    setLoadingState(false);
-  };
+  //   fetchGetCart();
+  //   setLoadingState(false);
+  // };
 
-  // console.log("orderName", orderUser);
+  // // console.log("orderName", orderUser);
+
+  // useEffect(() => {
+  //   getPaymentCart(orderId);
+  // }, [orderId]);
+
+  const getPaymentCart = useCallback(
+    async (orderId) => {
+      setLoadingState(true);
+      const res = await axios.get(
+        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order/${orderId}`
+      );
+      // console.log("回來拉", res);
+      setOrderData(res.data.order);
+      setOrderUser({
+        name: res.data.order.user.name,
+        tel: res.data.order.user.tel,
+        email: res.data.order.user.email,
+        address: res.data.order.user.address,
+        is_paid: res.data.order.is_paid,
+      });
+
+      fetchGetCart();
+      setLoadingState(false);
+    },
+    [setLoadingState, setOrderData, setOrderUser, fetchGetCart]
+  );
 
   useEffect(() => {
     getPaymentCart(orderId);
-  }, [orderId]);
+  }, [getPaymentCart, orderId]);
 
   const paySubmit = async () => {
     setLoadingState(true);

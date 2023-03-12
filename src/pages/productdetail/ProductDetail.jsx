@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { CartContext } from "../../contexts/cartContext";
@@ -12,22 +12,42 @@ const ProductDetail = () => {
 
   const { id } = useParams();
 
-  const { getCart } = useContext(CartContext);
+  const { fetchGetCart } = useContext(CartContext);
 
   const { loadingState, setLoadingState } = useContext(LoadingContext);
 
   // console.log(id);
 
-  const getProduct = async (id) => {
-    setLoadingState(true);
-    const productRes = await axios.get(
-      `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/product/${id}`
-    );
-    // console.log("ppppp", productRes);
+  // const getProduct = async (id) => {
+  //   setLoadingState(true);
+  //   const productRes = await axios.get(
+  //     `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/product/${id}`
+  //   );
+  //   // console.log("ppppp", productRes);
 
-    setProduct(productRes.data.product);
-    setLoadingState(false);
-  };
+  //   setProduct(productRes.data.product);
+  //   setLoadingState(false);
+  // };
+
+  // useEffect(() => {
+  //   getProduct(id);
+  // }, [id]);
+
+  const getProduct = useCallback(
+    async (id) => {
+      setLoadingState(true);
+      const productRes = await axios.get(
+        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/product/${id}`
+      );
+      setProduct(productRes.data.product);
+      setLoadingState(false);
+    },
+    [setLoadingState]
+  );
+
+  useEffect(() => {
+    getProduct(id);
+  }, [getProduct, id]);
 
   const addToCart = async () => {
     const data = {
@@ -46,16 +66,12 @@ const ProductDetail = () => {
       );
       // console.log(res);
       setLoadingState(false);
-      getCart();
+      fetchGetCart();
     } catch (error) {
       // console.log(error);
       setLoadingState(false);
     }
   };
-
-  useEffect(() => {
-    getProduct(id);
-  }, [id]);
 
   return (
     <div className=" bg-white">

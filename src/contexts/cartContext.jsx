@@ -1,4 +1,10 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+} from "react";
 import axios from "axios";
 import { LoadingContext } from "./loadingContext";
 
@@ -7,7 +13,8 @@ export const CartContext = createContext({
   setCartData: () => null,
   loadingItems: [],
   setLoadingItems: () => null,
-  getCart: async () => {},
+  // getCart: async () => {},
+  fetchGetCart: () => {},
   removeCartItem: async () => {},
   updateCartItem: async () => {},
 });
@@ -18,24 +25,46 @@ export const CartProvider = ({ children }) => {
 
   const { setLoadingState } = useContext(LoadingContext);
 
-  const getCart = async () => {
-    setLoadingState(true);
-    try {
-      const res = await axios.get(
-        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`
-      );
-      // console.log("首次得到購物車數量", res);
-      setCartData(res.data.data);
-      setLoadingState(false);
-    } catch (error) {
-      // console.log(error);
-      setLoadingState(false);
-    }
-  };
+  const fetchGetCart = useCallback(() => {
+    const getCart = async () => {
+      setLoadingState(true);
+      try {
+        const res = await axios.get(
+          `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`
+        );
+        // console.log("首次得到購物車數量", res);
+        setCartData(res.data.data);
+        setLoadingState(false);
+      } catch (error) {
+        // console.log(error);
+        setLoadingState(false);
+      }
+    };
+    getCart();
+  }, [setLoadingState]);
+
+  // const getCart = async () => {
+  //   setLoadingState(true);
+  //   try {
+  //     const res = await axios.get(
+  //       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`
+  //     );
+  //     // console.log("首次得到購物車數量", res);
+  //     setCartData(res.data.data);
+  //     setLoadingState(false);
+  //   } catch (error) {
+  //     // console.log(error);
+  //     setLoadingState(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getCart();
+  // }, []);
 
   useEffect(() => {
-    getCart();
-  }, []);
+    fetchGetCart();
+  }, [fetchGetCart]);
 
   const removeCartItem = async (id) => {
     setLoadingState(true);
@@ -45,7 +74,7 @@ export const CartProvider = ({ children }) => {
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart/${id}`
       );
       // console.log(res);
-      getCart();
+      fetchGetCart();
       setLoadingState(false);
     } catch (error) {
       // console.log(error);
@@ -72,7 +101,7 @@ export const CartProvider = ({ children }) => {
       setLoadingItems(
         loadingItems.filter((loadingObject) => loadingObject !== item.id)
       );
-      getCart();
+      fetchGetCart();
       setLoadingState(false);
     } catch (error) {
       // console.log(error);
@@ -83,7 +112,8 @@ export const CartProvider = ({ children }) => {
   const value = {
     cartData,
     setCartData,
-    getCart,
+    // getCart,
+    fetchGetCart,
     loadingItems,
     setLoadingItems,
     removeCartItem,

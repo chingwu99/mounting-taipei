@@ -29,8 +29,6 @@ const Dashboard = () => {
   // console.log(token);
   axios.defaults.headers.common["Authorization"] = token;
 
-  setLoginState(token);
-
   useEffect(() => {
     if (!token) {
       setLoginState(null);
@@ -38,6 +36,7 @@ const Dashboard = () => {
     }
     (async () => {
       try {
+        setLoginState(token);
         await axios.post("/v2/api/user/check");
       } catch (error) {
         if (!error.response.data.success) {
@@ -46,7 +45,7 @@ const Dashboard = () => {
         }
       }
     })();
-  }, [navigate, token]);
+  }, [navigate, token, setLoginState]);
 
   return (
     <MessageContext.Provider value={reducer}>
