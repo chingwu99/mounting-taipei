@@ -1,5 +1,5 @@
 const MountingrouteModal = ({ closeMountingrouteModal, routeInfo }) => {
-  console.log("routeInfo", routeInfo);
+  // console.log("routeInfo", routeInfo);
 
   return (
     <div

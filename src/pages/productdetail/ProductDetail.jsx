@@ -16,14 +16,14 @@ const ProductDetail = () => {
 
   const { loadingState, setLoadingState } = useContext(LoadingContext);
 
-  console.log(id);
+  // console.log(id);
 
   const getProduct = async (id) => {
     setLoadingState(true);
     const productRes = await axios.get(
       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/product/${id}`
     );
-    console.log("ppppp", productRes);
+    // console.log("ppppp", productRes);
 
     setProduct(productRes.data.product);
     setLoadingState(false);
@@ -39,15 +39,16 @@ const ProductDetail = () => {
 
     setLoadingState(true);
     try {
-      const res = await axios.post(
+      // const res =
+      await axios.post(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`,
         data
       );
-      console.log(res);
+      // console.log(res);
       setLoadingState(false);
       getCart();
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setLoadingState(false);
     }
   };

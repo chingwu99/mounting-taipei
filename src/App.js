@@ -15,15 +15,14 @@ import Payment from "./pages/payment/Payment";
 
 function App() {
   useEffect(() => {
-    console.log(
-      process.env.REACT_APP_SHOPAPI_URL,
-      process.env.REACT_APP_SHOPAPI_PATH
-    );
+    // console.log(
+    //   process.env.REACT_APP_SHOPAPI_URL,
+    //   process.env.REACT_APP_SHOPAPI_PATH
+    // );
     (async () => {
-      const res = await axios.get(
+      await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/products/all`
       );
-      console.log(res);
     })();
   }, []);
   return (

@@ -25,7 +25,7 @@ const Login = () => {
     setLoadingState(true);
     try {
       const res = await axios.post(`/v2/admin/signin`, data);
-      console.log(res);
+      // console.log(res);
       const { token, expired } = res.data;
 
       document.cookie = `mountingTaipeiToken=${token}; expires=${new Date(
@@ -37,7 +37,7 @@ const Login = () => {
       }
       setLoadingState(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setLoginState(error.response.data);
       setLoadingState(false);
     }

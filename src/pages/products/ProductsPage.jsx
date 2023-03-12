@@ -18,7 +18,7 @@ const ProductsPage = () => {
       const productRes = await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/products?page=${page}`
       );
-      console.log("AAAA", productRes);
+      // console.log("AAAA", productRes);
 
       setProducts(productRes.data.products);
       setPagination(productRes.data.pagination);
@@ -42,15 +42,16 @@ const ProductsPage = () => {
 
     setLoadingState(true);
     try {
-      const res = await axios.post(
+      // const res =
+      await axios.post(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`,
         data
       );
-      console.log(res);
+      // console.log(res);
       setLoadingState(false);
       getCart();
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setLoadingState(false);
     }
   };

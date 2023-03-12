@@ -24,7 +24,7 @@ const ListCard = () => {
 
   const openMountingrouteModal = (i) => {
     mountingrouteModal.current.show();
-    console.log(i);
+    // console.log(i);
     setRouteInfo(i);
   };
 

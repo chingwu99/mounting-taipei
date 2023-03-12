@@ -32,7 +32,7 @@ export const MountingrouteProvider = ({ children }) => {
 
   useEffect(() => {
     setRenderData(buttonfilterData);
-    console.log("lllll", buttonfilterData);
+    // console.log("lllll", buttonfilterData);
   }, [buttonfilterData]);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export const MountingrouteProvider = ({ children }) => {
 
   const filterHandler = (e) => {
     let buttonValue = e.target.innerText;
-    console.log(buttonValue);
+    // console.log(buttonValue);
 
     switch (buttonValue) {
       case "全步道All":
@@ -75,7 +75,7 @@ export const MountingrouteProvider = ({ children }) => {
         break;
 
       default:
-        console.log("error");
+        // console.log("error");
         break;
     }
     navigate("/mountingroute");

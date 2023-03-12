@@ -29,7 +29,7 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
   }, [type, tempCoupon]);
 
   const handleChange = (e) => {
-    console.log(e);
+    // console.log(e);
     const { value, name } = e.target;
     if (["price", "origin_price"].includes(name)) {
       setTempData({ ...tempData, [name]: Number(value) });
@@ -49,12 +49,13 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
         api = `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/coupon/${tempCoupon.id}`;
         method = "put";
       }
-      const res = await axios[method](api, {
+      // const res =
+      await axios[method](api, {
         data: { ...tempData, due_date: date.getTime() },
       });
-      console.log(res);
+      // console.log(res);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
 
     closeModal();
@@ -130,7 +131,7 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
                       .toString()
                       .padStart(2, 0)}`}
                     onChange={(e) => {
-                      console.log(e.target.value);
+                      // console.log(e.target.value);
                       setDate(new Date(e.target.value));
                     }}
                   />

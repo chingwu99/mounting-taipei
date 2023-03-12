@@ -32,7 +32,7 @@ const AdminCoupons = () => {
       const res = await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/coupons?page=${page}`
       );
-      console.log("rrrrr", res);
+      // console.log("rrrrr", res);
 
       setCoupons(res.data.coupons);
       setPagination(res.data.pagination);
@@ -64,14 +64,14 @@ const AdminCoupons = () => {
       const res = await axios.delete(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/coupon/${id}`
       );
-      console.log(res);
+      // console.log(res);
 
       if (res.data.success) {
         getCoupons();
         deleteModal.current.hide();
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

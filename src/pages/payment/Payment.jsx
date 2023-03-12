@@ -28,7 +28,7 @@ const Payment = () => {
     const res = await axios.get(
       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order/${orderId}`
     );
-    console.log("回來拉", res);
+    // console.log("回來拉", res);
     setOrderData(res.data.order);
     setOrderUser({
       name: res.data.order.user.name,
@@ -42,7 +42,7 @@ const Payment = () => {
     setLoadingState(false);
   };
 
-  console.log("orderName", orderUser);
+  // console.log("orderName", orderUser);
 
   useEffect(() => {
     getPaymentCart(orderId);
@@ -50,10 +50,11 @@ const Payment = () => {
 
   const paySubmit = async () => {
     setLoadingState(true);
-    const res = await axios.post(
+    // const res =
+    await axios.post(
       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/pay/${orderId} `
     );
-    console.log("付款完成了嗎", res);
+    // console.log("付款完成了嗎", res);
 
     getPaymentCart(orderId);
     setLoadingState(false);
