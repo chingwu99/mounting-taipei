@@ -2,8 +2,20 @@ import { useContext } from "react";
 import Loading from "../../../components/Loading";
 import { CartContext } from "../../../contexts/cartContext";
 const CartListLg = () => {
-  const { cartData, loadingItems, removeCartItem, updateCartItem } =
-    useContext(CartContext);
+  const {
+    cartData,
+    loadingItems,
+    removeCartItem,
+    updateCartItem,
+    couponValue,
+    setCouponValue,
+    submitCoupon,
+    couponData,
+  } = useContext(CartContext);
+
+  const couponHandler = (e) => {
+    setCouponValue(e.target.value);
+  };
 
   return (
     <div className="container d-none d-md-block">
@@ -71,7 +83,7 @@ const CartListLg = () => {
                   </button>
                 </div>
                 <div className="col-2 d-flex justify-content-center align-items-center ">
-                  <p>NT${item.final_total}</p>
+                  <p>NT${item.total}</p>
                 </div>
               </div>
             </div>
@@ -79,18 +91,39 @@ const CartListLg = () => {
         })}
 
         <div className="d-flex justify-content-between my-3">
-          <div className="d-flex justify-content-center align-items-center">
-            <input
-              type="text"
-              className="rounded-0 border-1 h-75 mx-1 border-primary"
-              placeholder="請輸入優惠序號"
-            />
-            <button type="button" className="btn btn-primary h-75">
-              使用優惠券
-            </button>
+          <div className="d-flex justify-content-center align-items-center flex-column">
+            <div className="h-100 d-flex justify-content-center align-items-center">
+              <input
+                type="text"
+                className="rounded-0 border-1 mx-1 border-primary h-100"
+                placeholder="請輸入優惠序號"
+                value={couponValue}
+                onChange={couponHandler}
+              />
+              <button
+                type="button"
+                className="btn btn-primary h-100"
+                onClick={() => submitCoupon(couponData)}
+              >
+                使用優惠券
+              </button>
+            </div>
+
+            <p className="text-secondary">輸入testCode享八折優惠！</p>
           </div>
-          <div className=" fs-4">
-            <p>總金額 ${cartData.final_total}</p>
+          <div className=" d-flex">
+            {cartData.final_total === cartData.total ? (
+              <p className="fs-4 ">總金額 ${cartData.total}</p>
+            ) : (
+              <>
+                <p className="text-danger me-2 fs-4 ">
+                  優惠價 ${cartData.final_total}
+                </p>
+                <p className="text-decoration-line-through fs-6">
+                  總金額 ${cartData.total}
+                </p>
+              </>
+            )}
           </div>
         </div>
       </div>

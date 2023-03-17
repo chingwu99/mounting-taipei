@@ -13,15 +13,20 @@ export const CartContext = createContext({
   setCartData: () => null,
   loadingItems: [],
   setLoadingItems: () => null,
+  couponValue: "",
+  setCouponValue: () => null,
   // getCart: async () => {},
   fetchGetCart: () => {},
   removeCartItem: async () => {},
   updateCartItem: async () => {},
+  submitCoupon: async () => {},
+  couponData: "",
 });
 
 export const CartProvider = ({ children }) => {
   const [cartData, setCartData] = useState({});
   const [loadingItems, setLoadingItems] = useState([]);
+  const [couponValue, setCouponValue] = useState("");
 
   const { setLoadingState } = useContext(LoadingContext);
 
@@ -32,7 +37,7 @@ export const CartProvider = ({ children }) => {
         const res = await axios.get(
           `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`
         );
-        // console.log("首次得到購物車數量", res);
+        console.log("首次得到購物車數量", res);
         setCartData(res.data.data);
         setLoadingState(false);
       } catch (error) {
@@ -109,6 +114,29 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const couponData = {
+    data: {
+      code: couponValue,
+    },
+  };
+
+  const submitCoupon = async (couponData) => {
+    try {
+      // const res =
+      await axios.post(
+        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/coupon`,
+        couponData
+      );
+
+      // console.log(res);
+      fetchGetCart();
+      setCouponValue("");
+    } catch {
+      alert("優惠券代碼錯誤");
+    }
+    console.log(couponValue);
+  };
+
   const value = {
     cartData,
     setCartData,
@@ -118,6 +146,10 @@ export const CartProvider = ({ children }) => {
     setLoadingItems,
     removeCartItem,
     updateCartItem,
+    couponValue,
+    setCouponValue,
+    submitCoupon,
+    couponData,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

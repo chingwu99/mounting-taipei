@@ -1,9 +1,22 @@
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/cartContext";
 import Loading from "../../../components/Loading";
+
 const CartListMobile = () => {
-  const { cartData, loadingItems, removeCartItem, updateCartItem } =
-    useContext(CartContext);
+  const {
+    cartData,
+    loadingItems,
+    removeCartItem,
+    updateCartItem,
+    couponValue,
+    setCouponValue,
+    submitCoupon,
+    couponData,
+  } = useContext(CartContext);
+
+  const couponHandler = (e) => {
+    setCouponValue(e.target.value);
+  };
 
   return (
     <div className="container  d-md-none">
@@ -69,25 +82,43 @@ const CartListMobile = () => {
             </div>
           );
         })}
-        <div className="fs-4  ">
-          <p className="text-end">總金額 ${cartData.final_total}</p>
+        <div>
+          {cartData.final_total === cartData.total ? (
+            <p className="fs-4 ">總金額 ${cartData.total}</p>
+          ) : (
+            <>
+              <p className="text-decoration-line-through fs-5">
+                總金額 ${cartData.total}
+              </p>
+              <p className="text-danger me-2 fs-4 ">
+                優惠價 ${cartData.final_total}
+              </p>
+            </>
+          )}
         </div>
 
-        <div className="my-3 d-flex justify-content-center align-items-center">
+        <div className="my-3 d-flex justify-content-center align-items-center flex-column">
           <div className="row   d-flex justify-content-center ">
             <div className="col-7 ">
               <input
                 type="text"
                 className="rounded-0 border-1 border-primary h-100 "
                 placeholder="請輸入優惠序號"
+                value={couponValue}
+                onChange={couponHandler}
               />
             </div>
             <div className="col-5 ">
-              <button type="button" className="btn btn-primary ">
+              <button
+                type="button"
+                className="btn btn-primary "
+                onClick={() => submitCoupon(couponData)}
+              >
                 使用優惠券
               </button>
             </div>
           </div>
+          <p className="text-secondary fs-6">輸入testCode享八折優惠！</p>
         </div>
       </div>
     </div>
