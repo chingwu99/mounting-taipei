@@ -1,7 +1,8 @@
 import axios from "axios";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import mountingRoutesData from "../data/mountingRoutesData";
+import { LoadingContext } from "./loadingContext";
 
 export const MountingrouteContext = createContext({
   mountingData: [],
@@ -26,10 +27,11 @@ export const MountingrouteProvider = ({ children }) => {
   const [combinedArrayy, setCombinedArrayy] = useState([]);
   const UNSPLASH_API_URL = "https://api.unsplash.com";
   const UNSPLASH_CLIENT_ID = "9xhNRblwZmuOU8hspEhs38xpj-0CsCe7QEkhGU__W-s";
-
+  const { setLoadingState } = useContext(LoadingContext);
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoadingState(true);
     async function fetchData() {
       try {
         const images = await fetchImages();
@@ -37,13 +39,15 @@ export const MountingrouteProvider = ({ children }) => {
         setCombinedArrayy(newArray);
         // console.log("images", images);
         // console.log("newArray", newArray);
+        setLoadingState(false);
       } catch (error) {
         console.error("Error fetching data: ", error);
+        setLoadingState(false);
       }
     }
 
     fetchData();
-  }, []);
+  }, [setLoadingState]);
 
   async function fetchImages() {
     let imgArr = [];

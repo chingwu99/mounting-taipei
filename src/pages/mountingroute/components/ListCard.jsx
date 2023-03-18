@@ -4,6 +4,8 @@ import { Modal } from "bootstrap";
 
 import MountingrouteModal from "../../../components/MountingrouteModal";
 
+import Loading from "../../../components/Loading";
+
 const ListCard = () => {
   const { renderData } = useContext(MountingrouteContext);
   const [routeInfo, setRouteInfo] = useState({});
@@ -27,6 +29,7 @@ const ListCard = () => {
 
   return (
     <div className="row  ">
+      <Loading />
       <MountingrouteModal
         closeMountingrouteModal={closeMountingrouteModal}
         routeInfo={routeInfo}
