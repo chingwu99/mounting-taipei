@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import mountingRoutesData from "../data/mountingRoutesData";
@@ -22,17 +23,59 @@ export const MountingrouteProvider = ({ children }) => {
   const [renderData, setRenderData] = useState([]);
   const [buttonfilterData, setButtonfilterData] = useState([]);
   const [loadMore, setLoadMore] = useState(true);
+  const [combinedArrayy, setCombinedArrayy] = useState([]);
+  const UNSPLASH_API_URL = "https://api.unsplash.com";
+  const UNSPLASH_CLIENT_ID = "9xhNRblwZmuOU8hspEhs38xpj-0CsCe7QEkhGU__W-s";
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    setMountingData(mountingRoutesData.result.results);
-    setAllData(mountingRoutesData.result.results.slice(0, 8));
+    async function fetchData() {
+      try {
+        const images = await fetchImages();
+        const newArray = combineData(images);
+        setCombinedArrayy(newArray);
+        // console.log("images", images);
+        // console.log("newArray", newArray);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    }
+
+    fetchData();
   }, []);
+
+  async function fetchImages() {
+    let imgArr = [];
+
+    for (let i = 1; i <= 6; i++) {
+      const res = await axios.get(
+        `${UNSPLASH_API_URL}/search/photos?client_id=${UNSPLASH_CLIENT_ID}&per_page=30&page=${i}&query=mountains`
+      );
+
+      imgArr.push(...res.data.results);
+    }
+
+    return imgArr;
+  }
+
+  function combineData(images) {
+    return mountingRoutesData.result.results.map((item, index) => {
+      return {
+        ...item,
+        img: images[index],
+      };
+    });
+  }
+  //
+
+  useEffect(() => {
+    setMountingData(combinedArrayy);
+    setAllData(combinedArrayy.slice(0, 8));
+  }, [combinedArrayy]);
 
   useEffect(() => {
     setRenderData(buttonfilterData);
-    // console.log("lllll", buttonfilterData);
   }, [buttonfilterData]);
 
   useEffect(() => {
@@ -49,7 +92,6 @@ export const MountingrouteProvider = ({ children }) => {
 
   const filterHandler = (e) => {
     let buttonValue = e.target.innerText;
-    // console.log(buttonValue);
 
     switch (buttonValue) {
       case "全步道All":

@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
         const res = await axios.get(
           `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`
         );
-        console.log("首次得到購物車數量", res);
+        // console.log("首次得到購物車數量", res);
         setCartData(res.data.data);
         setLoadingState(false);
       } catch (error) {
