@@ -1,18 +1,21 @@
-# Getting Started with Create React App
+# 爬爬台北 Mounting Taipei
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+「爬爬台北 Mounting Taipei」是提供台北市登山步道資訊檢索，以及登山用品販售的品牌官網
 
-## Available Scripts
+![My Image](./readmeimg/home.png)
+![My Image](./readmeimg/mountingroute.png)
+![My Image](./readmeimg/product.png)
+![My Image](./readmeimg/productdetail.png)
+![My Image](./readmeimg/payment.png)
+![My Image](./readmeimg/success.png)
+![My Image](./readmeimg/login.png)
+![My Image](./readmeimg/control.png)
+
+<!-- ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 ### `npm test`
 
@@ -67,4 +70,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
