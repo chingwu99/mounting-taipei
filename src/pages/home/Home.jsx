@@ -23,7 +23,7 @@ const Home = () => {
       <div
         className="d-flex justify-content-center align-items-center   flex-column text-warning d-md-none mb-3"
         data-aos="fade-down"
-        data-aos-duration="3000"
+        data-aos-duration="2500"
       >
         <h2 className=" display-4 my-4 text-center">
           爬爬台北 <br />
@@ -34,19 +34,20 @@ const Home = () => {
 
       <div className="container my-md-5">
         <div className="row">
-          <div className="col-sm-12 col-md-6 mb-3 ">
-            <div
-              className="d-flex justify-content-center align-items-center"
-              data-aos="fade-right"
-              data-aos-duration="3000"
-            >
+          <div
+            className="col-sm-12 col-md-6 mb-3 d-flex justify-content-center align-items-center "
+            data-aos="fade-right"
+            data-aos-duration="2500"
+          >
+            <div className="d-flex justify-content-center align-items-center">
               <img className="w-100 rounded-5" src={homeimg4} alt="..." />
             </div>
           </div>
           <div
-            className="col-sm-12 col-md-6 mb-3"
+            className="col-sm-12 col-md-6 mb-3  d-flex  justify-content-center
+            align-items-center"
             data-aos="fade-left"
-            data-aos-duration="3000"
+            data-aos-duration="2500"
           >
             <div className="text-white">
               <h3 className="mb-4 text-sm text-center mt-1 d-lg-none">
@@ -87,7 +88,7 @@ align-items-center my-5"
           <div
             className=" col-sm-12 col-md-6 mb-3"
             data-aos="fade-right"
-            data-aos-duration="3000"
+            data-aos-duration="2500"
           >
             <div
               className="h-100  d-flex   
@@ -127,13 +128,16 @@ align-items-center my-5"
 align-items-center my-5"
       >
         <div className="row ">
-          <div className="  col-sm-12 col-md-6 mb-3  h-100 ">
+          <div
+            className="  col-sm-12 col-md-6 mb-3 d-flex justify-content-center
+align-items-center  "
+            data-aos="fade-right"
+            data-aos-duration="2500"
+          >
             <div
-              className="h-100 w-100 d-flex   
+              className=" w-100 d-flex   
     justify-content-center
     align-items-center"
-              data-aos="fade-right"
-              data-aos-duration="3000"
             >
               <img className=" w-100 rounded-5" src={homeimg8} alt="..." />
             </div>
@@ -141,7 +145,7 @@ align-items-center my-5"
           <div
             className="  col-sm-12 col-md-6 mb-3"
             data-aos="fade-left"
-            data-aos-duration="3000"
+            data-aos-duration="2500"
           >
             <div
               className="h-100 text-white d-flex   
@@ -180,8 +184,14 @@ align-items-center my-5"
         className="container  mb-5 d-flex justify-content-center
 align-items-center flex-column"
       >
-        <h2 className="text-warning my-3">推薦步道</h2>
-        <div className="row">
+        <h2
+          className="text-warning my-3"
+          data-aos="fade-down"
+          data-aos-duration="3000"
+        >
+          推薦步道
+        </h2>
+        <div className="row" data-aos="fade-up" data-aos-duration="3000">
           <HomeCard
             img={homeimg5}
             title="象山步道"
