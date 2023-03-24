@@ -84,7 +84,7 @@ const ProductsPage = () => {
         <div className="container  mb-5 d-flex justify-content-center align-items-center flex-column">
           <h2 className="text-warning my-5">所有商品</h2>
 
-          <div className="row    ">
+          <div className="row  w-100">
             {products.map((product) => {
               return (
                 <div

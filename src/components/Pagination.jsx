@@ -12,7 +12,12 @@ const Pagination = ({ pagination, changePage }) => {
               changePage(pagination.current_page - 1);
             }}
           >
-            <span aria-hidden="true">&laquo;</span>
+            <span
+              aria-hidden="true"
+              className={pagination.has_pre ? "" : "d-none"}
+            >
+              &laquo;
+            </span>
           </a>
         </li>
         {[...new Array(pagination.total_pages)].map((_, i) => (
@@ -42,7 +47,12 @@ const Pagination = ({ pagination, changePage }) => {
             href="/"
             aria-label="Next"
           >
-            <span aria-hidden="true">&raquo;</span>
+            <span
+              aria-hidden="true"
+              className={pagination.has_next ? "" : "d-none"}
+            >
+              &raquo;
+            </span>
           </a>
         </li>
       </ul>

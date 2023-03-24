@@ -36,8 +36,8 @@ const Dashboard = () => {
     }
     (async () => {
       try {
-        setLoginState(token);
         await axios.post("/v2/api/user/check");
+        setLoginState(token);
       } catch (error) {
         if (!error.response.data.success) {
           setLoginState(null);
