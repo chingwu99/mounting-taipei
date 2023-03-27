@@ -1,56 +1,65 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import {
-  MessageContext,
-  handleSuccessMessage,
-  handleErrorMessage,
-} from "../contexts/messageContext";
+import { useEffect, useState } from "react";
+// import {
+//   MessageContext,
+//   handleSuccessMessage,
+//   handleErrorMessage,
+// } from "../contexts/messageContext";
 
-const ProductModal = ({
-  closeProductModal,
-  getProducts,
-  tempProduct,
+const ArticleModal = ({
+  closeArticlesModal,
+  getArticles,
+  tempArticle,
   type,
 }) => {
   const [tempData, setTempData] = useState({
     title: "",
-    category: "",
-    origin_price: 100,
-    price: 300,
-    unit: "",
     description: "",
-    content: "",
-    is_enabled: 1,
     imageUrl: "",
+    tag: [""],
+    create_at: 1555459220,
+    author: "",
+    isPublic: false,
+    content: "",
   });
 
-  const [, dispatch] = useContext(MessageContext);
+  console.log("??", tempData);
+
+  //   const [, dispatch] = useContext(MessageContext);
 
   useEffect(() => {
     if (type === "create") {
       setTempData({
         title: "",
-        category: "",
-        origin_price: 100,
-        price: 300,
-        unit: "",
         description: "",
-        content: "",
-        is_enabled: 1,
         imageUrl: "",
+        tag: [""],
+        create_at: 1555459220,
+        author: "",
+        isPublic: false,
+        content: "",
       });
     } else if (type === "edit") {
-      setTempData(tempProduct);
+      (async () => {
+        const res = await axios.get(
+          `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/article/${tempArticle.id}`
+        );
+        let content = res.data.article.content;
+        console.log("99999", content);
+
+        setTempData({ ...tempArticle, content: content });
+      })();
     }
-  }, [type, tempProduct]);
+  }, [type, tempArticle]);
 
   const handleChange = (e) => {
     // console.log(e);
     const { value, name } = e.target;
-    if (["price", "origin_price"].includes(name)) {
-      setTempData({ ...tempData, [name]: Number(value) });
-    } else if (name === "is_enabled") {
-      setTempData({ ...tempData, [name]: +e.target.checked });
+
+    if (name === "isPublic") {
+      setTempData({ ...tempData, [name]: e.target.checked });
+    } else if (name === "tag") {
+      setTempData({ ...tempData, [name]: [value] });
     } else {
       setTempData({ ...tempData, [name]: value });
     }
@@ -58,22 +67,21 @@ const ProductModal = ({
 
   const submit = async () => {
     try {
-      let api = `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/product`;
+      let api = `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/article`;
       let method = "post";
-
       if (type === "edit") {
-        api = `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/product/${tempProduct.id}`;
+        api = `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/article/${tempArticle.id}`;
         method = "put";
       }
-      const res = await axios[method](api, { data: tempData });
-      // console.log(res);
 
-      handleSuccessMessage(dispatch, res);
-      closeProductModal();
-      getProducts();
+      const res = await axios[method](api, { data: tempData });
+      console.log(res);
+      //   handleSuccessMessage(dispatch, res);
+      closeArticlesModal();
+      getArticles();
     } catch (error) {
-      handleErrorMessage(dispatch, error);
-      // console.log(error);
+      //   handleErrorMessage(dispatch, error);
+      console.log(error);
     }
   };
 
@@ -81,7 +89,7 @@ const ProductModal = ({
     <div
       className="modal fade"
       tabIndex="-1"
-      id="productModal"
+      id="articleModal"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
@@ -95,14 +103,14 @@ const ProductModal = ({
               type="button"
               className="btn-close"
               aria-label="Close"
-              onClick={closeProductModal}
+              onClick={closeArticlesModal}
             />
           </div>
           <div className="modal-body">
             <div className="row">
               <div className="col-sm-4">
                 <div className="form-group mb-2">
-                  <label className="w-100" htmlFor="image">
+                  <label className="w-100" htmlFor="imageUrl">
                     輸入圖片網址
                     <input
                       type="text"
@@ -116,16 +124,16 @@ const ProductModal = ({
                   </label>
                 </div>
                 <div className="form-group mb-2">
-                  <label className="w-100" htmlFor="customFile">
+                  {/* <label className="w-100" htmlFor="customFile">
                     或 上傳圖片
                     <input
                       type="file"
                       id="customFile"
                       className="form-control"
                     />
-                  </label>
+                  </label> */}
                 </div>
-                <img src="" alt="" className="img-fluid" />
+                {/* <img src="" alt="" className="img-fluid" /> */}
               </div>
               <div className="col-sm-8">
                 <div className="form-group mb-2">
@@ -144,60 +152,46 @@ const ProductModal = ({
                 </div>
                 <div className="row">
                   <div className="form-group mb-2 col-md-6">
-                    <label className="w-100" htmlFor="category">
-                      分類
+                    <label className="w-100" htmlFor="tag">
+                      標籤
                       <input
                         type="text"
-                        id="category"
-                        name="category"
-                        placeholder="請輸入分類"
+                        id="tag"
+                        name="tag"
+                        placeholder="請輸入標籤"
                         className="form-control"
                         onChange={handleChange}
-                        value={tempData.category}
+                        value={tempData.tag[0]}
                       />
                     </label>
                   </div>
-                  <div className="form-group mb-2 col-md-6">
+                  {/* <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="unit">
-                      單位
+                      時間
                       <input
                         type="unit"
                         id="unit"
                         name="unit"
                         placeholder="請輸入單位"
                         className="form-control"
-                        onChange={handleChange}
-                        value={tempData.unit}
+                        // onChange={handleChange}
+                        // value={tempData.unit}
                       />
                     </label>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="row">
                   <div className="form-group mb-2 col-md-6">
-                    <label className="w-100" htmlFor="origin_price">
-                      原價
+                    <label className="w-100" htmlFor="author">
+                      作者
                       <input
-                        type="number"
-                        id="origin_price"
-                        name="origin_price"
-                        placeholder="請輸入原價"
+                        type="text"
+                        id="author"
+                        name="author"
+                        placeholder="請輸入作者"
                         className="form-control"
                         onChange={handleChange}
-                        value={tempData.origin_price}
-                      />
-                    </label>
-                  </div>
-                  <div className="form-group mb-2 col-md-6">
-                    <label className="w-100" htmlFor="price">
-                      售價
-                      <input
-                        type="number"
-                        id="price"
-                        name="price"
-                        placeholder="請輸入售價"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={tempData.price}
+                        value={tempData.author}
                       />
                     </label>
                   </div>
@@ -205,12 +199,12 @@ const ProductModal = ({
                 <hr />
                 <div className="form-group mb-2">
                   <label className="w-100" htmlFor="description">
-                    產品描述
+                    文章簡介
                     <textarea
                       type="text"
                       id="description"
                       name="description"
-                      placeholder="請輸入產品描述"
+                      placeholder="請輸入文章簡介"
                       className="form-control"
                       onChange={handleChange}
                       value={tempData.description}
@@ -219,12 +213,12 @@ const ProductModal = ({
                 </div>
                 <div className="form-group mb-2">
                   <label className="w-100" htmlFor="content">
-                    說明內容
+                    內文(必填)
                     <textarea
                       type="text"
                       id="content"
                       name="content"
-                      placeholder="請輸入產品說明內容"
+                      placeholder="請輸入內文"
                       className="form-control"
                       onChange={handleChange}
                       value={tempData.content}
@@ -235,16 +229,16 @@ const ProductModal = ({
                   <div className="form-check">
                     <label
                       className="w-100 form-check-label"
-                      htmlFor="is_enabled"
+                      htmlFor="isPublic"
                     >
-                      是否啟用
+                      是否公開
                       <input
                         type="checkbox"
-                        id="is_enabled"
-                        name="is_enabled"
+                        id="isPublic"
+                        name="isPublic"
                         className="form-check-input"
                         onChange={handleChange}
-                        checked={Boolean(tempData.is_enabled)}
+                        checked={tempData.isPublic}
                       />
                     </label>
                   </div>
@@ -256,7 +250,7 @@ const ProductModal = ({
             <button
               type="button"
               className="btn btn-secondary"
-              onClick={closeProductModal}
+              onClick={closeArticlesModal}
             >
               關閉
             </button>
@@ -270,4 +264,4 @@ const ProductModal = ({
   );
 };
 
-export default ProductModal;
+export default ArticleModal;

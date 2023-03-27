@@ -7,6 +7,7 @@ import Login from "./pages/login/Login";
 import Dashboard from "./pages/admin/Dashboard";
 import AdminProducts from "./pages/admin/AdminProducts";
 import AdminCoupons from "./pages/admin/AdminCoupons";
+import AdminArticle from "./pages/admin/AdminArticle";
 import Layout from "./Layout";
 import ProductsPage from "./pages/products/ProductsPage";
 import ProductDetail from "./pages/productdetail/ProductDetail";
@@ -38,6 +39,7 @@ function App() {
           <Route path="admin" element={<Dashboard />}>
             <Route path="products" element={<AdminProducts />}></Route>
             <Route path="coupons" element={<AdminCoupons />}></Route>
+            <Route path="article" element={<AdminArticle />}></Route>
           </Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>

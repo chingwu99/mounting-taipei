@@ -86,6 +86,13 @@ const Dashboard = () => {
               <i className="bi bi-ticket-perforated-fill me-2" />
               優惠卷列表
             </Link>
+            <Link
+              className="list-group-item list-group-item-action py-3"
+              to="/admin/article"
+            >
+              <i className="bi bi-ticket-perforated-fill me-2" />
+              文章列表
+            </Link>
           </ul>
         </div>
         <div className="w-100">
