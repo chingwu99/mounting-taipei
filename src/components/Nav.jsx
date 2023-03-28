@@ -5,7 +5,7 @@ import { GiMountainRoad } from "react-icons/gi";
 import { FaShoePrints } from "react-icons/fa";
 import { GiConverseShoe } from "react-icons/gi";
 import { CartContext } from "../contexts/cartContext";
-import { BsFillCartFill } from "react-icons/bs";
+import { BsFillCartFill, BsNewspaper } from "react-icons/bs";
 import { LoginContext } from "../contexts/loginContext";
 
 const Nav = () => {
@@ -72,7 +72,7 @@ const Nav = () => {
                   className="nav-link d-flex
        align-items-center "
                 >
-                  <GiConverseShoe className="mx-1 fs-4" />
+                  <BsNewspaper className="mx-1 fs-4" />
                   最新消息
                 </NavLink>
               </li>
