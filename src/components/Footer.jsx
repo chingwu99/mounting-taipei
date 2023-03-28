@@ -40,6 +40,12 @@ const Footer = () => {
                   >
                     <li className="my-2">產品列表</li>
                   </NavLink>
+                  <NavLink
+                    to="/article"
+                    className=" text-black text-decoration-none"
+                  >
+                    <li className="my-2">最新消息</li>
+                  </NavLink>
 
                   {LoginState !== null ? (
                     <NavLink
