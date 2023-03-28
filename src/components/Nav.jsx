@@ -66,6 +66,16 @@ const Nav = () => {
                   產品列表
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/article"
+                  className="nav-link d-flex
+       align-items-center "
+                >
+                  <GiConverseShoe className="mx-1 fs-4" />
+                  最新消息
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>

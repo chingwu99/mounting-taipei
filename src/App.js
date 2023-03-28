@@ -13,6 +13,7 @@ import ProductsPage from "./pages/products/ProductsPage";
 import ProductDetail from "./pages/productdetail/ProductDetail";
 import Cart from "./pages/cart/Cart";
 import Payment from "./pages/payment/Payment";
+import Article from "./pages/article/Article";
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,7 @@ function App() {
           <Route path="mountingroute" element={<Mountingroute />}></Route>
           <Route path="productspage" element={<ProductsPage />}></Route>
           <Route path="product/:id" element={<ProductDetail />}></Route>
+          <Route path="article" element={<Article />}></Route>
           <Route path="cart" element={<Cart />}></Route>
           <Route path="payment/:orderId" element={<Payment />}></Route>
           <Route path="admin" element={<Dashboard />}>
