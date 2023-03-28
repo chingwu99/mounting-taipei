@@ -10542,6 +10542,10 @@ code {
   font-family: "Noto Serif TC", serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 .submit-button-color-reverse {
   color: rgb(95, 90, 83);
   border: solid 1px rgb(95, 90, 83);
@@ -10698,4 +10702,8 @@ code {
 .box-hover:hover {
   background-color: rgb(248, 234, 216);
   cursor: pointer;
+}
+
+.articleDetail-box-width {
+  max-width: 900px;
 }/*# sourceMappingURL=index.css.map */

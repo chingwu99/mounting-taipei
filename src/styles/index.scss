@@ -64,6 +64,10 @@ code {
   font-family: "Noto Serif TC", serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 .submit-button-color-reverse {
   color: rgb(95, 90, 83);
   border: solid 1px rgb(95, 90, 83);
@@ -89,3 +93,4 @@ code {
 @import "../pages/cart/cart";
 @import "../components/loading";
 @import "../pages/article/articlePage";
+@import "../pages/articledetail/articleDetail";

@@ -16,8 +16,8 @@ const AdminArticle = () => {
   const articleModal = useRef(null);
   const deleteModal = useRef(null);
 
-  console.log("77", article);
-  console.log("555", pagination);
+  // console.log("77", article);
+  // console.log("555", pagination);
 
   useEffect(() => {
     articleModal.current = new Modal("#articleModal", {
@@ -36,7 +36,7 @@ const AdminArticle = () => {
       const articleRes = await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/articles?page=${page}`
       );
-      console.log("rrrrr", articleRes);
+      // console.log("rrrrr", articleRes);
 
       setArticle(articleRes.data.articles);
       setPagination(articleRes.data.pagination);
