@@ -5,10 +5,16 @@ import { CartContext } from "../../contexts/cartContext";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { LoadingContext } from "../../contexts/loadingContext";
 import Loading from "../../components/Loading";
+import FrontMessage from "../../components/FrontMessage";
+import {
+  FrontMessageContext,
+  handleSuccessMessage,
+} from "../../contexts/frontMessageContext";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
   const [cartQuantity, setCartQuantity] = useState(1);
+  const [, dispatch] = useContext(FrontMessageContext);
 
   const { id } = useParams();
 
@@ -59,14 +65,14 @@ const ProductDetail = () => {
 
     setLoadingState(true);
     try {
-      // const res =
-      await axios.post(
+      const res = await axios.post(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`,
         data
       );
       // console.log(res);
       setLoadingState(false);
       fetchGetCart();
+      handleSuccessMessage(dispatch, res);
     } catch (error) {
       // console.log(error);
       setLoadingState(false);
@@ -76,6 +82,7 @@ const ProductDetail = () => {
   return (
     <div className=" bg-white">
       <Loading />
+      <FrontMessage />
       <div className=" d-flex justify-content-center ">
         <div className="row  w-75  my-5 ">
           <div className="col-sm-12 col-md-5 d-flex justify-content-center align-items-center">

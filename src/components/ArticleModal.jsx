@@ -23,7 +23,7 @@ const ArticleModal = ({
     content: "",
   });
 
-  console.log("??", tempData);
+  // console.log("??", tempData);
 
   //   const [, dispatch] = useContext(MessageContext);
 
@@ -45,7 +45,7 @@ const ArticleModal = ({
           `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/article/${tempArticle.id}`
         );
         let content = res.data.article.content;
-        console.log("99999", content);
+        // console.log("99999", content);
 
         setTempData({ ...tempArticle, content: content });
       })();
@@ -74,14 +74,15 @@ const ArticleModal = ({
         method = "put";
       }
 
-      const res = await axios[method](api, { data: tempData });
-      console.log(res);
+      // const res =
+      await axios[method](api, { data: tempData });
+      // console.log(res);
       //   handleSuccessMessage(dispatch, res);
       closeArticlesModal();
       getArticles();
     } catch (error) {
       //   handleErrorMessage(dispatch, error);
-      console.log(error);
+      // console.log(error);
     }
   };
 

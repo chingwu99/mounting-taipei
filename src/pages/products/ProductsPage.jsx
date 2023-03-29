@@ -5,6 +5,11 @@ import { CartContext } from "../../contexts/cartContext";
 import Pagination from "../../components/Pagination";
 import Loading from "../../components/Loading";
 import { LoadingContext } from "../../contexts/loadingContext";
+import FrontMessage from "../../components/FrontMessage";
+import {
+  FrontMessageContext,
+  handleSuccessMessage,
+} from "../../contexts/frontMessageContext";
 
 const ProductsPage = () => {
   // const [products, setProducts] = useState([]);
@@ -33,6 +38,7 @@ const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [pagination, setPagination] = useState({});
   const { loadingState, setLoadingState } = useContext(LoadingContext);
+  const [, dispatch] = useContext(FrontMessageContext);
 
   const getProducts = useCallback(
     async (page = 1) => {
@@ -63,14 +69,14 @@ const ProductsPage = () => {
 
     setLoadingState(true);
     try {
-      // const res =
-      await axios.post(
+      const res = await axios.post(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`,
         data
       );
-      // console.log(res);
+      // console.log("res", res);
       setLoadingState(false);
       fetchGetCart();
+      handleSuccessMessage(dispatch, res);
     } catch (error) {
       // console.log(error);
       setLoadingState(false);
@@ -80,6 +86,7 @@ const ProductsPage = () => {
   return (
     <>
       <Loading />
+      <FrontMessage />
       <div className="container">
         <div className="container  mb-5 d-flex justify-content-center align-items-center flex-column">
           <h2 className="text-warning my-5">所有商品</h2>
