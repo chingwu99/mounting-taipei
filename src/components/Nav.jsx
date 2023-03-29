@@ -38,7 +38,7 @@ const Nav = () => {
               <li className="nav-item ">
                 <NavLink
                   to="/"
-                  className="nav-link active d-flex
+                  className="nav-link  d-flex
        align-items-center  "
                   aria-current="page"
                 >

@@ -16,6 +16,16 @@ export const MountingrouteContext = createContext({
   loadMore: true,
   setLoadMore: () => null,
   filterHandler: () => null,
+  buttonActive: {
+    All: true,
+    Beitou: false,
+    Nangang: false,
+    Neihu: false,
+    Shilin: false,
+    Wenshan: false,
+    Xinyi: false,
+  },
+  setButtonActive: () => null,
 });
 
 export const MountingrouteProvider = ({ children }) => {
@@ -28,6 +38,17 @@ export const MountingrouteProvider = ({ children }) => {
   const UNSPLASH_API_URL = "https://api.unsplash.com";
   const UNSPLASH_CLIENT_ID = "9xhNRblwZmuOU8hspEhs38xpj-0CsCe7QEkhGU__W-s";
   const { setLoadingState } = useContext(LoadingContext);
+  const [buttonActive, setButtonActive] = useState({
+    All: true,
+    Beitou: false,
+    Nangang: false,
+    Neihu: false,
+    Shilin: false,
+    Wenshan: false,
+    Xinyi: false,
+  });
+
+  // console.log("buttonActive", buttonActive);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -100,24 +121,87 @@ export const MountingrouteProvider = ({ children }) => {
     switch (buttonValue) {
       case "全步道All":
         setAllData(mountingData.slice(0, 8));
+        setButtonActive({
+          All: true,
+          Beitou: false,
+          Nangang: false,
+          Neihu: false,
+          Shilin: false,
+          Wenshan: false,
+          Xinyi: false,
+        });
         break;
       case "北投Beitou":
         setButtonfilterData(mountingData.filter((i) => i.行政區 === "北投區"));
+        setButtonActive({
+          All: false,
+          Beitou: true,
+          Nangang: false,
+          Neihu: false,
+          Shilin: false,
+          Wenshan: false,
+          Xinyi: false,
+        });
         break;
       case "南港Nangang":
         setButtonfilterData(mountingData.filter((i) => i.行政區 === "南港區"));
+        setButtonActive({
+          All: false,
+          Beitou: false,
+          Nangang: true,
+          Neihu: false,
+          Shilin: false,
+          Wenshan: false,
+          Xinyi: false,
+        });
         break;
       case "內湖Neihu":
         setButtonfilterData(mountingData.filter((i) => i.行政區 === "內湖區"));
+        setButtonActive({
+          All: false,
+          Beitou: false,
+          Nangang: false,
+          Neihu: true,
+          Shilin: false,
+          Wenshan: false,
+          Xinyi: false,
+        });
         break;
       case "士林Shilin":
         setButtonfilterData(mountingData.filter((i) => i.行政區 === "士林區"));
+        setButtonActive({
+          All: false,
+          Beitou: false,
+          Nangang: false,
+          Neihu: false,
+          Shilin: true,
+          Wenshan: false,
+          Xinyi: false,
+        });
         break;
       case "文山Wenshan":
         setButtonfilterData(mountingData.filter((i) => i.行政區 === "文山區"));
+        setButtonActive({
+          All: false,
+          Beitou: false,
+          Nangang: false,
+          Neihu: false,
+          Shilin: false,
+          Wenshan: true,
+          Xinyi: false,
+        });
         break;
       case "信義Xinyi":
         setButtonfilterData(mountingData.filter((i) => i.行政區 === "信義區"));
+        setButtonActive({
+          All: false,
+          Beitou: false,
+          Nangang: false,
+          Neihu: false,
+          Shilin: false,
+          Wenshan: false,
+          Xinyi: true,
+        });
         break;
 
       default:
@@ -139,6 +223,8 @@ export const MountingrouteProvider = ({ children }) => {
     loadMore,
     setLoadMore,
     filterHandler,
+    buttonActive,
+    setButtonActive,
   };
 
   return (

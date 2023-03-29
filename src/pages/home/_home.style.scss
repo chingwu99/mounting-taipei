@@ -7,8 +7,19 @@
   border-radius: 50px;
 
   &:hover {
+    background-color: rgb(232, 155, 104);
+    color: black;
+    cursor: pointer;
+  }
+
+  &:active {
     background-color: wheat;
     color: black;
     cursor: pointer;
   }
+}
+
+.blockhover-mobile {
+  background-color: black;
+  border-radius: 50px;
 }
