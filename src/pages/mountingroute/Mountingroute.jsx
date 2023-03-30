@@ -27,8 +27,12 @@ const Mountingroute = () => {
         <ListCard />
 
         {loadMore === true && (
-          <button onClick={handleLoadMore} className="btn btn-primary my-3 ">
-            加載更多
+          <button
+            onClick={handleLoadMore}
+            className="container  blockhover text-center border border-warning border-top-0 border-bottom-0 py-4 px-4 fs-4 mounting-button-active mt-5"
+            style={{ width: "150px" }}
+          >
+            更多步道
           </button>
         )}
       </div>
