@@ -10630,6 +10630,19 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-title {
+  letter-spacing: 20px;
+}
+@media screen and (max-width: 850px) {
+  .carousel-title {
+    letter-spacing: 15px;
+  }
 }
 
 .miscanthus {
@@ -10654,6 +10667,66 @@ a {
 .blockhover-mobile {
   background-color: black;
   border-radius: 50px;
+}
+
+.home-svg-img {
+  width: 200px;
+  height: 200px;
+  transition: transform 1s ease;
+  cursor: pointer;
+}
+.home-svg-img:hover {
+  transform: translateY(-30px);
+}
+@media screen and (max-width: 850px) {
+  .home-svg-img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.about-decoration {
+  position: relative;
+}
+.about-decoration::before {
+  content: "";
+  width: 50px;
+  height: 1px;
+  background: black;
+  position: absolute;
+  left: -100px;
+  top: 50%;
+}
+.about-decoration::after {
+  content: "";
+  width: 50px;
+  height: 1px;
+  background: black;
+  position: absolute;
+  right: -100px;
+  top: 50%;
+}
+
+.home-shoesimg-container {
+  width: 650px;
+  overflow: hidden;
+}
+@media screen and (max-width: 850px) {
+  .home-shoesimg-container {
+    width: 500px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .home-shoesimg-container {
+    width: 350px;
+  }
+}
+
+.home-shoesimg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .mounting-button-active {

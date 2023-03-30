@@ -11,7 +11,7 @@ const RoutesChoiceMobile = () => {
   }, []);
 
   return (
-    <div className="col-sm-12 col-md-6 mb-3  d-lg-none">
+    <div className="col-sm-12 col-md-6 mb-3  d-xl-none">
       <div
         className="h-100 d-flex   
 justify-content-center
@@ -20,7 +20,7 @@ align-items-center"
         data-aos-duration="3000"
       >
         <div className="text-warning  ">
-          <div className="row row-cols-3    rounded-top-5 border border-warning">
+          <div className="row row-cols-3    rounded-top-5 border border-warning m-3 mb-0">
             <div
               className={`col  d-flex   
 justify-content-center
@@ -58,7 +58,7 @@ align-items-center flex-column  py-5 px-5   fs-5  text-center ${
               北投Beitou
             </div>
           </div>
-          <div className="row row-cols-3  rounded-bottom-5 border border-warning">
+          <div className="row row-cols-3  rounded-bottom-5 border border-warning m-3 mt-0">
             <div
               className={`col  d-flex   
 justify-content-center

@@ -16,7 +16,7 @@ const Mountingroute = () => {
 
   return (
     <div className="container">
-      <div className="container  mb-5 d-flex justify-content-center align-items-center flex-column">
+      <div className="  mb-5 d-flex justify-content-center align-items-center flex-column">
         <h2 className="text-warning mt-5">所有步道</h2>
         <p className=" subtitle-light-text subtitle-light">
           提供您台北最詳細的登山資訊

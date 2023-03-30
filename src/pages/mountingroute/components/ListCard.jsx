@@ -28,7 +28,7 @@ const ListCard = () => {
   };
 
   return (
-    <div className="row  ">
+    <div className="row container ">
       <Loading />
       <MountingrouteModal
         closeMountingrouteModal={closeMountingrouteModal}

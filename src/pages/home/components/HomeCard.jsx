@@ -8,7 +8,7 @@ const HomeCard = ({ img, title, p }) => {
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
           <p className="card-text">{p}</p>
-          <Link to="/mountingroute" className="btn btn-primary  w-100 ">
+          <Link to="/mountingroute" className="btn btn-secondary  w-100 ">
             更多步道
           </Link>
         </div>

@@ -5,7 +5,7 @@ const ButtonGroup = () => {
   const { filterHandler, buttonActive } = useContext(MountingrouteContext);
 
   return (
-    <div className="container my-3 d-flex justify-content-center align-items-center d-none d-lg-block">
+    <div className="container my-3 d-flex justify-content-center align-items-center d-none d-xl-block">
       <div
         className="h-100 d-flex   
     justify-content-center

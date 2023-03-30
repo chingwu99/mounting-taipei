@@ -11,7 +11,8 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="container my-2 d-none d-md-block">
+    // <div className="container my-2 d-none d-md-block">
+    <div className=" d-none d-md-block ">
       <div
         id="carouselExampleCaptions"
         className="carousel slide carousel-height "
@@ -21,7 +22,7 @@ const Carousel = () => {
             type="button"
             data-bs-target="#carouselExampleCaptions"
             data-bs-slide-to="0"
-            className="active"
+            className="active "
             aria-current="true"
             aria-label="Slide 1"
           ></button>
@@ -38,7 +39,8 @@ const Carousel = () => {
             aria-label="Slide 3"
           ></button>
         </div>
-        <div className="carousel-inner rounded-5">
+        {/* <div className="carousel-inner rounded-5"> */}
+        <div className="carousel-inner ">
           <div className="carousel-item active carousel-item-height ">
             <img
               src={Homeimg1}
@@ -46,17 +48,23 @@ const Carousel = () => {
               alt="..."
             />
             <div
-              className="carousel-caption d-none d-md-block"
+              className="carousel-caption d-none d-md-block "
               data-aos="fade-down"
               data-aos-duration="3000"
             >
-              <h2 className="mb-5 pb-2 display-4">
-                爬爬台北 <br />
-                Mounting Taipei
-              </h2>
-              <p className="mb-5 pb-5 ">
-                空出一些空閒的時間 看見臺北不一樣的美
-              </p>
+              <div className="d-flex justify-content-center align-items-center    flex-column ">
+                <p className="fs-5">The</p>
+                <h2 className="mb-4 pb-2 display-1  carousel-title">
+                  MountingTaipei
+                </h2>
+                <p className="mb-5 pb-5 ">
+                  無論你想享受漫步山徑的悠閒氣息、追求登峰造極的極限挑戰
+                  <br />
+                  爬爬台北為你提供全方位的登山資訊與用具
+                  <br />
+                  我們為你打造最適合的登山體驗
+                </p>
+              </div>
             </div>
           </div>
           <div className="carousel-item carousel-item-height ">
@@ -65,12 +73,24 @@ const Carousel = () => {
               className="d-block w-100 carousel-img-height "
               alt="..."
             />
-            <div className="carousel-caption d-none d-md-block">
-              <h2 className="mb-5 pb-2 display-4">
-                爬爬台北 <br />
-                Mounting Taipei
-              </h2>
-              <p className="mb-5 pb-5">逃離車水馬龍水泥陣 穿梭城市山林綠意間</p>
+            <div
+              className="carousel-caption d-none d-md-block "
+              data-aos="fade-down"
+              data-aos-duration="3000"
+            >
+              <div className="d-flex justify-content-center align-items-center    flex-column ">
+                <p className="fs-5 text-warning">The</p>
+                <h2 className="mb-4 pb-2 display-1  carousel-title text-warning">
+                  MountingTaipei
+                </h2>
+                <p className="mb-5 pb-5 text-warning">
+                  無論你想享受漫步山徑的悠閒氣息、追求登峰造極的極限挑戰
+                  <br />
+                  爬爬台北為你提供全方位的登山資訊與用具
+                  <br />
+                  我們為你打造最適合的登山體驗
+                </p>
+              </div>
             </div>
           </div>
           <div className="carousel-item carousel-item-height">
@@ -79,16 +99,28 @@ const Carousel = () => {
               className="d-block w-100 carousel-img-height "
               alt="..."
             />
-            <div className="carousel-caption d-none d-md-block">
-              <h2 className="mb-5 pb-2 display-4">
-                爬爬台北 <br />
-                Mounting Taipei
-              </h2>
-              <p className="mb-5 pb-5 ">暫時放下煩悶心情 擁抱自然療癒身心</p>
+            <div
+              className="carousel-caption d-none d-md-block "
+              data-aos="fade-down"
+              data-aos-duration="3000"
+            >
+              <div className="d-flex justify-content-center align-items-center    flex-column ">
+                <p className="fs-5">The</p>
+                <h2 className="mb-4 pb-2 display-1  carousel-title  ">
+                  MountingTaipei
+                </h2>
+                <p className="mb-5 pb-5 ">
+                  無論你想享受漫步山徑的悠閒氣息、追求登峰造極的極限挑戰
+                  <br />
+                  爬爬台北為你提供全方位的登山資訊與用具
+                  <br />
+                  我們為你打造最適合的登山體驗
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <button
+        {/* <button
           className="carousel-control-prev"
           type="button"
           data-bs-target="#carouselExampleCaptions"
@@ -111,7 +143,7 @@ const Carousel = () => {
             aria-hidden="true"
           ></span>
           <span className="visually-hidden">Next</span>
-        </button>
+        </button> */}
       </div>
     </div>
   );

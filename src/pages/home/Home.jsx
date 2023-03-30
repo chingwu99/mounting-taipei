@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Carousel from "./components/carousel/Carousel";
-import homeimg4 from "../../image/homeimg/homeimg4.jpg";
 import homeimg5 from "../../image/homeimg/homeimg5.jpg";
 import homeimg6 from "../../image/homeimg/homeimg6.jpg";
 import homeimg7 from "../../image/homeimg/homeimg7.jpg";
 import homeimg8 from "../../image/homeimg/homeimg8.jpg";
+import tent from "../../image/homeimg/tent.svg";
+import route from "../../image/homeimg/route.svg";
+import cart from "../../image/homeimg/cart.svg";
+import news from "../../image/homeimg/news.svg";
 import RoutesChoiceLg from "./components/RoutesChoiceLg";
 import RoutesChoiceMobile from "../../components/RoutesChoiceMobile";
 import HomeCard from "./components/HomeCard";
@@ -32,68 +35,73 @@ const Home = () => {
         <p className=" ">空出一些空閒的時間 看見臺北不一樣的美</p>
       </div>
 
-      <div className="container my-md-5">
-        <div className="row">
-          <div
-            className="col-sm-12 col-md-6 mb-3 d-flex justify-content-center align-items-center "
-            data-aos="fade-right"
-            data-aos-duration="2500"
-          >
-            <div className="d-flex justify-content-center align-items-center">
-              <img className="w-100 rounded-5" src={homeimg4} alt="..." />
-            </div>
-          </div>
-          <div
-            className="col-sm-12 col-md-6 mb-3  d-flex  justify-content-center
-            align-items-center"
-            data-aos="fade-left"
-            data-aos-duration="2500"
-          >
-            <div className="text-white">
-              <h3 className="mb-4 text-sm text-center mt-1 d-lg-none">
-                你有多久，沒有踏出戶外了？
-              </h3>
-              <h3 className="mb-4  d-none d-lg-block">
-                你有多久，沒有踏出戶外了？
-              </h3>
-              <p>
-                台北，台灣最繁榮的城市。城市經濟發達，集結許多企業總部的重鎮，也擁有大量的居住人口，生活步調快速緊湊，休閒娛樂蓬勃發展。但你知道嗎？除了這些，台北還擁有許許多多的親山步道，是您在城市間接觸自然，陶冶身心的絕佳之地。爬爬台北提供您完備的台北親山資訊，等著你認識台北山林之美。
-              </p>
-              <Link
-                to="/mountingroute"
-                className="btn btn-primary w-100  mt-3 d-lg-none"
-              >
-                查看路線
-              </Link>
-              <Link
-                to="/mountingroute"
-                className="btn btn-primary w-25  mt-3 d-none d-lg-block"
-              >
-                查看路線
-              </Link>
-            </div>
+      <div className="form-color  ">
+        <div className="d-flex justify-content-center align-items-center  flex-column  ">
+          <h3 className="my-4 about-decoration ">關於我們</h3>
+          <p>在2023年的春天由一群熱愛爬山的夥伴創立</p>
+          <p className="fst-italic">
+            “It is not the mountain we conquer but ourselves.”
+          </p>
+          <p className="fst-italic"> — Edmund Hillary, Mountain Climber</p>
+          <div className="row d-flex g-5 mx-1 mb-5 ">
+            <Link
+              className="col-sm-12 col-md-3 d-flex flex-column  justify-content-center align-items-center "
+              to="/mountingroute"
+              data-aos="fade-down"
+              data-aos-duration="700"
+            >
+              <img src={route} alt="" className="home-svg-img " />
+              <p>步道資訊</p>
+            </Link>
+            <Link
+              className="col-sm-12 col-md-3 d-flex flex-column  justify-content-center align-items-center "
+              to="/productspage"
+              data-aos="fade-down"
+              data-aos-duration="1400"
+            >
+              <img src={tent} alt="" className="home-svg-img " />
+              <p>商品資訊</p>
+            </Link>
+
+            <Link
+              className="col-sm-12 col-md-3 d-flex flex-column  justify-content-center align-items-center "
+              to="/article"
+              data-aos="fade-down"
+              data-aos-duration="2100"
+            >
+              <img src={news} alt="" className="home-svg-img " />
+              <p>最新消息</p>
+            </Link>
+
+            <Link
+              className="col-sm-12 col-md-3 d-flex flex-column  justify-content-center align-items-center "
+              to="/cart"
+              data-aos="fade-down"
+              data-aos-duration="2800"
+            >
+              <img src={cart} alt="" className="home-svg-img " />
+              <p>購物清單</p>
+            </Link>
           </div>
         </div>
       </div>
 
       <div
-        className="container d-flex  justify-content-center
-align-items-center my-5"
+        className=" d-flex  justify-content-center
+align-items-center my-3"
       >
         <div className="row d-flex flex-row-reverse ">
           {/* 行動版*/}
           <RoutesChoiceMobile />
           {/*  桌面版 */}
           <RoutesChoiceLg />
-          <div
-            className=" col-sm-12 col-md-6 mb-3"
-            data-aos="fade-right"
-            data-aos-duration="2500"
-          >
+          <div className=" col-sm-12 col-md-6  text-white">
             <div
               className="h-100  d-flex   
     justify-content-center
-    flex-column text-white"
+    flex-column  mx-4 mx-lg-5 "
+              data-aos="fade-right"
+              data-aos-duration="2500"
             >
               <h3 className="mb-4 text-sm text-center mt-1 d-lg-none">
                 六大區城市步道，
@@ -124,33 +132,35 @@ align-items-center my-5"
       </div>
 
       <div
-        className="container d-flex justify-content-center
-align-items-center my-5"
+        className=" d-flex justify-content-center
+align-items-center bg-warning"
       >
         <div className="row ">
           <div
-            className="  col-sm-12 col-md-6 mb-3 d-flex justify-content-center
+            className="  col-sm-12 col-md-6  d-flex justify-content-center
 align-items-center  "
             data-aos="fade-right"
             data-aos-duration="2500"
           >
             <div
-              className=" w-100 d-flex   
+              className=" home-shoesimg-container d-flex   
     justify-content-center
-    align-items-center"
+    align-items-center m-4"
             >
-              <img className=" w-100 rounded-5" src={homeimg8} alt="..." />
+              <img
+                className=" home-shoesimg rounded-5 m"
+                src={homeimg8}
+                alt="..."
+              />
             </div>
           </div>
-          <div
-            className="  col-sm-12 col-md-6 mb-3"
-            data-aos="fade-left"
-            data-aos-duration="2500"
-          >
+          <div className="  col-sm-12 col-md-6 mb-3 bg-warning">
             <div
-              className="h-100 text-white d-flex   
+              className="h-100  d-flex   
     justify-content-center
-    flex-column"
+    flex-column mx-4 mx-lg-5 my-2 "
+              data-aos="fade-left"
+              data-aos-duration="2500"
             >
               <h3 className="mb-4 text-sm text-center mt-1 d-lg-none">
                 在爬爬台北， <br />
@@ -181,17 +191,21 @@ align-items-center  "
       </div>
 
       <div
-        className="container  mb-5 d-flex justify-content-center
+        className="bg-primary  pb-5 d-flex justify-content-center
 align-items-center flex-column"
       >
         <h2
-          className="text-warning my-3"
+          className="text-white my-3"
           data-aos="fade-down"
           data-aos-duration="3000"
         >
           推薦步道
         </h2>
-        <div className="row" data-aos="fade-up" data-aos-duration="3000">
+        <div
+          className="row container"
+          data-aos="fade-up"
+          data-aos-duration="3000"
+        >
           <HomeCard
             img={homeimg5}
             title="象山步道"
