@@ -10559,10 +10559,62 @@ a {
   overflow: hidden;
 }
 
+.form-color {
+  background-color: rgb(203, 194, 179);
+}
+
 .front-toast {
   width: 350px;
   height: 70px;
   background-color: rgb(195, 232, 187);
+}
+
+.subtitle-dark {
+  position: relative;
+}
+.subtitle-dark::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: #6c757d;
+  position: absolute;
+  left: -25px;
+  top: 50%;
+}
+.subtitle-dark::after {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: #6c757d;
+  position: absolute;
+  right: -25px;
+  top: 50%;
+}
+
+.subtitle-light-text {
+  color: rgb(203, 194, 179);
+}
+
+.subtitle-light {
+  position: relative;
+}
+.subtitle-light::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: rgb(203, 194, 179);
+  position: absolute;
+  left: -25px;
+  top: 50%;
+}
+.subtitle-light::after {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: rgb(203, 194, 179);
+  position: absolute;
+  right: -25px;
+  top: 50%;
 }
 
 .carousel-height {
@@ -10695,10 +10747,6 @@ a {
 }
 
 .productDetail-spirit {
-  background-color: rgb(203, 194, 179);
-}
-
-.form-color {
   background-color: rgb(203, 194, 179);
 }
 

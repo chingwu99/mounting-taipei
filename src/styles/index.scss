@@ -81,11 +81,66 @@ a {
 .layout {
   overflow: hidden;
 }
+.form-color {
+  background-color: rgb(203, 194, 179);
+}
 
 .front-toast {
   width: 350px;
   height: 70px;
   background-color: rgb(195, 232, 187);
+}
+
+.subtitle-dark {
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: $secondary;
+    position: absolute;
+    left: -25px;
+    top: 50%;
+  }
+
+  &::after {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: $secondary;
+    position: absolute;
+    right: -25px;
+    top: 50%;
+  }
+}
+
+.subtitle-light-text {
+  color: rgb(203, 194, 179);
+}
+
+.subtitle-light {
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: rgb(203, 194, 179);
+    position: absolute;
+    left: -25px;
+    top: 50%;
+  }
+
+  &::after {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: rgb(203, 194, 179);
+    position: absolute;
+    right: -25px;
+    top: 50%;
+  }
 }
 
 @import "../pages/home/components/carousel/carousel.style";

@@ -89,7 +89,10 @@ const ProductsPage = () => {
       <FrontMessage />
       <div className="container">
         <div className="container  mb-5 d-flex justify-content-center align-items-center flex-column">
-          <h2 className="text-warning my-5">所有商品</h2>
+          <h2 className="text-warning mt-5">所有商品</h2>
+          <p className=" subtitle-light-text subtitle-light">
+            所有商品皆符合無毒檢測，守護您的健康
+          </p>
 
           <div className="row  w-100">
             {products.map((product) => {

@@ -27,7 +27,7 @@ const FrontMessage = () => {
                   </div>
 
                   <div className="fs-5 w-75 d-flex justify-content-center align-items-center">
-                    商品{message.text}
+                    {message.text}
                   </div>
                 </div>
                 <div className=" w-25 d-flex justify-content-end  align-items-top  h-100 ">

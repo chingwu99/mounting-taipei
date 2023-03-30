@@ -9,6 +9,11 @@ import PaymentListLg from "./components/PaymentListLg";
 import PaymentListMobile from "./components/PaymentListMobile";
 import { LoadingContext } from "../../contexts/loadingContext";
 import Loading from "../../components/Loading";
+import FrontMessage from "../../components/FrontMessage";
+import {
+  FrontMessageContext,
+  handleSuccessMessage,
+} from "../../contexts/frontMessageContext";
 
 const Payment = () => {
   const { orderId } = useParams();
@@ -20,6 +25,7 @@ const Payment = () => {
     address: "",
     is_paid: "",
   });
+  const [, dispatch] = useContext(FrontMessageContext);
 
   const { fetchGetCart } = useContext(CartContext);
   const { setLoadingState } = useContext(LoadingContext);
@@ -77,19 +83,20 @@ const Payment = () => {
 
   const paySubmit = async () => {
     setLoadingState(true);
-    // const res =
-    await axios.post(
+    const res = await axios.post(
       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/pay/${orderId} `
     );
     // console.log("付款完成了嗎", res);
 
     getPaymentCart(orderId);
     setLoadingState(false);
+    handleSuccessMessage(dispatch, res);
   };
 
   return (
     <div className="bg-white d-flex justify-content-center align-items-center flex-column">
       <Loading />
+      <FrontMessage />
       <Progressbar
         progresslength={orderUser.is_paid ? "100%" : "50%"}
         stationOne="btn-primary "

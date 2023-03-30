@@ -55,7 +55,9 @@ const Article = () => {
       <div className="bg-white">
         <div className="container">
           <div className="  mb-5 d-flex justify-content-center align-items-center flex-column">
-            <h2 className="text-primary my-5">最新消息</h2>
+            <h2 className="text-primary mt-5 ">最新消息</h2>
+
+            <p className=" text-secondary-emphasis subtitle-dark">爬爬新聞</p>
 
             <div className="row  w-100">
               {articles.map((articles) => {
