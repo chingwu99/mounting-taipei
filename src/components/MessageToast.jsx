@@ -13,31 +13,13 @@ const MessageToast = () => {
       >
         {messages?.map((msg) => {
           return (
-            // <div
-            //   className="toast show"
-            //   role="alert"
-            //   aria-live="assertive"
-            //   aria-atomic="true"
-            //   data-delay="3000"
-            //   key={msg.id}
-            // >
-            //   <div className={`toast-header text-white bg-${msg.type}`}>
-            //     <strong className="me-auto">{msg.title}</strong>
-            //     <button
-            //       type="button"
-            //       className="btn-close"
-            //       data-bs-dismiss="toast"
-            //       aria-label="Close"
-            //     />
-            //   </div>
-            //   <div className="toast-body">{msg.text}</div>
-            // </div>
             <div
               className="toast show "
               role="alert"
               aria-live="assertive"
               aria-atomic="true"
               data-delay="3000"
+              key={msg.id}
             >
               <div
                 className="front-toast d-flex rounded"

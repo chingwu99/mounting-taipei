@@ -1,10 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-// import {
-//   MessageContext,
-//   handleSuccessMessage,
-//   handleErrorMessage,
-// } from "../contexts/messageContext";
+import { useContext, useEffect, useState } from "react";
+import {
+  MessageContext,
+  handleSuccessMessage,
+  handleErrorMessage,
+} from "../contexts/messageContext";
 
 const ArticleModal = ({
   closeArticlesModal,
@@ -16,16 +16,26 @@ const ArticleModal = ({
     title: "",
     description: "",
     imageUrl: "",
-    tag: [""],
-    create_at: 1555459220,
+    tag: [],
+    create_at: null,
     author: "",
     isPublic: false,
     content: "",
   });
 
+  const [tag, setTag] = useState("");
+  const [tagArr, setTagArr] = useState([]);
+
+  useEffect(() => {
+    setTempData((prevState) => ({ ...prevState, tag: tagArr }));
+  }, [tagArr]);
+
+  // console.log("tag", tag);
+  // console.log("tagArr", tagArr);
+
   // console.log("??", tempData);
 
-  //   const [, dispatch] = useContext(MessageContext);
+  const [, dispatch] = useContext(MessageContext);
 
   useEffect(() => {
     if (type === "create") {
@@ -33,12 +43,13 @@ const ArticleModal = ({
         title: "",
         description: "",
         imageUrl: "",
-        tag: [""],
-        create_at: 1555459220,
+        tag: [],
+        create_at: new Date().getTime(),
         author: "",
         isPublic: false,
         content: "",
       });
+      setTagArr([]);
     } else if (type === "edit") {
       (async () => {
         const res = await axios.get(
@@ -46,8 +57,12 @@ const ArticleModal = ({
         );
         let content = res.data.article.content;
         // console.log("99999", content);
+        // console.log("QQQ", res.data);
+        let tag = res.data.article.tag;
+        // console.log("ttt", tag);
 
         setTempData({ ...tempArticle, content: content });
+        setTagArr(tag);
       })();
     }
   }, [type, tempArticle]);
@@ -55,11 +70,10 @@ const ArticleModal = ({
   const handleChange = (e) => {
     // console.log(e);
     const { value, name } = e.target;
+    // console.log("tagArr", tagArr);
 
     if (name === "isPublic") {
       setTempData({ ...tempData, [name]: e.target.checked });
-    } else if (name === "tag") {
-      setTempData({ ...tempData, [name]: [value] });
     } else {
       setTempData({ ...tempData, [name]: value });
     }
@@ -74,14 +88,19 @@ const ArticleModal = ({
         method = "put";
       }
 
-      // const res =
-      await axios[method](api, { data: tempData });
-      // console.log(res);
-      //   handleSuccessMessage(dispatch, res);
-      closeArticlesModal();
-      getArticles();
+      if (Array.isArray(tempData.tag) && tempData.tag.length >= 1) {
+        const res = await axios[method](api, { data: tempData });
+        // console.log(res);
+        handleSuccessMessage(dispatch, res);
+        closeArticlesModal();
+        getArticles();
+        setTagArr([]);
+        setTag("");
+      } else {
+        alert("請填寫標籤");
+      }
     } catch (error) {
-      //   handleErrorMessage(dispatch, error);
+      handleErrorMessage(dispatch, error);
       // console.log(error);
     }
   };
@@ -98,7 +117,7 @@ const ArticleModal = ({
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              {type === "create" ? "建立新商品" : `編輯${tempData.title}`}
+              {type === "create" ? "建立新文章" : `編輯${tempData.title}`}
             </h1>
             <button
               type="button"
@@ -151,36 +170,62 @@ const ArticleModal = ({
                     />
                   </label>
                 </div>
-                <div className="row">
+                <div className="row d-flex ">
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="tag">
-                      標籤
+                      標籤{`(必填)`}
                       <input
                         type="text"
                         id="tag"
                         name="tag"
                         placeholder="請輸入標籤"
                         className="form-control"
-                        onChange={handleChange}
-                        value={tempData.tag[0]}
+                        onChange={(e) => {
+                          setTag(e.target.value);
+                        }}
+                        value={tag}
                       />
                     </label>
                   </div>
-                  {/* <div className="form-group mb-2 col-md-6">
-                    <label className="w-100" htmlFor="unit">
-                      時間
-                      <input
-                        type="unit"
-                        id="unit"
-                        name="unit"
-                        placeholder="請輸入單位"
-                        className="form-control"
-                        // onChange={handleChange}
-                        // value={tempData.unit}
-                      />
-                    </label>
-                  </div> */}
+                  <div className="form-group mb-2 col-md-6 m-auto ">
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => {
+                        setTagArr([
+                          ...tagArr,
+                          { id: new Date().getTime(), tag: tag },
+                        ]);
+                        setTag("");
+                      }}
+                    >
+                      新增標籤
+                    </button>
+                  </div>
                 </div>
+
+                {tagArr?.map((tagItem) => {
+                  return (
+                    <div key={tagItem?.id} className="row d-flex">
+                      <div className="form-group mb-2 col-md-6">
+                        <p>{tagItem.tag}</p>
+                      </div>
+                      <div className="form-group mb-2 col-md-6">
+                        {tagArr?.length > 1 ? (
+                          <button
+                            onClick={() => {
+                              setTagArr(
+                                tagArr.filter((i) => i?.id !== tagItem?.id)
+                              );
+                            }}
+                          >
+                            刪除
+                          </button>
+                        ) : null}
+                      </div>
+                    </div>
+                  );
+                })}
+
                 <div className="row">
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="author">

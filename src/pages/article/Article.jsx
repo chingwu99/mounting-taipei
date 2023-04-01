@@ -83,10 +83,17 @@ const Article = () => {
                               <p className="card-text fst-italic">
                                 {articles.description}
                               </p>
-                              <p className="card-text  ">
-                                <small className="text-body-secondary bg-warning rounded-pill tag">
-                                  {articles.tag[0]}
-                                </small>
+                              <p className="card-text  d-flex flex-wrap">
+                                {articles?.tag?.map((i) => {
+                                  return (
+                                    <small
+                                      className="text-body-secondary bg-warning rounded-pill tag me-2 mt-1 "
+                                      key={i.id}
+                                    >
+                                      {i.tag}
+                                    </small>
+                                  );
+                                })}
                               </p>
                             </div>
                           </div>

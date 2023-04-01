@@ -49,18 +49,24 @@ const ArticleDetail = () => {
                 <div className="text-secondary-emphasis">{article.title}</div>
               </div>
             </div>
-            <div>
+            <div className="mb-3">
               <div>
                 <h1 className="fs-2 mt-3">{article.title}</h1>
                 <p className="text-secondary-emphasis">
                   <BsFillPencilFill />
                   {article.author}
                 </p>
-                <p>
-                  <small className=" bg-warning rounded-pill tag">
-                    {article.tag?.[0]}
-                  </small>
-                </p>
+
+                {article?.tag?.map((i) => {
+                  return (
+                    <small
+                      className=" bg-warning rounded-pill tag me-2 p-1"
+                      key={i.id}
+                    >
+                      {i.tag}
+                    </small>
+                  );
+                })}
               </div>
             </div>
             <div>
