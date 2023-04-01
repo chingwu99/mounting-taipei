@@ -53,11 +53,11 @@ const Carousel = () => {
               data-aos-duration="3000"
             >
               <div className="d-flex justify-content-center align-items-center    flex-column ">
-                <p className="fs-5">The</p>
+                <p className="fs-5 fst-italic">The</p>
                 <h2 className="mb-4 pb-2 display-1  carousel-title">
                   MountingTaipei
                 </h2>
-                <p className="mb-5 pb-5 ">
+                <p className="mb-5 pb-5 fst-italic">
                   無論你想享受漫步山徑的悠閒氣息、追求登峰造極的極限挑戰
                   <br />
                   爬爬台北為你提供全方位的登山資訊與用具
@@ -79,11 +79,11 @@ const Carousel = () => {
               data-aos-duration="3000"
             >
               <div className="d-flex justify-content-center align-items-center    flex-column ">
-                <p className="fs-5 text-warning">The</p>
+                <p className="fs-5 text-warning fst-italic">The</p>
                 <h2 className="mb-4 pb-2 display-1  carousel-title text-warning">
                   MountingTaipei
                 </h2>
-                <p className="mb-5 pb-5 text-warning">
+                <p className="mb-5 pb-5 text-warning fst-italic">
                   無論你想享受漫步山徑的悠閒氣息、追求登峰造極的極限挑戰
                   <br />
                   爬爬台北為你提供全方位的登山資訊與用具
@@ -105,11 +105,11 @@ const Carousel = () => {
               data-aos-duration="3000"
             >
               <div className="d-flex justify-content-center align-items-center    flex-column ">
-                <p className="fs-5">The</p>
+                <p className="fs-5 fst-italic">The</p>
                 <h2 className="mb-4 pb-2 display-1  carousel-title  ">
                   MountingTaipei
                 </h2>
-                <p className="mb-5 pb-5 ">
+                <p className="mb-5 pb-5 fst-italic">
                   無論你想享受漫步山徑的悠閒氣息、追求登峰造極的極限挑戰
                   <br />
                   爬爬台北為你提供全方位的登山資訊與用具

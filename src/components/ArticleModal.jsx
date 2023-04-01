@@ -140,7 +140,7 @@ const ArticleModal = ({
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              {type === "create" ? "建立新文章" : `編輯${tempData.title}`}
+              {type === "create" ? "建立新文章" : `編輯「${tempData.title}」`}
             </h1>
             <button
               type="button"
@@ -225,16 +225,17 @@ const ArticleModal = ({
                     </button>
                   </div>
                 </div>
-
+                已加入標籤:
                 {tagArr?.map((tagItem) => {
                   return (
-                    <div key={tagItem?.id} className="row d-flex">
-                      <div className="form-group mb-2 col-md-6">
-                        <p>{tagItem.tag}</p>
+                    <div key={tagItem?.id} className="row d-flex ">
+                      <div className="form-group mb-2 col-md-6 border-bottom">
+                        <p className="mt-3">{tagItem.tag}</p>
                       </div>
                       <div className="form-group mb-2 col-md-6">
                         {tagArr?.length > 1 ? (
                           <button
+                            className="mt-3"
                             onClick={() => {
                               setTagArr(
                                 tagArr.filter((i) => i?.id !== tagItem?.id)
@@ -248,7 +249,6 @@ const ArticleModal = ({
                     </div>
                   );
                 })}
-
                 <div className="row">
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="author">

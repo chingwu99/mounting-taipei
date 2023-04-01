@@ -89,7 +89,7 @@ const ProductModal = ({
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              {type === "create" ? "建立新商品" : `編輯${tempData.title}`}
+              {type === "create" ? "建立新商品" : `編輯「${tempData.title}」`}
             </h1>
             <button
               type="button"
