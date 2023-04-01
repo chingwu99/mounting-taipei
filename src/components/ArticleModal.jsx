@@ -83,25 +83,48 @@ const ArticleModal = ({
     try {
       let api = `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/article`;
       let method = "post";
-      if (type === "edit") {
-        api = `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/article/${tempArticle.id}`;
-        method = "put";
+
+      switch (type) {
+        case "edit":
+          api = `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/article/${tempArticle.id}`;
+          method = "put";
+          break;
+        default:
+          break;
       }
 
-      if (Array.isArray(tempData.tag) && tempData.tag.length >= 1) {
-        const res = await axios[method](api, { data: tempData });
-        // console.log(res);
-        handleSuccessMessage(dispatch, res);
-        closeArticlesModal();
-        getArticles();
-        setTagArr([]);
-        setTag("");
-      } else {
-        alert("請填寫標籤");
+      switch (true) {
+        case !tempData.title:
+          alert("標題不得為空");
+          return;
+        case !Array.isArray(tempData.tag) || tempData.tag.length < 1:
+          alert("標籤不得為空");
+          return;
+        case !tempData.author:
+          alert("作者不得為空");
+          return;
+        case !tempData.description:
+          alert("文章簡介不得為空");
+          return;
+        case !tempData.content:
+          alert("內文不得為空");
+          return;
+        case !tempData.imageUrl:
+          alert("圖片網址不得為空");
+          return;
+
+        default:
+          break;
       }
+
+      const res = await axios[method](api, { data: tempData });
+      handleSuccessMessage(dispatch, res);
+      closeArticlesModal();
+      getArticles();
+      setTagArr([]);
+      setTag("");
     } catch (error) {
       handleErrorMessage(dispatch, error);
-      // console.log(error);
     }
   };
 
@@ -131,7 +154,7 @@ const ArticleModal = ({
               <div className="col-sm-4">
                 <div className="form-group mb-2">
                   <label className="w-100" htmlFor="imageUrl">
-                    輸入圖片網址
+                    <small className="text-danger">*</small>輸入圖片網址
                     <input
                       type="text"
                       name="imageUrl"
@@ -158,7 +181,7 @@ const ArticleModal = ({
               <div className="col-sm-8">
                 <div className="form-group mb-2">
                   <label className="w-100" htmlFor="title">
-                    標題
+                    <small className="text-danger">*</small>標題
                     <input
                       type="text"
                       id="title"
@@ -173,7 +196,7 @@ const ArticleModal = ({
                 <div className="row d-flex ">
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="tag">
-                      標籤{`(必填)`}
+                      <small className="text-danger">*</small>標籤
                       <input
                         type="text"
                         id="tag"
@@ -229,7 +252,7 @@ const ArticleModal = ({
                 <div className="row">
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="author">
-                      作者
+                      <small className="text-danger">*</small>作者
                       <input
                         type="text"
                         id="author"
@@ -245,7 +268,7 @@ const ArticleModal = ({
                 <hr />
                 <div className="form-group mb-2">
                   <label className="w-100" htmlFor="description">
-                    文章簡介
+                    <small className="text-danger">*</small>文章簡介
                     <textarea
                       type="text"
                       id="description"
@@ -259,7 +282,7 @@ const ArticleModal = ({
                 </div>
                 <div className="form-group mb-2">
                   <label className="w-100" htmlFor="content">
-                    內文(必填)
+                    <small className="text-danger">*</small>內文
                     <textarea
                       type="text"
                       id="content"

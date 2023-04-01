@@ -87,7 +87,7 @@ const Article = () => {
                                 {articles?.tag?.map((i) => {
                                   return (
                                     <small
-                                      className="text-body-secondary bg-warning rounded-pill tag me-2 mt-1 "
+                                      className="text-body-secondary bg-warning rounded-pill tag me-2 mt-1 p-1 "
                                       key={i.id}
                                     >
                                       {i.tag}
