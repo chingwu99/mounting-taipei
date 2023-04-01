@@ -5,16 +5,13 @@ import { CartContext } from "../../contexts/cartContext";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { LoadingContext } from "../../contexts/loadingContext";
 import Loading from "../../components/Loading";
-import FrontMessage from "../../components/FrontMessage";
-import {
-  FrontMessageContext,
-  handleSuccessMessage,
-} from "../../contexts/frontMessageContext";
+import { useDispatch } from "react-redux";
+import { createAsyncMessage } from "../../slice/messageSlice";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
   const [cartQuantity, setCartQuantity] = useState(1);
-  const [, dispatch] = useContext(FrontMessageContext);
+  const dispatch = useDispatch();
 
   const { id } = useParams();
 
@@ -69,12 +66,14 @@ const ProductDetail = () => {
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`,
         data
       );
-      // console.log(res);
+      console.log(res);
       setLoadingState(false);
       fetchGetCart();
-      handleSuccessMessage(dispatch, res);
+      // handleSuccessMessage(dispatch, res);
+      dispatch(createAsyncMessage(res.data));
     } catch (error) {
       // console.log(error);
+      dispatch(createAsyncMessage(error.response.data));
       setLoadingState(false);
     }
   };
@@ -82,7 +81,6 @@ const ProductDetail = () => {
   return (
     <div className=" bg-white">
       <Loading />
-      <FrontMessage />
       <div className=" d-flex justify-content-center ">
         <div className="row  w-75  my-5 ">
           <div className="col-sm-12 col-md-5 d-flex justify-content-center align-items-center">
@@ -113,11 +111,7 @@ const ProductDetail = () => {
                 <p className="my-4">{product.description}</p>
                 <p className="my-4">{product.content}</p>
               </div>
-              {/* 
-              num
-              category
-              is_enabled
-              unit */}
+
               <div className="d-flex ">
                 <p className="text-danger fs-3 ">${product.price}</p>
                 <p className="text-muted text-decoration-line-through ">

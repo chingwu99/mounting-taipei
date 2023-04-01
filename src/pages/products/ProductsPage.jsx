@@ -5,11 +5,8 @@ import { CartContext } from "../../contexts/cartContext";
 import Pagination from "../../components/Pagination";
 import Loading from "../../components/Loading";
 import { LoadingContext } from "../../contexts/loadingContext";
-import FrontMessage from "../../components/FrontMessage";
-import {
-  FrontMessageContext,
-  handleSuccessMessage,
-} from "../../contexts/frontMessageContext";
+import { useDispatch } from "react-redux";
+import { createAsyncMessage } from "../../slice/messageSlice";
 
 const ProductsPage = () => {
   // const [products, setProducts] = useState([]);
@@ -38,7 +35,7 @@ const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [pagination, setPagination] = useState({});
   const { loadingState, setLoadingState } = useContext(LoadingContext);
-  const [, dispatch] = useContext(FrontMessageContext);
+  const dispatch = useDispatch();
 
   const getProducts = useCallback(
     async (page = 1) => {
@@ -76,17 +73,19 @@ const ProductsPage = () => {
       // console.log("res", res);
       setLoadingState(false);
       fetchGetCart();
-      handleSuccessMessage(dispatch, res);
+      dispatch(createAsyncMessage(res.data));
+      // handleSuccessMessage(dispatch, res);
     } catch (error) {
       // console.log(error);
+
       setLoadingState(false);
+      dispatch(createAsyncMessage(error.response.data));
     }
   };
 
   return (
     <>
       <Loading />
-      <FrontMessage />
       <div className="container">
         <div className="container  mb-5 d-flex justify-content-center align-items-center flex-column">
           <h2 className="text-warning mt-5">所有商品</h2>

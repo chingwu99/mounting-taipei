@@ -14,6 +14,7 @@ import news from "../../image/homeimg/news.svg";
 import RoutesChoiceLg from "./components/RoutesChoiceLg";
 import RoutesChoiceMobile from "../../components/RoutesChoiceMobile";
 import HomeCard from "./components/HomeCard";
+import { WiStars } from "react-icons/wi";
 
 const Home = () => {
   useEffect(() => {
@@ -133,7 +134,7 @@ align-items-center my-3"
 
       <div
         className=" d-flex justify-content-center
-align-items-center bg-warning"
+align-items-center "
       >
         <div className="row ">
           <div
@@ -154,11 +155,11 @@ align-items-center  "
               />
             </div>
           </div>
-          <div className="  col-sm-12 col-md-6 mb-3 bg-warning">
+          <div className="  col-sm-12 col-md-6 mb-3 ">
             <div
               className="h-100  d-flex   
     justify-content-center
-    flex-column mx-4 mx-lg-5 my-2 "
+    flex-column mx-4 mx-lg-5 my-2 text-white"
               data-aos="fade-left"
               data-aos-duration="2500"
             >
@@ -191,15 +192,17 @@ align-items-center  "
       </div>
 
       <div
-        className="bg-primary  pb-5 d-flex justify-content-center
-align-items-center flex-column"
+        className=" pb-5 d-flex justify-content-center
+align-items-center flex-column "
       >
         <h2
-          className="text-white my-3"
+          className="text-warning my-3"
           data-aos="fade-down"
           data-aos-duration="3000"
         >
+          <WiStars />
           推薦步道
+          <WiStars />
         </h2>
         <div
           className="row container"

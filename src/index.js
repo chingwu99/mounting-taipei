@@ -9,7 +9,8 @@ import reportWebVitals from "./reportWebVitals";
 import { MountingrouteProvider } from "./contexts/mountingrouteContext";
 import { CartProvider } from "./contexts/cartContext";
 import { LoadingProvider } from "./contexts/loadingContext";
-import { FrontMessageProvider } from "./contexts/frontMessageContext";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 axios.defaults.baseURL = process.env.REACT_APP_SHOPAPI_URL;
 
@@ -19,8 +20,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <LoadingProvider>
-        <FrontMessageProvider>
+      <Provider store={store}>
+        <LoadingProvider>
           <LoginProvider>
             <CartProvider>
               <MountingrouteProvider>
@@ -28,8 +29,8 @@ root.render(
               </MountingrouteProvider>
             </CartProvider>
           </LoginProvider>
-        </FrontMessageProvider>
-      </LoadingProvider>
+        </LoadingProvider>
+      </Provider>
     </HashRouter>
   </React.StrictMode>
 );
