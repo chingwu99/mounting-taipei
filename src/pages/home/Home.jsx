@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Carousel from "./components/carousel/Carousel";
 import homeimg5 from "../../image/homeimg/homeimg5.jpg";
 import homeimg6 from "../../image/homeimg/homeimg6.jpg";
 import homeimg7 from "../../image/homeimg/homeimg7.jpg";
@@ -15,6 +14,7 @@ import RoutesChoiceLg from "./components/RoutesChoiceLg";
 import RoutesChoiceMobile from "../../components/RoutesChoiceMobile";
 import HomeCard from "./components/HomeCard";
 import { WiStars } from "react-icons/wi";
+import HomeSwiper from "./components/HomeSwiper";
 
 const Home = () => {
   useEffect(() => {
@@ -23,18 +23,7 @@ const Home = () => {
 
   return (
     <>
-      <Carousel />
-      <div
-        className="d-flex justify-content-center align-items-center   flex-column text-warning d-md-none mb-3"
-        data-aos="fade-down"
-        data-aos-duration="2500"
-      >
-        <h2 className=" display-4 my-4 text-center">
-          爬爬台北 <br />
-          Mounting Taipei
-        </h2>
-        <p className=" ">空出一些空閒的時間 看見臺北不一樣的美</p>
-      </div>
+      <HomeSwiper />
 
       <div className="form-color  ">
         <div className="d-flex justify-content-center align-items-center  flex-column  ">

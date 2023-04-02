@@ -34,7 +34,7 @@
 @import "../../node_modules/bootstrap/scss/modal";
 // @import "../../node_modules/bootstrap/scss/tooltip";
 // @import "../../node_modules/bootstrap/scss/popover";
-@import "../../node_modules/bootstrap/scss/carousel";
+// @import "../../node_modules/bootstrap/scss/carousel";
 // @import "../../node_modules/bootstrap/scss/spinners";
 // @import "../../node_modules/bootstrap/scss/offcanvas";
 // @import "../../node_modules/bootstrap/scss/placeholders";
@@ -142,7 +142,6 @@ a {
   }
 }
 
-@import "../pages/home/components/carousel/carousel.style";
 @import "../pages/home/home.style";
 @import "../pages/mountingroute/mountingroute";
 @import "../components/mountingrouteModal.style";
@@ -154,3 +153,4 @@ a {
 @import "../components/loading";
 @import "../pages/article/articlePage";
 @import "../pages/articledetail/articleDetail";
+@import "../pages/home/components/homeSwiper.style";
