@@ -5,6 +5,7 @@ import {
   handleSuccessMessage,
   handleErrorMessage,
 } from "../contexts/messageContext";
+import Swal from "sweetalert2";
 
 const ProductModal = ({
   closeProductModal,
@@ -31,7 +32,7 @@ const ProductModal = ({
       setTempData({
         title: "",
         category: "",
-        origin_price: 100,
+        origin_price: 1000,
         price: 300,
         unit: "",
         description: "",
@@ -65,6 +66,62 @@ const ProductModal = ({
         api = `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/product/${tempProduct.id}`;
         method = "put";
       }
+
+      switch (true) {
+        case !tempData.title:
+          Swal.fire({
+            icon: "warning",
+            title: "標題不得為空",
+          });
+          return;
+
+        case !tempData.category:
+          Swal.fire({
+            icon: "warning",
+            title: "分類不得為空",
+          });
+          return;
+        case !tempData.unit:
+          Swal.fire({
+            icon: "warning",
+            title: "單位不得為空",
+          });
+          return;
+        case !tempData.origin_price:
+          Swal.fire({
+            icon: "warning",
+            title: "原價不得為空",
+          });
+          return;
+        case !tempData.price:
+          Swal.fire({
+            icon: "warning",
+            title: "售價不得為空",
+          });
+          return;
+        case !tempData.description:
+          Swal.fire({
+            icon: "warning",
+            title: "產品描述不得為空",
+          });
+          return;
+        case !tempData.content:
+          Swal.fire({
+            icon: "warning",
+            title: "說明內容不得為空",
+          });
+          return;
+        case !tempData.imageUrl:
+          Swal.fire({
+            icon: "warning",
+            title: "圖片網址不得為空",
+          });
+          return;
+
+        default:
+          break;
+      }
+
       const res = await axios[method](api, { data: tempData });
       // console.log(res);
 
@@ -115,7 +172,7 @@ const ProductModal = ({
                     />
                   </label>
                 </div>
-                <div className="form-group mb-2">
+                {/* <div className="form-group mb-2">
                   <label className="w-100" htmlFor="customFile">
                     或 上傳圖片
                     <input
@@ -125,7 +182,7 @@ const ProductModal = ({
                     />
                   </label>
                 </div>
-                <img src="" alt="" className="img-fluid" />
+                <img src="" alt="" className="img-fluid" /> */}
               </div>
               <div className="col-sm-8">
                 <div className="form-group mb-2">

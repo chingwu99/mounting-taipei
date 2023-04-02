@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Pagination from "../../components/Pagination";
-import Loading from "../../components/Loading";
 import { LoadingContext } from "../../contexts/loadingContext";
 import { Link } from "react-router-dom";
 import { BsFillPencilFill } from "react-icons/bs";
@@ -51,7 +50,6 @@ const Article = () => {
 
   return (
     <>
-      <Loading />
       <div className="bg-white">
         <div className="container">
           <div className="  mb-5 d-flex justify-content-center align-items-center flex-column">

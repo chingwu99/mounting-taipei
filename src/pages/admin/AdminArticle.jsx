@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 import ArticleModal from "../../components/ArticleModal";
 import { Modal } from "bootstrap";
 import DeleteModal from "../../components/DeleteModal";
 import Pagination from "../../components/Pagination";
+import { LoadingContext } from "../../contexts/loadingContext";
 
 const AdminArticle = () => {
   const [article, setArticle] = useState([]);
@@ -16,8 +17,25 @@ const AdminArticle = () => {
   const articleModal = useRef(null);
   const deleteModal = useRef(null);
 
+  const { setLoadingState } = useContext(LoadingContext);
+
   // console.log("77", article);
   // console.log("555", pagination);
+
+  const getArticles = useCallback(
+    async (page = 1) => {
+      setLoadingState(true);
+      const articleRes = await axios.get(
+        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/articles?page=${page}`
+      );
+      // console.log("rrrrr", articleRes);
+
+      setArticle(articleRes.data.articles);
+      setPagination(articleRes.data.pagination);
+      setLoadingState(false);
+    },
+    [setArticle, setPagination, setLoadingState]
+  );
 
   useEffect(() => {
     articleModal.current = new Modal("#articleModal", {
@@ -29,19 +47,7 @@ const AdminArticle = () => {
     });
 
     getArticles();
-  }, []);
-
-  const getArticles = async (page = 1) => {
-    (async () => {
-      const articleRes = await axios.get(
-        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/articles?page=${page}`
-      );
-      // console.log("rrrrr", articleRes);
-
-      setArticle(articleRes.data.articles);
-      setPagination(articleRes.data.pagination);
-    })();
-  };
+  }, [getArticles]);
 
   const openArticlesModal = (type, tempArticle) => {
     setType(type);

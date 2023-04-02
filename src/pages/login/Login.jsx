@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { LoadingContext } from "../../contexts/loadingContext";
-import Loading from "../../components/Loading";
 
 const Login = () => {
   const [data, setData] = useState({ username: "", password: "" });
@@ -49,7 +48,6 @@ const Login = () => {
 
   return (
     <div className=" py-5 d-flex justify-content-center align-items-center  mx-auto my-auto vh-100 ">
-      <Loading />
       <div
         className="login-form-background "
         data-aos="fade-down"

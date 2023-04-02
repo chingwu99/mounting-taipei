@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { CartContext } from "../../../contexts/cartContext";
-import Loading from "../../../components/Loading";
 
 const CartListMobile = () => {
   const {
@@ -20,7 +19,6 @@ const CartListMobile = () => {
 
   return (
     <div className="container  d-md-none">
-      <Loading />
       <div>
         <div className="mb-3">
           <h2>待購清單</h2>
@@ -118,7 +116,7 @@ const CartListMobile = () => {
               </button>
             </div>
           </div>
-          <p className="text-secondary fs-6">輸入testCode享八折優惠！</p>
+          <p className="text-secondary fs-6">輸入mounting享八折優惠！</p>
         </div>
       </div>
     </div>

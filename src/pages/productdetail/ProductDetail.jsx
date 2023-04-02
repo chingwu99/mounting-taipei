@@ -4,7 +4,6 @@ import { useParams, Link } from "react-router-dom";
 import { CartContext } from "../../contexts/cartContext";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { LoadingContext } from "../../contexts/loadingContext";
-import Loading from "../../components/Loading";
 import { useDispatch } from "react-redux";
 import { createAsyncMessage } from "../../slice/messageSlice";
 
@@ -80,7 +79,6 @@ const ProductDetail = () => {
 
   return (
     <div className=" bg-white">
-      <Loading />
       <div className=" d-flex justify-content-center ">
         <div className="row  w-75  my-5 ">
           <div className="col-sm-12 col-md-5 d-flex justify-content-center align-items-center">

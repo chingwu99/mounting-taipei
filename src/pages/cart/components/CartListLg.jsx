@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import Loading from "../../../components/Loading";
 import { CartContext } from "../../../contexts/cartContext";
 const CartListLg = () => {
   const {
@@ -19,7 +18,6 @@ const CartListLg = () => {
 
   return (
     <div className="container d-none d-md-block">
-      <Loading />
       <div>
         <div className="mb-3">
           <h2>待購清單</h2>
@@ -109,7 +107,7 @@ const CartListLg = () => {
               </button>
             </div>
 
-            <p className="text-secondary">輸入testCode享八折優惠！</p>
+            <p className="text-secondary">輸入mounting享八折優惠！</p>
           </div>
           <div className=" d-flex">
             {cartData.final_total === cartData.total ? (

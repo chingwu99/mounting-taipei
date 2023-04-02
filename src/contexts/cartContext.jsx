@@ -127,6 +127,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const submitCoupon = async (couponData) => {
+    setLoadingState(true);
     try {
       const res = await axios.post(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/coupon`,
@@ -136,8 +137,10 @@ export const CartProvider = ({ children }) => {
       // console.log(res);
       fetchGetCart();
       setCouponValue("");
+      setLoadingState(false);
       dispatch(createAsyncMessage(res.data));
     } catch (error) {
+      setLoadingState(false);
       dispatch(createAsyncMessage(error.response.data));
     }
     // console.log(couponValue);

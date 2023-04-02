@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import ProductModal from "../../components/ProductModal";
 import { Modal } from "bootstrap";
 import DeleteModal from "../../components/DeleteModal";
 import Pagination from "../../components/Pagination";
+import { LoadingContext } from "../../contexts/loadingContext";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
@@ -15,6 +16,24 @@ const AdminProducts = () => {
   const productModal = useRef(null);
   const deleteModal = useRef(null);
 
+  const { setLoadingState } = useContext(LoadingContext);
+
+  const getProducts = useCallback(
+    async (page = 1) => {
+      setLoadingState(true);
+      const productRes = await axios.get(
+        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/products?page=${page}`
+      );
+      // console.log("rrrrr", productRes);
+
+      setProducts(productRes.data.products);
+      setPagination(productRes.data.pagination);
+      setLoadingState(false);
+    },
+    [setProducts, setPagination, setLoadingState]
+  );
+  //
+
   useEffect(() => {
     productModal.current = new Modal("#productModal", {
       backdrop: "static",
@@ -25,19 +44,7 @@ const AdminProducts = () => {
     });
 
     getProducts();
-  }, []);
-
-  const getProducts = async (page = 1) => {
-    (async () => {
-      const productRes = await axios.get(
-        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/products?page=${page}`
-      );
-      // console.log("rrrrr", productRes);
-
-      setProducts(productRes.data.products);
-      setPagination(productRes.data.pagination);
-    })();
-  };
+  }, [getProducts]);
 
   const openProductModal = (type, tempProduct) => {
     setType(type);

@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+
 import {
   MessageContext,
   handleSuccessMessage,
   handleErrorMessage,
 } from "../contexts/messageContext";
+import Swal from "sweetalert2";
 
 const ArticleModal = ({
   closeArticlesModal,
@@ -95,22 +97,40 @@ const ArticleModal = ({
 
       switch (true) {
         case !tempData.title:
-          alert("標題不得為空");
+          Swal.fire({
+            icon: "warning",
+            title: "標題不得為空",
+          });
           return;
         case !Array.isArray(tempData.tag) || tempData.tag.length < 1:
-          alert("標籤不得為空");
+          Swal.fire({
+            icon: "warning",
+            title: "標籤不得為空",
+          });
           return;
         case !tempData.author:
-          alert("作者不得為空");
+          Swal.fire({
+            icon: "warning",
+            title: "作者不得為空",
+          });
           return;
         case !tempData.description:
-          alert("文章簡介不得為空");
+          Swal.fire({
+            icon: "warning",
+            title: "文章簡介不得為空",
+          });
           return;
         case !tempData.content:
-          alert("內文不得為空");
+          Swal.fire({
+            icon: "warning",
+            title: "內文不得為空",
+          });
           return;
         case !tempData.imageUrl:
-          alert("圖片網址不得為空");
+          Swal.fire({
+            icon: "warning",
+            title: "圖片網址不得為空",
+          });
           return;
 
         default:

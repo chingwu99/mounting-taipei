@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
   const [tempData, setTempData] = useState({
@@ -19,7 +20,7 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
         is_enabled: 1,
         percent: 80,
         due_date: 1555459200,
-        code: "testCode",
+        code: "",
       });
       setDate(new Date());
     } else if (type === "edit") {
@@ -31,7 +32,7 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
   const handleChange = (e) => {
     // console.log(e);
     const { value, name } = e.target;
-    if (["price", "origin_price"].includes(name)) {
+    if (["percent"].includes(name)) {
       setTempData({ ...tempData, [name]: Number(value) });
     } else if (name === "is_enabled") {
       setTempData({ ...tempData, [name]: +e.target.checked });
@@ -49,13 +50,44 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
         api = `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/coupon/${tempCoupon.id}`;
         method = "put";
       }
-      // const res =
-      await axios[method](api, {
+
+      switch (true) {
+        case !tempData.title:
+          Swal.fire({
+            icon: "warning",
+            title: "標題不得為空",
+          });
+          return;
+
+        case !tempData.percent:
+          Swal.fire({
+            icon: "warning",
+            title: "折扣不得為空",
+          });
+          return;
+        case !tempData.due_date:
+          Swal.fire({
+            icon: "warning",
+            title: "到期日不得為空",
+          });
+          return;
+        case !tempData.code:
+          Swal.fire({
+            icon: "warning",
+            title: "折扣碼不得為空",
+          });
+          return;
+
+        default:
+          break;
+      }
+
+      const res = await axios[method](api, {
         data: { ...tempData, due_date: date.getTime() },
       });
-      // console.log(res);
+      console.log("res", res);
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
 
     closeModal();
@@ -74,7 +106,7 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              {type === "create" ? "建立新優惠卷" : `編輯${tempData.title}`}
+              {type === "create" ? "建立新優惠卷" : `編輯「${tempData.title}」`}
             </h1>
             <button
               type="button"
@@ -101,7 +133,7 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
             <div className="row">
               <div className="col-md-6 mb-2">
                 <label className="w-100" htmlFor="percent">
-                  折扣（%）
+                  折扣％{`（原價*折扣％）`}
                   <input
                     type="text"
                     name="percent"

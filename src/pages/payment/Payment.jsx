@@ -8,7 +8,6 @@ import { CartContext } from "../../contexts/cartContext";
 import PaymentListLg from "./components/PaymentListLg";
 import PaymentListMobile from "./components/PaymentListMobile";
 import { LoadingContext } from "../../contexts/loadingContext";
-import Loading from "../../components/Loading";
 
 const Payment = () => {
   const { orderId } = useParams();
@@ -89,8 +88,6 @@ const Payment = () => {
 
   return (
     <div className="bg-white d-flex justify-content-center align-items-center flex-column">
-      <Loading />
-
       <Progressbar
         progresslength={orderUser.is_paid ? "100%" : "50%"}
         stationOne="btn-primary "

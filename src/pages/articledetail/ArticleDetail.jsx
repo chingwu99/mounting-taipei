@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { LoadingContext } from "../../contexts/loadingContext";
 import { Link } from "react-router-dom";
 import { BsFillPencilFill } from "react-icons/bs";
-import Loading from "../../components/Loading";
 
 const ArticleDetail = () => {
   const [article, setArticle] = useState([]);
@@ -32,7 +31,6 @@ const ArticleDetail = () => {
 
   return (
     <div className="bg-white">
-      <Loading />
       <div className="container d-flex  align-items-center flex-column  articleDetail-box-width">
         <div className=" row  mt-4  m-2">
           <div className="col-12 ">

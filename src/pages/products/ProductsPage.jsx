@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { CartContext } from "../../contexts/cartContext";
 import Pagination from "../../components/Pagination";
-import Loading from "../../components/Loading";
 import { LoadingContext } from "../../contexts/loadingContext";
 import { useDispatch } from "react-redux";
 import { createAsyncMessage } from "../../slice/messageSlice";
@@ -85,7 +84,6 @@ const ProductsPage = () => {
 
   return (
     <>
-      <Loading />
       <div className="container">
         <div className="container  mb-5 d-flex justify-content-center align-items-center flex-column">
           <h2 className="text-warning mt-5">所有商品</h2>
