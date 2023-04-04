@@ -68,13 +68,14 @@ const Footer = () => {
           </div>
           <div
             className="col-sm-12 col-md-4  d-flex   
-    justify-content-center   align-items-center my-4"
+    justify-content-center   align-items-center my-4 "
           >
-            <div className="d-lg-flex">
-              <div>
-                Copyright © 2023 <GiMountainRoad className="mx-1 fs-1" />
+            <div className="d-xxl-flex ">
+              <div className="d-flex ">
+                <p className=" m-auto">Copyright © 2023</p>
+                <GiMountainRoad className="mx-1 fs-1" />
               </div>
-              <div> 爬爬台北 Mounting Taipei</div>
+              <div className=" m-auto"> 爬爬台北 Mounting Taipei</div>
             </div>
           </div>
           <div

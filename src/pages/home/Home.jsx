@@ -15,6 +15,8 @@ import RoutesChoiceMobile from "../../components/RoutesChoiceMobile";
 import HomeCard from "./components/HomeCard";
 import { WiStars } from "react-icons/wi";
 import HomeSwiper from "./components/HomeSwiper";
+import HomeProductSwiper from "./components/HomeProductSwiper";
+import HomeNewsSwiper from "./components/HomeNewsSwiper";
 
 const Home = () => {
   useEffect(() => {
@@ -73,6 +75,31 @@ const Home = () => {
               <p>購物清單</p>
             </Link>
           </div>
+        </div>
+      </div>
+
+      <div className="bg-primary">
+        <div className="mx-4  row">
+          <div className="  col-lg-2 text-center my-auto ">
+            <h3 className="d-none d-lg-block  text-warning border-end border-warning border-3 py-4">
+              精選商品
+            </h3>
+            <h3 className="d-lg-none text-warning  py-3">精選商品</h3>
+          </div>
+
+          <HomeProductSwiper />
+        </div>
+
+        <div className="mx-4  row d-flex flex-row-reverse ">
+          <div className="  col-lg-2 text-center my-auto ">
+            <h3 className="d-none d-lg-block text-warning border-start border-warning border-3 py-4 d-lg-block">
+              最新消息
+            </h3>
+            <h3 className="d-lg-none text-warning  py-3 d-lg-block">
+              最新消息
+            </h3>
+          </div>
+          <HomeNewsSwiper />
         </div>
       </div>
 

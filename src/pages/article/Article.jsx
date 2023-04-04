@@ -29,25 +29,6 @@ const Article = () => {
     getArticles(1);
   }, [getArticles]);
 
-  //   const getArticles = async (page = 1) => {
-  //     (async () => {
-  //   setLoadingState(true);
-  //   const articlesRes = await axios.get(
-  //     `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/articles?page=${page}`
-  //   );
-
-  //   console.log("AAAA", articlesRes);
-
-  //   setArticles(articlesRes.data.articles);
-  //   setPagination(articlesRes.data.pagination);
-  //   setLoadingState(false);
-  //     })();
-  //   };
-
-  //   useEffect(() => {
-  //     getArticles(1);
-  //   }, []);
-
   return (
     <>
       <div className="bg-white">
