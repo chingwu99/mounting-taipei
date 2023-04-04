@@ -1,10 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ListCard from "./components/ListCard";
 import ButtonGroup from "./components/ButtonGroup";
 import { MountingrouteContext } from "../../contexts/mountingrouteContext";
 import RoutesChoiceMobile from "../../components/RoutesChoiceMobile";
 
 const Mountingroute = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { mountingData, allData, setAllData, loadMore } =
     useContext(MountingrouteContext);
 

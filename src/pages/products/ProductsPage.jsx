@@ -1,86 +1,17 @@
-import { useContext, useEffect, useState, useCallback } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { CartContext } from "../../contexts/cartContext";
 import Pagination from "../../components/Pagination";
 import { LoadingContext } from "../../contexts/loadingContext";
-import { useDispatch } from "react-redux";
-import { createAsyncMessage } from "../../slice/messageSlice";
+import { ProductContext } from "../../contexts/productContext";
 
 const ProductsPage = () => {
-  // const [products, setProducts] = useState([]);
-  // const [pagination, setPagination] = useState({});
-
-  // const { loadingState, setLoadingState } = useContext(LoadingContext);
-
-  // const getProducts = async (page = 1) => {
-  //   (async () => {
-  //     setLoadingState(true);
-  //     const productRes = await axios.get(
-  //       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/products?page=${page}`
-  //     );
-  //     // console.log("AAAA", productRes);
-
-  //     setProducts(productRes.data.products);
-  //     setPagination(productRes.data.pagination);
-  //     setLoadingState(false);
-  //   })();
-  // };
-
-  // useEffect(() => {
-  //   getProducts(1);
-  // }, []);
-
-  const [products, setProducts] = useState([]);
-  const [pagination, setPagination] = useState({});
-  const { loadingState, setLoadingState } = useContext(LoadingContext);
-  const dispatch = useDispatch();
-
-  const getProducts = useCallback(
-    async (page = 1) => {
-      setLoadingState(true);
-      const productRes = await axios.get(
-        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/products?page=${page}`
-      );
-      setProducts(productRes.data.products);
-      setPagination(productRes.data.pagination);
-      setLoadingState(false);
-    },
-    [setLoadingState]
-  );
-
   useEffect(() => {
-    getProducts(1);
-  }, [getProducts]);
+    window.scrollTo(0, 0);
+  }, []);
 
-  const { fetchGetCart } = useContext(CartContext);
-
-  const addToCart = async (e) => {
-    const data = {
-      data: {
-        product_id: e.target.value,
-        qty: 1,
-      },
-    };
-
-    setLoadingState(true);
-    try {
-      const res = await axios.post(
-        `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`,
-        data
-      );
-      // console.log("res", res);
-      setLoadingState(false);
-      fetchGetCart();
-      dispatch(createAsyncMessage(res.data));
-      // handleSuccessMessage(dispatch, res);
-    } catch (error) {
-      // console.log(error);
-
-      setLoadingState(false);
-      dispatch(createAsyncMessage(error.response.data));
-    }
-  };
+  const { loadingState } = useContext(LoadingContext);
+  const { products, addToCart, pagination, getProducts } =
+    useContext(ProductContext);
 
   return (
     <>

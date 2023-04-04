@@ -11,6 +11,7 @@ import { CartProvider } from "./contexts/cartContext";
 import { LoadingProvider } from "./contexts/loadingContext";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { ProductProvider } from "./contexts/productContext";
 
 axios.defaults.baseURL = process.env.REACT_APP_SHOPAPI_URL;
 
@@ -24,9 +25,11 @@ root.render(
         <LoadingProvider>
           <LoginProvider>
             <CartProvider>
-              <MountingrouteProvider>
-                <App />
-              </MountingrouteProvider>
+              <ProductProvider>
+                <MountingrouteProvider>
+                  <App />
+                </MountingrouteProvider>
+              </ProductProvider>
             </CartProvider>
           </LoginProvider>
         </LoadingProvider>

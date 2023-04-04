@@ -6,13 +6,17 @@ import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { LoadingContext } from "../../contexts/loadingContext";
 import { useDispatch } from "react-redux";
 import { createAsyncMessage } from "../../slice/messageSlice";
+import RecommendSwiper from "./components/RecommendSwiper";
 
 const ProductDetail = () => {
+  const { id } = useParams();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   const [product, setProduct] = useState({});
   const [cartQuantity, setCartQuantity] = useState(1);
   const dispatch = useDispatch();
-
-  const { id } = useParams();
 
   const { fetchGetCart } = useContext(CartContext);
 
@@ -65,10 +69,10 @@ const ProductDetail = () => {
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`,
         data
       );
-      console.log(res);
+      // console.log(res);
       setLoadingState(false);
       fetchGetCart();
-      // handleSuccessMessage(dispatch, res);
+      //<h3>推薦商品</h3>andleSuccessMessage(dispatch, res);
       dispatch(createAsyncMessage(res.data));
     } catch (error) {
       // console.log(error);
@@ -180,6 +184,13 @@ const ProductDetail = () => {
             在爬爬台北，我們不斷追求創新和突破，讓每一個產品都是一個藝術品。我們相信，好的產品可以帶給人們更好的生活體驗，而我們的產品就是您追求品質和美好生活的不二之選。
           </p>
         </div>
+      </div>
+
+      <div className="container p-4">
+        <h3 className="mb-4 border-bottom border-primary  border-2 pb-3">
+          猜你喜歡
+        </h3>
+        <RecommendSwiper />
       </div>
     </div>
   );

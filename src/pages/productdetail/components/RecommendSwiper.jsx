@@ -3,14 +3,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper";
 import { Link } from "react-router-dom";
-import { ProductContext } from "../../../contexts/productContext";
 import { useContext } from "react";
+import { ProductContext } from "../../../contexts/productContext";
 
-const HomeProductSwiper = () => {
+const RecommendSwiper = () => {
   const { homeProducts, addToCart } = useContext(ProductContext);
-
   return (
-    <div className="home-product-swiper-container col-lg-10 mt-sm-2 mt-lg-4 mb-3">
+    <div className="recommend-swiper-container">
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -25,7 +24,7 @@ const HomeProductSwiper = () => {
             spaceBetween: 20,
           },
           1024: {
-            slidesPerView: 4,
+            slidesPerView: 5,
             spaceBetween: 20,
           },
         }}
@@ -62,4 +61,4 @@ const HomeProductSwiper = () => {
   );
 };
 
-export default HomeProductSwiper;
+export default RecommendSwiper;

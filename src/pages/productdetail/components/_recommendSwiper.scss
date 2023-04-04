@@ -1,4 +1,4 @@
-.home-news-swiper-container {
+.recommend-swiper-container {
   height: 400px;
 
   .swiper {
@@ -10,17 +10,12 @@
     text-align: center;
     font-size: 18px;
     background-color: rgb(203, 194, 179);
-    border: 3px solid $warning;
-
+    // border: 3px solid $warning;
     /* Center slide text vertically */
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &:hover {
-      background-color: rgb(248, 234, 216);
-      transition: 0.5s;
-    }
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
   }
 
   .swiper-slide img {
@@ -28,6 +23,11 @@
     width: 100%;
     height: 300px;
     object-fit: cover;
+
+    &:hover {
+      opacity: 0.5;
+      transition: 0.5s;
+    }
   }
 
   .mySwiper .swiper-button-prev,
@@ -47,9 +47,5 @@
   .mySwiper .swiper-button-prev::after,
   .mySwiper .swiper-button-next::after {
     font-size: 20px;
-  }
-
-  .tag {
-    font-size: 15px;
   }
 }
