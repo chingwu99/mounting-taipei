@@ -10562,6 +10562,19 @@ a {
   overflow: hidden;
 }
 
+.navigate-to-top-button {
+  width: 80px;
+  height: 80px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+  color: rgb(232, 169, 120);
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
+}
+
 .productDetail-img-container {
   width: 400px;
   height: 400px;
