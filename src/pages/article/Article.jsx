@@ -7,6 +7,10 @@ import { BsFillPencilFill } from "react-icons/bs";
 import { useCallback } from "react";
 
 const Article = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [articles, setArticles] = useState([]);
   const [pagination, setPagination] = useState({});
   const { setLoadingState } = useContext(LoadingContext);

@@ -5,10 +5,14 @@ import { Input } from "../../components/FormElement";
 import axios from "axios";
 import CartListLg from "./components/CartListLg";
 import CartListMobile from "./components/CartListMobile";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LoadingContext } from "../../contexts/loadingContext";
 
 const Cart = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { setLoadingState } = useContext(LoadingContext);
 
   const {
