@@ -5,8 +5,12 @@
   bottom: 0;
   right: 0;
   margin: 20px;
-  color: rgb(232, 169, 120);
+  color: rgb(233, 138, 66);
   border: none;
   cursor: pointer;
   z-index: 9999;
+
+  &:hover {
+    color: rgb(232, 169, 120);
+  }
 }
