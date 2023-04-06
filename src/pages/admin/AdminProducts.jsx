@@ -10,7 +10,7 @@ const AdminProducts = () => {
   const [products, setProducts] = useState([]);
   const [pagination, setPagination] = useState({});
   //type決定modal用途
-  const [type, setType] = useState("create"); //edit
+  const [type, setType] = useState("create");
   const [tempProduct, setTempProduct] = useState({});
 
   const productModal = useRef(null);
@@ -31,7 +31,6 @@ const AdminProducts = () => {
     },
     [setProducts, setPagination, setLoadingState]
   );
-  //
 
   useEffect(() => {
     productModal.current = new Modal("#productModal", {

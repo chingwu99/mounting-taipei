@@ -5,7 +5,6 @@ export const messageSlice = createSlice({
   initialState: [],
   reducers: {
     createMessage(state, action) {
-      //   const id = new Date().getTime();
       if (action.payload.success) {
         state.push({
           id: action.payload.id,

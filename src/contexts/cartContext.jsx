@@ -17,7 +17,6 @@ export const CartContext = createContext({
   setLoadingItems: () => null,
   couponValue: "",
   setCouponValue: () => null,
-  // getCart: async () => {},
   fetchGetCart: () => {},
   removeCartItem: async () => {},
   updateCartItem: async () => {},
@@ -41,7 +40,7 @@ export const CartProvider = ({ children }) => {
         const res = await axios.get(
           `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`
         );
-        // console.log("首次得到購物車數量", res);
+
         setCartData(res.data.data);
         setLoadingState(false);
       } catch (error) {
@@ -93,7 +92,6 @@ export const CartProvider = ({ children }) => {
       setLoadingState(false);
       dispatch(createAsyncMessage(res.data));
     } catch (error) {
-      // console.log(error);
       setLoadingState(false);
       dispatch(createAsyncMessage(error.response.data));
     }
@@ -113,7 +111,6 @@ export const CartProvider = ({ children }) => {
         couponData
       );
 
-      // console.log(res);
       fetchGetCart();
       setCouponValue("");
       setLoadingState(false);
@@ -122,13 +119,11 @@ export const CartProvider = ({ children }) => {
       setLoadingState(false);
       dispatch(createAsyncMessage(error.response.data));
     }
-    // console.log(couponValue);
   };
 
   const value = {
     cartData,
     setCartData,
-    // getCart,
     fetchGetCart,
     loadingItems,
     setLoadingItems,

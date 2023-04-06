@@ -21,7 +21,6 @@ const Pagination = ({ pagination, changePage }) => {
           </a>
         </li>
         {[...new Array(pagination.total_pages)].map((_, i) => (
-          // eslint-disable-next-line react/no-array-index-key
           <li className="page-item" key={`${i}_page`}>
             <a
               className={`page-link ${

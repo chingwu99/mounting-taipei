@@ -11,7 +11,7 @@ const AdminArticle = () => {
   const [article, setArticle] = useState([]);
   const [pagination, setPagination] = useState({});
   //type決定modal用途
-  const [type, setType] = useState("create"); //edit
+  const [type, setType] = useState("create");
   const [tempArticle, setTempArticle] = useState({});
 
   const articleModal = useRef(null);

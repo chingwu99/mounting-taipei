@@ -22,21 +22,6 @@ const ProductDetail = () => {
 
   const { loadingState, setLoadingState } = useContext(LoadingContext);
 
-  // const getProduct = async (id) => {
-  //   setLoadingState(true);
-  //   const productRes = await axios.get(
-  //     `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/product/${id}`
-  //   );
-  //   // console.log("ppppp", productRes);
-
-  //   setProduct(productRes.data.product);
-  //   setLoadingState(false);
-  // };
-
-  // useEffect(() => {
-  //   getProduct(id);
-  // }, [id]);
-
   const getProduct = useCallback(
     async (id) => {
       setLoadingState(true);
