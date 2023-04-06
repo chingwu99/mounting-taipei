@@ -45,31 +45,11 @@ export const CartProvider = ({ children }) => {
         setCartData(res.data.data);
         setLoadingState(false);
       } catch (error) {
-        // console.log(error);
         setLoadingState(false);
       }
     };
     getCart();
   }, [setLoadingState]);
-
-  // const getCart = async () => {
-  //   setLoadingState(true);
-  //   try {
-  //     const res = await axios.get(
-  //       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`
-  //     );
-  //     // console.log("首次得到購物車數量", res);
-  //     setCartData(res.data.data);
-  //     setLoadingState(false);
-  //   } catch (error) {
-  //     // console.log(error);
-  //     setLoadingState(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getCart();
-  // }, []);
 
   useEffect(() => {
     fetchGetCart();
@@ -81,12 +61,11 @@ export const CartProvider = ({ children }) => {
       const res = await axios.delete(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart/${id}`
       );
-      // console.log(res);
+
       fetchGetCart();
       setLoadingState(false);
       dispatch(createAsyncMessage(res.data));
     } catch (error) {
-      // console.log(error);
       setLoadingState(false);
       dispatch(createAsyncMessage(error.response.data));
     }
@@ -106,7 +85,7 @@ export const CartProvider = ({ children }) => {
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart/${item.id}`,
         data
       );
-      // console.log(res);
+
       setLoadingItems(
         loadingItems.filter((loadingObject) => loadingObject !== item.id)
       );

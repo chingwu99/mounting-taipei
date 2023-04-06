@@ -15,8 +15,6 @@ import { ProductProvider } from "./contexts/productContext";
 
 axios.defaults.baseURL = process.env.REACT_APP_SHOPAPI_URL;
 
-// console.log("AAAAA", axios.defaults.baseURL);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

@@ -46,7 +46,6 @@ const ProductModal = ({
   }, [type, tempProduct]);
 
   const handleChange = (e) => {
-    // console.log(e);
     const { value, name } = e.target;
     if (["price", "origin_price"].includes(name)) {
       setTempData({ ...tempData, [name]: Number(value) });
@@ -123,14 +122,12 @@ const ProductModal = ({
       }
 
       const res = await axios[method](api, { data: tempData });
-      // console.log(res);
 
       handleSuccessMessage(dispatch, res);
       closeProductModal();
       getProducts();
     } catch (error) {
       handleErrorMessage(dispatch, error);
-      // console.log(error);
     }
   };
 

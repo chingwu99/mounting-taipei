@@ -18,10 +18,6 @@ import ArticleDetail from "./pages/articledetail/ArticleDetail";
 
 function App() {
   useEffect(() => {
-    // console.log(
-    //   process.env.REACT_APP_SHOPAPI_URL,
-    //   process.env.REACT_APP_SHOPAPI_PATH
-    // );
     (async () => {
       await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/products/all`

@@ -19,16 +19,12 @@ const AdminArticle = () => {
 
   const { setLoadingState } = useContext(LoadingContext);
 
-  // console.log("77", article);
-  // console.log("555", pagination);
-
   const getArticles = useCallback(
     async (page = 1) => {
       setLoadingState(true);
       const articleRes = await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/articles?page=${page}`
       );
-      // console.log("rrrrr", articleRes);
 
       setArticle(articleRes.data.articles);
       setPagination(articleRes.data.pagination);
@@ -75,15 +71,11 @@ const AdminArticle = () => {
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/article/${id}`
       );
 
-      // console.log(res);
-
       if (res.data.success) {
         getArticles();
         deleteModal.current.hide();
       }
-    } catch (error) {
-      // console.log(error);
-    }
+    } catch (error) {}
   };
   return (
     <div className="p-3 bg-white">

@@ -1,6 +1,4 @@
 const MountingrouteModal = ({ closeMountingrouteModal, routeInfo }) => {
-  // console.log("routeInfo", routeInfo);
-
   return (
     <div
       className="modal fade "

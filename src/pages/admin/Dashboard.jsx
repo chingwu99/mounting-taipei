@@ -26,7 +26,7 @@ const Dashboard = () => {
     .split("; ")
     .find((row) => row.startsWith("mountingTaipeiToken="))
     ?.split("=")[1];
-  // console.log(token);
+
   axios.defaults.headers.common["Authorization"] = token;
 
   useEffect(() => {

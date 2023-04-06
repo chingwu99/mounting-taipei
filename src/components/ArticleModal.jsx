@@ -32,11 +32,6 @@ const ArticleModal = ({
     setTempData((prevState) => ({ ...prevState, tag: tagArr }));
   }, [tagArr]);
 
-  // console.log("tag", tag);
-  // console.log("tagArr", tagArr);
-
-  // console.log("??", tempData);
-
   const [, dispatch] = useContext(MessageContext);
 
   useEffect(() => {
@@ -58,10 +53,8 @@ const ArticleModal = ({
           `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/article/${tempArticle.id}`
         );
         let content = res.data.article.content;
-        // console.log("99999", content);
-        // console.log("QQQ", res.data);
+
         let tag = res.data.article.tag;
-        // console.log("ttt", tag);
 
         setTempData({ ...tempArticle, content: content });
         setTagArr(tag);
@@ -70,9 +63,7 @@ const ArticleModal = ({
   }, [type, tempArticle]);
 
   const handleChange = (e) => {
-    // console.log(e);
     const { value, name } = e.target;
-    // console.log("tagArr", tagArr);
 
     if (name === "isPublic") {
       setTempData({ ...tempData, [name]: e.target.checked });

@@ -17,7 +17,7 @@ const HomeNewsSwiper = () => {
       const articlesRes = await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/articles?page=${page}`
       );
-      // console.log("AAAA", articlesRes);
+
       setArticles(articlesRes.data.articles);
 
       setLoadingState(false);

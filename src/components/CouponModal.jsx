@@ -30,7 +30,6 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
   }, [type, tempCoupon]);
 
   const handleChange = (e) => {
-    // console.log(e);
     const { value, name } = e.target;
     if (["percent"].includes(name)) {
       setTempData({ ...tempData, [name]: Number(value) });
@@ -86,10 +85,7 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
       await axios[method](api, {
         data: { ...tempData, due_date: date.getTime() },
       });
-      // console.log("res", res);
-    } catch (error) {
-      // console.log(error);
-    }
+    } catch (error) {}
 
     closeModal();
     getCoupons();
@@ -164,7 +160,6 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
                       .toString()
                       .padStart(2, 0)}`}
                     onChange={(e) => {
-                      // console.log(e.target.value);
                       setDate(new Date(e.target.value));
                     }}
                   />

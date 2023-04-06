@@ -43,7 +43,6 @@ const Cart = () => {
       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order`,
       form
     );
-    // console.log(res);
 
     navigate(`/payment/${res.data.orderId}`);
     setLoadingState(false);

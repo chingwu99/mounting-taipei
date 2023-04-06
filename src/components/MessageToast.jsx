@@ -4,7 +4,7 @@ import { BsXCircle } from "react-icons/bs";
 
 const MessageToast = () => {
   const messages = useSelector((state) => state.message);
-  //   console.log(messages);
+
   return (
     <>
       <div

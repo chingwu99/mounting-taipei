@@ -22,8 +22,6 @@ const ProductDetail = () => {
 
   const { loadingState, setLoadingState } = useContext(LoadingContext);
 
-  // console.log(id);
-
   // const getProduct = async (id) => {
   //   setLoadingState(true);
   //   const productRes = await axios.get(
@@ -69,13 +67,12 @@ const ProductDetail = () => {
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`,
         data
       );
-      // console.log(res);
+
       setLoadingState(false);
       fetchGetCart();
-      //<h3>推薦商品</h3>andleSuccessMessage(dispatch, res);
+
       dispatch(createAsyncMessage(res.data));
     } catch (error) {
-      // console.log(error);
       dispatch(createAsyncMessage(error.response.data));
       setLoadingState(false);
     }

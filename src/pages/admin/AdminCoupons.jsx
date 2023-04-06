@@ -24,7 +24,6 @@ const AdminCoupons = () => {
       const res = await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/coupons?page=${page}`
       );
-      // console.log("rrrrr", res);
 
       setCoupons(res.data.coupons);
       setPagination(res.data.pagination);
@@ -44,18 +43,6 @@ const AdminCoupons = () => {
 
     getCoupons();
   }, [getCoupons]);
-
-  // const getCoupons = async (page = 1) => {
-  //   (async () => {
-  //     const res = await axios.get(
-  //       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/coupons?page=${page}`
-  //     );
-  //     // console.log("rrrrr", res);
-
-  //     setCoupons(res.data.coupons);
-  //     setPagination(res.data.pagination);
-  //   })();
-  // };
 
   const openCouponModal = (type, item) => {
     setType(type);
@@ -82,15 +69,12 @@ const AdminCoupons = () => {
       const res = await axios.delete(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/admin/coupon/${id}`
       );
-      // console.log(res);
 
       if (res.data.success) {
         getCoupons();
         deleteModal.current.hide();
       }
-    } catch (error) {
-      // console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

@@ -16,14 +16,12 @@ const ArticleDetail = () => {
       const articleRes = await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/article/${id}`
       );
-      // console.log("YYY", articleRes);
+
       setArticle(articleRes.data.article);
       setLoadingState(false);
     },
     [setLoadingState]
   );
-
-  // console.log(article);
 
   useEffect(() => {
     getArticle(id);

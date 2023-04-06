@@ -80,14 +80,11 @@ export const ProductProvider = ({ children }) => {
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/cart`,
         data
       );
-      // console.log("res", res);
+
       setLoadingState(false);
       fetchGetCart();
       dispatch(createAsyncMessage(res.data));
-      // handleSuccessMessage(dispatch, res);
     } catch (error) {
-      // console.log(error);
-
       setLoadingState(false);
       dispatch(createAsyncMessage(error.response.data));
     }

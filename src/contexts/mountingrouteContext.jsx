@@ -48,7 +48,6 @@ export const MountingrouteProvider = ({ children }) => {
     Xinyi: false,
   });
 
-  // console.log("buttonActive", buttonActive);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -58,8 +57,7 @@ export const MountingrouteProvider = ({ children }) => {
         const images = await fetchImages();
         const newArray = combineData(images);
         setCombinedArrayy(newArray);
-        // console.log("images", images);
-        // console.log("newArray", newArray);
+
         setLoadingState(false);
       } catch (error) {
         console.error("Error fetching data: ", error);
@@ -205,7 +203,6 @@ export const MountingrouteProvider = ({ children }) => {
         break;
 
       default:
-        // console.log("error");
         break;
     }
     navigate("/mountingroute");

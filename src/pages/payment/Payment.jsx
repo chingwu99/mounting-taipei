@@ -23,38 +23,13 @@ const Payment = () => {
   const { fetchGetCart } = useContext(CartContext);
   const { setLoadingState } = useContext(LoadingContext);
 
-  // const getPaymentCart = async (orderId) => {
-  //   setLoadingState(true);
-  //   const res = await axios.get(
-  //     `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order/${orderId}`
-  //   );
-  //   // console.log("回來拉", res);
-  //   setOrderData(res.data.order);
-  //   setOrderUser({
-  //     name: res.data.order.user.name,
-  //     tel: res.data.order.user.tel,
-  //     email: res.data.order.user.email,
-  //     address: res.data.order.user.address,
-  //     is_paid: res.data.order.is_paid,
-  //   });
-
-  //   fetchGetCart();
-  //   setLoadingState(false);
-  // };
-
-  // // console.log("orderName", orderUser);
-
-  // useEffect(() => {
-  //   getPaymentCart(orderId);
-  // }, [orderId]);
-
   const getPaymentCart = useCallback(
     async (orderId) => {
       setLoadingState(true);
       const res = await axios.get(
         `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/order/${orderId}`
       );
-      // console.log("回來拉", res);
+
       setOrderData(res.data.order);
       setOrderUser({
         name: res.data.order.user.name,
@@ -80,7 +55,6 @@ const Payment = () => {
     await axios.post(
       `/v2/api/${process.env.REACT_APP_SHOPAPI_PATH}/pay/${orderId} `
     );
-    // console.log("付款完成了嗎", res);
 
     getPaymentCart(orderId);
     setLoadingState(false);
