@@ -15,6 +15,7 @@ import Cart from "./pages/cart/Cart";
 import Payment from "./pages/payment/Payment";
 import Article from "./pages/article/Article";
 import ArticleDetail from "./pages/articledetail/ArticleDetail";
+import AdminOrder from "./pages/admin/AdminOrder";
 
 function App() {
   useEffect(() => {
@@ -40,6 +41,7 @@ function App() {
             <Route path="products" element={<AdminProducts />}></Route>
             <Route path="coupons" element={<AdminCoupons />}></Route>
             <Route path="article" element={<AdminArticle />}></Route>
+            <Route path="orders" element={<AdminOrder />}></Route>
           </Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
