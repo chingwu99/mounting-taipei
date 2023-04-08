@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { GiMountainRoad } from "react-icons/gi";
@@ -7,6 +7,8 @@ import { GiConverseShoe } from "react-icons/gi";
 import { CartContext } from "../contexts/cartContext";
 import { BsFillCartFill, BsNewspaper } from "react-icons/bs";
 import { LoginContext } from "../contexts/loginContext";
+import { AiOutlineHeart } from "react-icons/ai";
+import { LoveContext } from "../contexts/loveContext";
 
 const Nav = () => {
   const { cartData } = useContext(CartContext);
@@ -16,6 +18,14 @@ const Nav = () => {
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+
+  const [state] = useContext(LoveContext);
+
+  const [loveList, setLoveList] = useState([]);
+
+  useEffect(() => {
+    setLoveList(state?.loveList);
+  }, [state]);
 
   return (
     <nav className="navbar navbar-expand-lg position-sticky top-0 z-3 bg-warning shadow ">
@@ -103,6 +113,14 @@ const Nav = () => {
                 </NavLink>
               </li>
             ) : null}
+            <li className="nav-item me-3">
+              <NavLink to="/love" className="nav-link position-relative">
+                <AiOutlineHeart className="fs-4" />
+                <span className="position-absolute top-20 start-80 translate-middle badge rounded-pill bg-danger">
+                  {loveList?.length}
+                </span>
+              </NavLink>
+            </li>
             <li className="nav-item">
               <NavLink to="/cart" className="nav-link position-relative">
                 <BsFillCartFill className="fs-4" />

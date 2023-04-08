@@ -7,6 +7,8 @@ import { LoadingContext } from "../../contexts/loadingContext";
 import { useDispatch } from "react-redux";
 import { createAsyncMessage } from "../../slice/messageSlice";
 import RecommendSwiper from "./components/RecommendSwiper";
+import { AiOutlineHeart } from "react-icons/ai";
+import { LoveContext } from "../../contexts/loveContext";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -14,9 +16,16 @@ const ProductDetail = () => {
     window.scrollTo(0, 0);
   }, [id]);
 
+  const [state, dispatch] = useContext(LoveContext);
+  const [loveList, setLoveList] = useState([]);
+
+  useEffect(() => {
+    setLoveList(state?.loveList);
+  }, [state]);
+
   const [product, setProduct] = useState({});
   const [cartQuantity, setCartQuantity] = useState(1);
-  const dispatch = useDispatch();
+  const messageDispatch = useDispatch();
 
   const { fetchGetCart } = useContext(CartContext);
 
@@ -56,9 +65,9 @@ const ProductDetail = () => {
       setLoadingState(false);
       fetchGetCart();
 
-      dispatch(createAsyncMessage(res.data));
+      messageDispatch(createAsyncMessage(res.data));
     } catch (error) {
-      dispatch(createAsyncMessage(error.response.data));
+      messageDispatch(createAsyncMessage(error.response.data));
       setLoadingState(false);
     }
   };
@@ -137,15 +146,34 @@ const ProductDetail = () => {
                     </button>
                   </div>
                 </div>
-
-                <button
-                  type="button"
-                  className="btn btn-primary w-100 rounded-0 py-3"
-                  onClick={() => addToCart()}
-                  disabled={loadingState}
-                >
-                  加入購物車
-                </button>
+                <div className="d-flex w-100 ms-0 ms-md-1">
+                  <button
+                    type="button"
+                    className="btn btn-primary w-75 rounded-0 py-3"
+                    onClick={() => addToCart()}
+                    disabled={loadingState}
+                  >
+                    加入購物車
+                  </button>
+                  <button
+                    type="button"
+                    className={`rounded-0 w-25  ms-1 ${
+                      loveList.some((item) => item.id === id)
+                        ? "like-button-color-active"
+                        : "like-button-color"
+                    }`}
+                    onClick={() => {
+                      dispatch({
+                        type: "ADD_TO_LOVE",
+                        payload: {
+                          ...product,
+                        },
+                      });
+                    }}
+                  >
+                    <AiOutlineHeart />
+                  </button>
+                </div>
               </div>
             </div>
           </div>

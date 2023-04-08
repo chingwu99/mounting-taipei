@@ -3,15 +3,16 @@ import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 import axios from "axios";
 import "./styles/index.css";
-import { LoginProvider } from "./contexts/loginContext";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { LoginProvider } from "./contexts/loginContext";
 import { MountingrouteProvider } from "./contexts/mountingrouteContext";
 import { CartProvider } from "./contexts/cartContext";
 import { LoadingProvider } from "./contexts/loadingContext";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { ProductProvider } from "./contexts/productContext";
+import { LoveProvider } from "./contexts/loveContext";
 
 axios.defaults.baseURL = process.env.REACT_APP_SHOPAPI_URL;
 
@@ -22,13 +23,15 @@ root.render(
       <Provider store={store}>
         <LoadingProvider>
           <LoginProvider>
-            <CartProvider>
-              <ProductProvider>
-                <MountingrouteProvider>
-                  <App />
-                </MountingrouteProvider>
-              </ProductProvider>
-            </CartProvider>
+            <LoveProvider>
+              <CartProvider>
+                <ProductProvider>
+                  <MountingrouteProvider>
+                    <App />
+                  </MountingrouteProvider>
+                </ProductProvider>
+              </CartProvider>
+            </LoveProvider>
           </LoginProvider>
         </LoadingProvider>
       </Provider>

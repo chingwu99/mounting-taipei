@@ -142,6 +142,34 @@ a {
   }
 }
 
+.like-button-color {
+  color: rgb(236, 128, 173);
+  border: solid 1.5px rgb(236, 128, 173);
+  font-size: 24px;
+  background-color: white;
+}
+
+.like-button-color-active {
+  border: solid 1.5px rgb(236, 128, 173);
+  font-size: 24px;
+  background-color: rgb(236, 128, 173);
+  color: white;
+}
+
+.swiper-like-button-color {
+  color: $secondary;
+  border: solid 1.5px $secondary;
+  font-size: 20px;
+  background-color: rgb(203, 194, 179);
+}
+
+.swiper-like-button-color-active {
+  border: solid 1.5px rgb(236, 128, 173);
+  font-size: 20px;
+  background-color: rgb(236, 128, 173);
+  color: white;
+}
+
 @import "../pages/home/home.style";
 @import "../pages/mountingroute/mountingroute";
 @import "../components/mountingrouteModal.style";

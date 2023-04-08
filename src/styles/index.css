@@ -10400,6 +10400,34 @@ a {
   top: 50%;
 }
 
+.like-button-color {
+  color: rgb(236, 128, 173);
+  border: solid 1.5px rgb(236, 128, 173);
+  font-size: 24px;
+  background-color: white;
+}
+
+.like-button-color-active {
+  border: solid 1.5px rgb(236, 128, 173);
+  font-size: 24px;
+  background-color: rgb(236, 128, 173);
+  color: white;
+}
+
+.swiper-like-button-color {
+  color: #6c757d;
+  border: solid 1.5px #6c757d;
+  font-size: 20px;
+  background-color: rgb(203, 194, 179);
+}
+
+.swiper-like-button-color-active {
+  border: solid 1.5px rgb(236, 128, 173);
+  font-size: 20px;
+  background-color: rgb(236, 128, 173);
+  color: white;
+}
+
 .miscanthus {
   max-width: 500px;
 }
@@ -10555,6 +10583,10 @@ a {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: 0.5s;
+}
+.productpage-object-fit:hover {
+  scale: 1.2;
 }
 
 .productpage-img-container {
