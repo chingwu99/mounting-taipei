@@ -157,7 +157,7 @@ const ProductModal = ({
               <div className="col-sm-4">
                 <div className="form-group mb-2">
                   <label className="w-100" htmlFor="image">
-                    輸入圖片網址
+                    <small className="text-danger">*</small>輸入圖片網址
                     <input
                       type="text"
                       name="imageUrl"
@@ -184,7 +184,7 @@ const ProductModal = ({
               <div className="col-sm-8">
                 <div className="form-group mb-2">
                   <label className="w-100" htmlFor="title">
-                    標題
+                    <small className="text-danger">*</small>標題
                     <input
                       type="text"
                       id="title"
@@ -199,7 +199,7 @@ const ProductModal = ({
                 <div className="row">
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="category">
-                      分類
+                      <small className="text-danger">*</small>分類
                       <input
                         type="text"
                         id="category"
@@ -213,7 +213,7 @@ const ProductModal = ({
                   </div>
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="unit">
-                      單位
+                      <small className="text-danger">*</small>單位
                       <input
                         type="unit"
                         id="unit"
@@ -229,7 +229,7 @@ const ProductModal = ({
                 <div className="row">
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="origin_price">
-                      原價
+                      <small className="text-danger">*</small>原價
                       <input
                         type="number"
                         id="origin_price"
@@ -243,7 +243,7 @@ const ProductModal = ({
                   </div>
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="price">
-                      售價
+                      <small className="text-danger">*</small>售價
                       <input
                         type="number"
                         id="price"
@@ -259,7 +259,7 @@ const ProductModal = ({
                 <hr />
                 <div className="form-group mb-2">
                   <label className="w-100" htmlFor="description">
-                    產品描述
+                    <small className="text-danger">*</small>產品描述
                     <textarea
                       type="text"
                       id="description"
@@ -273,7 +273,7 @@ const ProductModal = ({
                 </div>
                 <div className="form-group mb-2">
                   <label className="w-100" htmlFor="content">
-                    說明內容
+                    <small className="text-danger">*</small>說明內容
                     <textarea
                       type="text"
                       id="content"

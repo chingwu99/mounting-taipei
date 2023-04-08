@@ -35,7 +35,7 @@
     color: $primary;
     padding: 25px;
     background-color: $warning;
-    border: 2px solid $primary;
+    border: 1px solid $primary;
 
     & {
       @media screen and (max-width: 850px) {

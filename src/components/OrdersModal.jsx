@@ -117,7 +117,7 @@ const OrdersModal = ({ closeOrdersModal, getOrders, tempOrders }) => {
                 <div className="row">
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="name">
-                      訂購姓名
+                      <small className="text-danger">*</small>訂購姓名
                       <input
                         type="text"
                         id="name"
@@ -131,7 +131,7 @@ const OrdersModal = ({ closeOrdersModal, getOrders, tempOrders }) => {
                   </div>
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="address">
-                      地址
+                      <small className="text-danger">*</small>地址
                       <input
                         type="text"
                         id="address"
@@ -147,7 +147,7 @@ const OrdersModal = ({ closeOrdersModal, getOrders, tempOrders }) => {
                 <div className="row">
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="email">
-                      email
+                      <small className="text-danger">*</small>email
                       <input
                         type="text"
                         id="email"
@@ -161,7 +161,7 @@ const OrdersModal = ({ closeOrdersModal, getOrders, tempOrders }) => {
                   </div>
                   <div className="form-group mb-2 col-md-6">
                     <label className="w-100" htmlFor="tel">
-                      電話
+                      <small className="text-danger">*</small>電話
                       <input
                         type="text"
                         id="tel"

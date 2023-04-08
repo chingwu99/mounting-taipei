@@ -10,6 +10,10 @@ import {
 import { LoginContext } from "../../contexts/loginContext";
 
 const Dashboard = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const navigate = useNavigate();
   const reducer = useReducer(MessageReducer, initState);
 

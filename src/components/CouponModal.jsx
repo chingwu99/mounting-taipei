@@ -115,7 +115,7 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
           <div className="modal-body">
             <div className="mb-2">
               <label className="w-100" htmlFor="title">
-                標題
+                <small className="text-danger">*</small>標題
                 <input
                   type="text"
                   id="title"
@@ -130,7 +130,8 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
             <div className="row">
               <div className="col-md-6 mb-2">
                 <label className="w-100" htmlFor="percent">
-                  折扣％{`（原價*折扣％）`}
+                  <small className="text-danger">*</small>折扣％
+                  {`（原價*折扣％）`}
                   <input
                     type="text"
                     name="percent"
@@ -144,7 +145,7 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
               </div>
               <div className="col-md-6 mb-2">
                 <label className="w-100" htmlFor="due_date">
-                  到期日
+                  <small className="text-danger">*</small>到期日
                   <input
                     type="date"
                     id="due_date"
@@ -167,7 +168,7 @@ const CouponModal = ({ closeModal, getCoupons, tempCoupon, type }) => {
               </div>
               <div className="col-md-6 mb-2">
                 <label className="w-100" htmlFor="code">
-                  優惠碼
+                  <small className="text-danger">*</small>優惠碼
                   <input
                     type="text"
                     id="code"

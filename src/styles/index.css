@@ -10713,7 +10713,7 @@ a {
   color: rgb(95, 90, 83);
   padding: 25px;
   background-color: #f5deb3;
-  border: 2px solid rgb(95, 90, 83);
+  border: 1px solid rgb(95, 90, 83);
 }
 @media screen and (max-width: 850px) {
   .home-product-swiper-container .mySwiper .swiper-button-prev,
@@ -10759,7 +10759,7 @@ a {
   color: rgb(95, 90, 83);
   padding: 25px;
   background-color: #f5deb3;
-  border: 2px solid rgb(95, 90, 83);
+  border: 1px solid rgb(95, 90, 83);
 }
 @media screen and (max-width: 850px) {
   .home-news-swiper-container .mySwiper .swiper-button-prev,
@@ -10806,7 +10806,7 @@ a {
   color: rgb(95, 90, 83);
   padding: 25px;
   background-color: #f5deb3;
-  border: 2px solid rgb(95, 90, 83);
+  border: 1px solid rgb(95, 90, 83);
 }
 @media screen and (max-width: 850px) {
   .recommend-swiper-container .mySwiper .swiper-button-prev,

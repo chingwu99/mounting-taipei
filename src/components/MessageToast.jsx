@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { BsCheckCircle } from "react-icons/bs";
 import { BsXCircle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const MessageToast = () => {
   const messages = useSelector((state) => state.message);
@@ -40,8 +41,13 @@ const MessageToast = () => {
                       )}
                     </div>
 
-                    <div className="fs-5 w-75 d-flex justify-content-center align-items-center">
-                      {msg.text}
+                    <div className=" w-75 d-flex justify-content-center align-items-center flex-column">
+                      <p className="fs-5 m-0">{msg.text}</p>
+                      {msg.text === "已加入購物車" ? (
+                        <Link to="/cart" className="my-1">
+                          <p className="m-0">立刻結帳</p>
+                        </Link>
+                      ) : null}
                     </div>
                   </div>
                   <div className=" w-25 d-flex justify-content-end  align-items-top  h-100 ">
