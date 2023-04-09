@@ -18,7 +18,7 @@
 1.使用 React 與 Hook 開發網頁功能與架構  
 2.使用 Context 與 Reducer 管理狀態  
 3.Bootstrap 5 / SCSS 完成 Web Layout  
-4.axios 串接 Unsplash API 完成步道圖片顯示
+4.Axios 串接 Unsplash API 完成步道圖片顯示
 
 ## 開發技術
 
@@ -26,7 +26,8 @@
 -React-Router-DOM  
 -React Hook Form  
 -Bootstrap 5  
--axios  
+-Swiper  
+-Axios  
 -react-loading  
 -AOS  
 -react-icons

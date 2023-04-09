@@ -39,10 +39,13 @@ const ListCard = () => {
             key={i.登山步道路線}
           >
             <div className="card border-0 h-100">
-              <div className="productpage-img-container">
+              <div
+                className="route-img-container"
+                onClick={() => openMountingrouteModal(i)}
+              >
                 <img
                   src={i.img?.urls?.regular}
-                  className="card-img-top productpage-object-fit"
+                  className="card-img-top route-object-fit "
                   alt="..."
                 />
               </div>

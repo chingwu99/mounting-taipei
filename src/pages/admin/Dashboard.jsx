@@ -54,7 +54,7 @@ const Dashboard = () => {
   return (
     <MessageContext.Provider value={reducer}>
       <Message />
-      <nav className="navbar navbar-expand-lg bg-dark">
+      <nav className="navbar navbar-expand-lg bg-primary">
         <div className="container-fluid ">
           <p className="text-white mb-0">爬爬台北 後台管理系統</p>
 
@@ -95,7 +95,7 @@ const Dashboard = () => {
               to="/admin/article"
             >
               <i className="bi bi-ticket-perforated-fill me-2" />
-              文章列表
+              消息列表
             </Link>
             <Link
               className="list-group-item list-group-item-action py-3"

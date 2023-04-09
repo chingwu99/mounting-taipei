@@ -15,14 +15,10 @@ const ProductsPage = () => {
     useContext(ProductContext);
 
   const [state, dispatch] = useContext(LoveContext);
-
   const [loveList, setLoveList] = useState([]);
 
   useEffect(() => {
-    const storedLoveList = JSON.parse(localStorage.getItem("loveList"));
-    if (storedLoveList) {
-      setLoveList(storedLoveList);
-    }
+    setLoveList(state?.loveList);
   }, [state]);
 
   return (

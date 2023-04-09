@@ -87,7 +87,7 @@ const AdminOrder = () => {
           handleDelete={deleteOrder}
           id={tempOrders.id}
         />
-        <h3>產品列表</h3>
+        <h3>訂單列表</h3>
         <hr />
 
         <table className="table ">

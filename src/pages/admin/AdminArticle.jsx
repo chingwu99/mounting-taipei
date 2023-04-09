@@ -91,7 +91,7 @@ const AdminArticle = () => {
         handleDelete={deleteArticle}
         id={tempArticle.id}
       />
-      <h3>文章列表</h3>
+      <h3>消息列表</h3>
       <hr />
       <div className="text-end">
         <button
@@ -99,7 +99,7 @@ const AdminArticle = () => {
           className="btn btn-primary btn-sm"
           onClick={() => openArticlesModal("create", {})}
         >
-          建立新文章
+          建立新消息
         </button>
       </div>
       <table className="table ">
