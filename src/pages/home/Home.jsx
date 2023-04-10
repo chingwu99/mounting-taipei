@@ -82,8 +82,11 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-primary">
-        <div className="mx-4  row">
+      <div
+        className="bg-primary d-flex justify-content-center
+align-items-center flex-column "
+      >
+        <div className="mx-4  row container-xxl">
           <div className="  col-lg-2 text-center my-auto ">
             <h3 className="d-none d-lg-block  text-warning border-end border-warning border-3 py-4">
               精選商品
@@ -94,7 +97,7 @@ const Home = () => {
           <HomeProductSwiper />
         </div>
 
-        <div className="mx-4  row d-flex flex-row-reverse ">
+        <div className="mx-4  row d-flex flex-row-reverse container-xxl">
           <div className="  col-lg-2 text-center my-auto ">
             <h3 className="d-none d-lg-block text-warning border-start border-warning border-3 py-4 d-lg-block">
               最新消息
@@ -109,7 +112,7 @@ const Home = () => {
 
       <div
         className=" d-flex  justify-content-center
-align-items-center my-3"
+align-items-center my-3 container-xxl"
       >
         <div className="row d-flex flex-row-reverse ">
           {/* 行動版*/}
@@ -154,7 +157,7 @@ align-items-center my-3"
 
       <div
         className=" d-flex justify-content-center
-align-items-center "
+align-items-center container-xxl"
       >
         <div className="row ">
           <div

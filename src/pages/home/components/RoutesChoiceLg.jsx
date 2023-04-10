@@ -21,7 +21,7 @@ justify-content-center
 align-items-center flex-column  py-5 px-5   fs-1  text-center "
               onClick={filterHandler}
             >
-              內湖Neihu
+              <p style={{ maxWidth: "150px" }}>內湖Neihu</p>
             </div>
             <div
               className="col blockhover d-flex   
@@ -29,7 +29,7 @@ justify-content-center
 align-items-center flex-column border border-warning border-top-0 border-bottom-0 py-5 px-5   fs-1  text-center "
               onClick={filterHandler}
             >
-              士林Shilin
+              <p style={{ maxWidth: "150px" }}>士林Shilin</p>
             </div>
             <div
               className="col blockhover d-flex   
@@ -37,7 +37,7 @@ justify-content-center
 align-items-center flex-column  py-5 px-5   fs-1  text-center "
               onClick={filterHandler}
             >
-              北投Beitou
+              <p style={{ maxWidth: "150px" }}>北投Beitou</p>
             </div>
           </div>
           <div className="row row-cols-3  rounded-bottom-5 border border-warning m-3 mt-0">
@@ -47,7 +47,7 @@ justify-content-center
 align-items-center flex-column py-5 px-5   fs-1 text-center "
               onClick={filterHandler}
             >
-              信義Xinyi
+              <p style={{ maxWidth: "150px" }}>信義Xinyi</p>
             </div>
             <div
               className="col blockhover d-flex   
@@ -55,7 +55,7 @@ justify-content-center
 align-items-center flex-column border border-warning border-top-0 border-bottom-0  py-5 px-5   fs-1  text-center "
               onClick={filterHandler}
             >
-              南港Nangang
+              <p style={{ maxWidth: "180px" }}>南港Nangang</p>
             </div>
             <div
               className="col blockhover d-flex   
@@ -63,7 +63,7 @@ justify-content-center
 align-items-center flex-column  py-5 px-5   fs-1  text-center  "
               onClick={filterHandler}
             >
-              文山Wenshan
+              <p style={{ maxWidth: "180px" }}>文山Wenshan</p>
             </div>
           </div>
         </div>

@@ -75,7 +75,7 @@ const ProductDetail = () => {
   return (
     <div className=" bg-white">
       <div className=" d-flex justify-content-center ">
-        <div className="row  w-75  my-5 ">
+        <div className="row  w-75  my-5 container-xxl">
           <div className="col-sm-12 col-md-5 d-flex justify-content-center align-items-center">
             <div className="productDetail-img-container ">
               <img
