@@ -8,6 +8,7 @@ import { CartContext } from "../../contexts/cartContext";
 import PaymentListLg from "./components/PaymentListLg";
 import PaymentListMobile from "./components/PaymentListMobile";
 import { LoadingContext } from "../../contexts/loadingContext";
+import PaymentForm from "./components/PaymentForm";
 
 const Payment = () => {
   const { orderId } = useParams();
@@ -122,13 +123,11 @@ const Payment = () => {
                       </Link>
                     </div>
                   ) : (
-                    <button
-                      type="submit"
-                      className="btn btn-primary py-2 px-7 rounded-0 w-100"
-                      onClick={() => paySubmit()}
-                    >
-                      確認付款
-                    </button>
+                    <PaymentForm
+                      total={orderData.total}
+                      name={orderUser.name}
+                      paySubmit={paySubmit}
+                    />
                   )}
                 </div>
               </div>

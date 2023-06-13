@@ -13,6 +13,8 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import { ProductProvider } from "./contexts/productContext";
 import { LoveProvider } from "./contexts/loveContext";
+import { Elements } from "@stripe/react-stripe-js";
+import { stripePromise } from "./utils/stripe/stripeUtils";
 
 axios.defaults.baseURL = process.env.REACT_APP_SHOPAPI_URL;
 
@@ -27,7 +29,9 @@ root.render(
               <CartProvider>
                 <ProductProvider>
                   <MountingrouteProvider>
-                    <App />
+                    <Elements stripe={stripePromise}>
+                      <App />
+                    </Elements>
                   </MountingrouteProvider>
                 </ProductProvider>
               </CartProvider>
