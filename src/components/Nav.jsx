@@ -28,11 +28,11 @@ const Nav = () => {
   }, [state]);
 
   return (
-    <nav className="navbar navbar-expand-lg position-sticky top-0 z-3 bg-warning shadow ">
+    <nav className="navbar navbar-expand-lg position-fixed top-0 z-3 bg-warning shadow w-100">
       <div className="container-fluid row row-cols-3 mx-auto">
         <div className="col  ">
           <button
-            className="navbar-toggler w-50 border-primary"
+            className="navbar-toggler w-50 border-primary p-1"
             type="button"
             aria-controls="navbarSupportedContent"
             aria-expanded={!isNavCollapsed ? true : false}
@@ -49,10 +49,11 @@ const Nav = () => {
                 <NavLink
                   to="/"
                   className="nav-link  d-flex
-       align-items-center  "
+       align-items-center text-nowrap "
                   aria-current="page"
+                  onClick={() => setIsNavCollapsed(true)}
                 >
-                  <AiFillHome className="mx-1 fs-4 " />
+                  <AiFillHome className="me-1 fs-3 " />
                   首頁
                 </NavLink>
               </li>
@@ -60,9 +61,10 @@ const Nav = () => {
                 <NavLink
                   to="/mountingroute"
                   className="nav-link d-flex
-       align-items-center "
+       align-items-center text-nowrap"
+                  onClick={() => setIsNavCollapsed(true)}
                 >
-                  <FaShoePrints className="mx-1 fs-4" />
+                  <FaShoePrints className="me-1 fs-3" />
                   查看路線
                 </NavLink>
               </li>
@@ -70,9 +72,10 @@ const Nav = () => {
                 <NavLink
                   to="/productspage"
                   className="nav-link d-flex
-       align-items-center "
+       align-items-center text-nowrap"
+                  onClick={() => setIsNavCollapsed(true)}
                 >
-                  <GiConverseShoe className="mx-1 fs-4" />
+                  <GiConverseShoe className="me-1 fs-3 " />
                   產品列表
                 </NavLink>
               </li>
@@ -80,9 +83,10 @@ const Nav = () => {
                 <NavLink
                   to="/article"
                   className="nav-link d-flex
-       align-items-center "
+       align-items-center text-nowrap "
+                  onClick={() => setIsNavCollapsed(true)}
                 >
-                  <BsNewspaper className="mx-1 fs-4" />
+                  <BsNewspaper className="me-1 fs-3 " />
                   最新消息
                 </NavLink>
               </li>
@@ -94,6 +98,7 @@ const Nav = () => {
             to="/"
             className="navbar-brand  d-flex
     justify-content-center   align-items-center "
+            onClick={() => setIsNavCollapsed(true)}
           >
             <GiMountainRoad className="mx-1 fs-4" />
             爬爬台北
@@ -114,7 +119,11 @@ const Nav = () => {
               </li>
             ) : null}
             <li className="nav-item me-3">
-              <NavLink to="/love" className="nav-link position-relative">
+              <NavLink
+                to="/love"
+                className="nav-link position-relative"
+                onClick={() => setIsNavCollapsed(true)}
+              >
                 <AiOutlineHeart className="fs-4" />
                 <span className="position-absolute top-20 start-80 translate-middle badge rounded-pill bg-danger">
                   {loveList?.length}
@@ -122,7 +131,11 @@ const Nav = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/cart" className="nav-link position-relative">
+              <NavLink
+                to="/cart"
+                className="nav-link position-relative"
+                onClick={() => setIsNavCollapsed(true)}
+              >
                 <BsFillCartFill className="fs-4" />
                 <span className="position-absolute top-20 start-80 translate-middle badge rounded-pill bg-danger">
                   {cartData?.carts?.length}

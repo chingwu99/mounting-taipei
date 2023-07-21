@@ -22,6 +22,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "sass": "^1.64.0",
     "stripe": "^12.9.0",
     "sweetalert2": "^11.7.3",
     "swiper": "^9.2.0",

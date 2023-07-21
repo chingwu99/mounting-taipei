@@ -21,7 +21,7 @@ const MountingrouteModal = ({ closeMountingrouteModal, routeInfo }) => {
               onClick={() => closeMountingrouteModal()}
             ></button>
           </div>
-          <div className="modal-body">
+          <div className="modal-body" style={{ height: "400px" }}>
             <div className="row row-cols-2">
               <div className="col">
                 <ul>
@@ -47,7 +47,7 @@ const MountingrouteModal = ({ closeMountingrouteModal, routeInfo }) => {
                 </ul>
               </div>
               <div className="col">
-                <ul class="list-unstyled ">
+                <ul className="list-unstyled ">
                   <li className="routes-li-height">
                     {routeInfo.單程步行時間min}
                   </li>

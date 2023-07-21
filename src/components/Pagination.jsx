@@ -1,6 +1,6 @@
 const Pagination = ({ pagination, changePage }) => {
   return (
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example z-1">
       <ul className="pagination">
         <li className="page-item">
           <a
@@ -25,7 +25,7 @@ const Pagination = ({ pagination, changePage }) => {
             <a
               className={`page-link ${
                 i + 1 === pagination.current_page && "active"
-              }`}
+              } z-1`}
               href="/"
               onClick={(e) => {
                 e.preventDefault();

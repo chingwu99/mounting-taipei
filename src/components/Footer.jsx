@@ -24,7 +24,7 @@ const Footer = () => {
                 <p className="font-weight-bold">爬爬台北 Mounting Taipei</p>
               </div>
               <div>
-                <ul class="list-unstyled my-2">
+                <ul className="list-unstyled my-2">
                   <NavLink to="/" className=" text-black text-decoration-none">
                     <li className="my-2">首頁</li>
                   </NavLink>

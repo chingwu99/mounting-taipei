@@ -54,7 +54,7 @@ const Dashboard = () => {
   return (
     <MessageContext.Provider value={reducer}>
       <Message />
-      <nav className="navbar navbar-expand-lg bg-primary">
+      <nav className="navbar navbar-expand-lg bg-primary py-3">
         <div className="container-fluid ">
           <p className="text-white mb-0">爬爬台北 後台管理系統</p>
 

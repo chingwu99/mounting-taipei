@@ -28,7 +28,7 @@ const Layout = () => {
     };
   }, []);
   return (
-    <div className="layout">
+    <div className="layout pt-5 mt-2">
       <Nav />
       <Loading />
       <MessageToast />
