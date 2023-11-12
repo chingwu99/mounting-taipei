@@ -28,9 +28,9 @@ const Nav = () => {
   }, [state]);
 
   return (
-    <nav className="navbar navbar-expand-lg position-fixed top-0 z-3 bg-warning shadow w-100">
-      <div className="container-fluid row row-cols-3 mx-auto">
-        <div className="col  ">
+    <nav className="navbar navbar-expand-xl position-fixed top-0 z-3 bg-warning shadow w-100">
+      <div className="d-flex w-100 mx-3">
+        <div className="col">
           <button
             className="navbar-toggler w-50 border-primary p-1"
             type="button"
@@ -44,7 +44,7 @@ const Nav = () => {
           <div
             className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
           >
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <ul className="navbar-nav me-auto  ">
               <li className="nav-item ">
                 <NavLink
                   to="/"
@@ -106,7 +106,7 @@ const Nav = () => {
         </div>
 
         <div className="col">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0  d-flex justify-content-end  align-items-center flex-row">
+          <ul className="navbar-nav me-auto d-flex justify-content-end  align-items-center flex-row">
             {LoginState !== null ? (
               <li className="nav-item">
                 <NavLink
