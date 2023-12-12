@@ -104,6 +104,7 @@ const CartListMobile = () => {
                 placeholder="請輸入優惠序號"
                 value={couponValue}
                 onChange={couponHandler}
+                style={{ maxWidth: "180px" }}
               />
             </div>
             <div className="col-5 ">

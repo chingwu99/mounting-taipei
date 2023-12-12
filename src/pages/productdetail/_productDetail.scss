@@ -1,3 +1,12 @@
+.productDetail-wrapper {
+  width: 100%;
+  & {
+    @media screen and (max-width: 850px) {
+      width: 90%;
+    }
+  }
+}
+
 .productDetail-img-container {
   width: 400px;
   height: 400px;
@@ -12,4 +21,13 @@
 
 .productDetail-spirit {
   background-color: rgb(203, 194, 179);
+}
+
+.productDetail-spirit-content {
+  width: 50%;
+  & {
+    @media screen and (max-width: 850px) {
+      width: 80%;
+    }
+  }
 }

@@ -75,7 +75,7 @@ const ProductDetail = () => {
   return (
     <div className=" bg-white">
       <div className=" d-flex justify-content-center ">
-        <div className="row  w-75  my-5 container-xxl">
+        <div className="my-5 container d-flex flex-column flex-md-row  productDetail-wrapper">
           <div className="col-sm-12 col-md-5 d-flex justify-content-center align-items-center">
             <div className="productDetail-img-container ">
               <img
@@ -86,9 +86,9 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          <div className="col-sm-12 col-md-7 ">
+          <div className="col-sm-12 col-md-7 ps-md-3   ">
             <div>
-              <div className="d-flex">
+              <div className="d-flex mt-3 mt-md-0">
                 <div>
                   <Link to="/">首頁</Link>
                 </div>
@@ -183,7 +183,7 @@ const ProductDetail = () => {
         <div className="border-bottom my-3 border-3">
           <p className="fs-3">用心選材，堅守品質</p>
         </div>
-        <div className="w-50 my-3">
+        <div className=" my-3 productDetail-spirit-content">
           <p>
             爬爬台北以專業的技術與堅定的信念，打造出獨一無二的登山用品。我們使用環保無毒材質，確保產品的安全和可持續性。同時，我們注重每一個細節，追求產品的品質和耐用性。
             <br />

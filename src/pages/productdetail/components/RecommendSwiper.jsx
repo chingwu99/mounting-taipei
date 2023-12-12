@@ -34,7 +34,15 @@ const RecommendSwiper = () => {
             slidesPerView: 2,
             spaceBetween: 20,
           },
+          850: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
           1024: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          1300: {
             slidesPerView: 5,
             spaceBetween: 20,
           },
